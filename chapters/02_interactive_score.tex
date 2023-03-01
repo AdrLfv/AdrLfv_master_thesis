@@ -63,6 +63,8 @@ how it is supposed to sound. We are interested in teaching this skill to childre
 
 \subsection{Tangible Interactive Medias for Music Practise}
 
+% TODO réécrire complètement cette section
+
 Many projects aim at getting a child involved in the world of music. For example, Zigelbaum et al. investigated how electronic instruments can engage young learners in learning to make music. Their project was the development of different tools involving movement, linking it to a sound. They created a trampoline, an interactive matrix, or musical bracelets \cite{zigelbaum2006bodybeats}.
 
 Some projects related to interactive scores already exist. But their development just aims for the design and performance of Electroacoustic music \cite{struc_inter_music_score} and live spectacles. The primary goals of such scores are to develop a computer-aided composition environment allowing the composer to create such interactive scores and a performance machine making their interpretation possible.
@@ -117,6 +119,16 @@ one
 The Interactive score consists of two thin layers. The first layer is the traditional sheet
 music, printed on cardstock paper, with holes punched for each note. Under this sheet
 is a polyimide substrate with conductive lines printed on it. 
+
+% TODO mentionner les photos
+
+\begin{figure}[h]
+    \centering
+    \includegraphics{images/IS_demo.png}
+    \caption{Interactive Score Prototype}
+    \label{fig:IS_demo}
+\end{figure}
+
 The conductive lines are connected to an Adafruit Circuit Playground printed circuit
 board (PCB) using double-sided “z-tape.”
 When the user touches a note on the top layer, contact is made between the finger and
@@ -141,6 +153,9 @@ The whole system is kept in a 3D printed case, maintaining contact between the p
 
 The signal is recovered and used in capacitive touch with an Adafruit Circuit Playground Classic. An Arduino program allows to generate a vast number of different notes. The code is retrievable on GitHub \cite{adrien2022capacitive_to_notes}.
 
+About the sound, the Adafruit Circuit Playground embarks a built in buzzer. The Mini Speaker that is implemented here is the SQMS5002S4036A. This device is a miniature magnetic speaker not adapted for playing detailed audio. It is more used for beeping and buzzing and for simple bleepy tunes. 
+
+% TODO dire qu'il est possible de changer de tonalité
 % TODO Justifier les choix techniques
 
 \subsection{Paper Score Manufacturing}
@@ -156,6 +171,13 @@ A score of "J'ai du bon tabac" (on the left) is positioned on the substrate. The
 \subsection{Conductive Sheet Manufacturing}
 
 The conductive ink lines paths are 1mm thick, 5cm in length, with a resistance of 0.07 Ohms. The lines are printed using a simple inkjet printer equipped to print with silver nanoparticules conductive ink. The printed patterns are then sintered at 180°C for 73 minutes. This process allows the quick production of flexible circuits \cite{khan2019soft}.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics{images/IS_conductive_sheet.jpeg}
+    \caption{Interactive Score Conductive Sheet}
+    \label{fig:IS_conductive_sheet}
+\end{figure}
 
 This prototype comprises four staffs of 6 lines made of conductive ink on a Kapton polyimide sheet substrate. This polymer does not melt at high temperatures and has excellent mechanical strength, and is very dimensionally stable and creep resistant at temperatures above 260°C. The lines are 1mm thick, and at a distance of 15cm in length, it gave a resistance of 0.07 Ohms.
 
@@ -228,10 +250,27 @@ In conclusion, the interactive score project has a bright future ahead of it, as
 
 \subsection{Limitations}
 
-%Problème en terme de nombre de notes jouables. Problème en terme de taille de la partition. Problème en terme de son du à l'électronique utilisée. Problème du au scotch conducteur pouvant s'abimer et provoquer des faux contacts. Le courant n'étant plus transmis à travers les lignes. Problème du à l'encre conductrice pouvant s'effriter, empecher le courant de traverser certaines lignes. Problème de superposition du papier par dessus la feuille de polyimide pour aligner les notes avec les lignes d'encre tout en gardant un système flexible. Problème majeure de sensibilité au champ électrique du à l'utilisation du capacitivé touch. A proximité de champs électriques, le microcontrôleur peut détecter des faux contacts. L'appareil est donc à utiliser à distance d'appareils électroniques ainsi que de surfaces métaliques.
+The project has some limitations being a prototype. The device is limited in terms of the number of playable notes. The conductive sheet has six lines of conductive ink, which allows to play 13 different notes between C5 and F6. It is not possible to generate alterations while playing. This means that if the playground circuit is set in a specific key, it is not possible to play a note with an alteration that is not present in the score's framework. The key must also be changed manually at each score change (paper sheet).
+
+The major problem of the prototype is in its transmission of electrical signals. 
+The most important problem of the project is its sensitivity to electric field due to the use of capacitive touch. Near electric fields, the microcontroller can detect false contacts. The device must also be connected to a power outlet so that the potential difference calculated between the user's finger and the ground is remarkable. Otherwise, the playground circuit may not detect the touch of a line or start playing by itself because of the detection of surrounding electric fields. The device should therefore be used at a distance from electronic devices and metal surfaces.
+
+The transmission of the signal from the conductive sheet to the PCB (inside the box) is done with z-tape. This conductive tape can be damaged and cause false contacts after many uses and transport. The current can then not be transmitted to the lines and some notes stop working. 
+
+Another problem is also due to the conductive ink which can crumble, preventing the current from crossing certain lines. The ink traces are indeed quite fragile and easily damaged. The ink being only dried on the substrate, its adhesion is rather weak. As the user has to run his finger over the ink, he can also remove thin layers, thus causing some lines to break.
+
+The prototype also presents a difficulty to overlay the sheet paper on top of the polyimide sheet to align the notes with the ink lines while keeping a flexible system. The case was specially designed for this purpose but is not very effective in practice. 
+
+The device is also limited in terms of sound quality.
+The speaker driver circuitry is an on/off transistor driver, so the device is only able to play square waves. It is also not the same loudness over all frequencies but is designed to be the loudest at around 4 KHz. The sound generated is shrill, very electronic and of poor quality. It can thus slow down the desire to practice and does not resemble the sound of an instrument.
 
 \subsection{Future works}
 
+% TODO Ajouter capacitée de changer la tonalité automatiquement en fonction de la partition. Possibilité de rajouter le jeu d'une alteration avec trois boutons bémol, dièse et bécart jouable avec l'index de la main gauche
+
+% TODO Refaire l'electronique avec un meilleur speaker
+
+% TODO relire ce qui suit
 A "musical tutorial" mode will soon be added so that the user can listen to the score's
 music before having to play it. This will allow the user to assimilate the musical rhythm
 (the time between playing each note) with the physical rhythm (the time between
