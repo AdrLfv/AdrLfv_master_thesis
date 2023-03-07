@@ -60,18 +60,14 @@ Ear training" (or solfege) has traditionally been part of the curriculum of most
 schools. An important part of solfege is the ability to read music notation and imagine
 how it is supposed to sound. We are interested in teaching this skill to children.
 
-
 \subsection{Tangible Interactive Medias for Music Practise}
 
-% TODO réécrire complètement cette section
+Many projects aim at getting a child involved in the world of music. But few of them consist of a tangible interactive media for music discovery.
 
-Many projects aim at getting a child involved in the world of music. For example, Zigelbaum et al. investigated how electronic instruments can engage young learners in learning to make music. Their project was the development of different tools involving movement, linking it to a sound. They created a trampoline, an interactive matrix, or musical bracelets \cite{zigelbaum2006bodybeats}.
+For example, Zigelbaum et al. investigated how electronic instruments can engage young learners in learning to make music. Their project was the development of different tools involving movement, linking it to a sound. They created a trampoline, an interactive matrix, or musical bracelets \cite{zigelbaum2006bodybeats}.
 
-Some projects related to interactive scores already exist. But their development just aims for the design and performance of Electroacoustic music \cite{struc_inter_music_score} and live spectacles. The primary goals of such scores are to develop a computer-aided composition environment allowing the composer to create such interactive scores and a performance machine making their interpretation possible.
-
-"MixMatrix" sheet of push-pads
-
-An excellent example of a project was Xio Xio et Al. one, which provides an understanding of the essential workings of music without going into the details of music theory \cite{xiao2014andante}.
+Xiao Xiao et Al. propose an understanding of the essential workings of music without going into the details of music theory \cite{xiao2014andante}.
+The authors expose a new technique for visualizing musical motion on a piano keyboard. The technique, called Andante, uses walking figures that move along the keyboard to represent the movement of musical phrases. The results of their user test showed that the participants found the Andante animation to be significantly more informative and engaging than the video without animation.
 
 \begin{marginfigure}
     \centering
@@ -82,14 +78,34 @@ An excellent example of a project was Xio Xio et Al. one, which provides an unde
 \end{marginfigure}
 
 The work of Taele et al. \cite{taele2015maestoso} \ref{fig:taele2015maestoso} describes the practical and cognitive benefits of learning music theory for both musicians and non-musicians. The paper proposes an intelligent educational tool designed to help students learn music theory. The tool, called Maestoso, utilizes sketch-based interaction and machine learning techniques to provide personalized feedback to the user.
-The paper first introduces the importance of music education and the challenges students face when learning music theory, such as the abstract nature of music concepts and the difficulty of translating musical ideas into notation. The authors argue that sketching could be an effective approach to help students overcome these challenges and propose Maestoso as a solution.
+The paper first introduces the importance of music education and the challenges students face when learning music theory, such as the abstract nature of music concepts and the difficulty of translating musical ideas into notation.
 Maestoso is based on a sketching interface that allows users to draw musical notes, chords, and melodies using a stylus or finger. The program uses machine learning algorithms to recognize the user's sketches and provide feedback on their accuracy and completeness.
 
-Implementing such systems is often fully digital and interactive through a screen. Some projects aim to teach children music theory or interact with notes to compose, learn and experiment. Most of these projects are applications that users can download on smartphones or tablets. The relationship with the tangible paper score is gradually lost and will soon be entirely replaced by digital interaction.
+\begin{marginfigure}
+    \centering
+    \includegraphics{images/IS_kibo.png}
+    \caption{The interface of Kibo}
+    \label{fig:amico2020kibo}
+\end{marginfigure}
+
+Amico et al. discuss the development of a new type of MIDI controller designed for music education \cite{amico2020kibo}. The device, called Kibo, is a tangible user interface that allows students to interact with music in a physical, intuitive way.
+The authors introduce the concept of tangible user interfaces and explain how they can be used to create more immersive and interactive learning experiences.
+The device includes a set of modular blocks that can be rearranged and customized to create different musical experiences.
+
+Implementing such systems is often fully digital and interactive through a screen. Some projects aim to teach children music theory or interact with notes to compose, learn and experiment. Most of these projects are applications that users can download on smartphones or tablets. The relationship with the tangible paper score is gradually lost and could soon be entirely replaced by digital interaction.
 
 One solution is to use conductive ink to keep a tool in paper form without losing its interactive aspect. Conductive inks, paints, and varnishes are liquids containing metal particles, conductive polymers, or graphite. They are specifically designed to conduct electricity.
 
-Inkjet printing has been used to pattern organic semiconductors \cite{kim2008heterogeneous}, metal contacts on organic semiconductors \cite{khan2019soft} \cite{wessely2020sprayable}, and metallic structures that require minimal further processing. Researchers such as Ahn et al. used conductive ink printing to realize metallic connections between functional components of flexible devices. Another project like that of Russo et al. has resulted in an optical image of a flexible paper display containing a LED array. It takes the form of a multi-color 25 × 16 LED array connected to the printed silver electrodes by depositing a drop of concentrated silver ink \cite{russo2011pen}.
+Inkjet printing has been used to pattern organic semiconductors \cite{kim2008heterogeneous}, metal contacts on organic semiconductors \cite{khan2019soft} \cite{wessely2020sprayable}, and metallic structures that require minimal further processing. Researchers such as Ahn et al. used conductive ink printing to realize metallic connections between functional components of flexible devices. 
+
+\begin{marginfigure}
+    \centering
+    \includegraphics{images/IS_pen-on-paper.jpg}
+    \caption{Pen-on-Paper Flexible Electronics. a) Optical image of a rollerball pen loaded with a conductive silver ink. b) and c) side and top views of the rollerball pen. d) Optical image of the rollerball pen tip writing a conductive silver track}
+    \label{fig:IS_pen-on-paper}
+\end{marginfigure}
+
+Another project like that of Russo et al. \cite{IS_pen-on-paper} has resulted in an optical image of a flexible paper display containing a LED array. It takes the form of a multi-color 25 × 16 LED array connected to the printed silver electrodes by depositing a drop of concentrated silver ink.
 
 \section{General Architecture}
 
@@ -104,43 +120,39 @@ paper has shown its attractiveness to children
 
 \begin{figure}[h]
     \centering
-    \includegraphics{images/IS_schema.png}
-    \caption{Interactive Musical Score architecture.}
-    \label{fig:IS_schema}
-\end{figure}
-
-The demonstrator supplies the electronic part (substrate and PCB) during the
-showcase. He places a partition (a cardboard stencil) on top of the substrate (where
-the conductive lines are located). He plays the music and then changes it to another
-one
-
-\subsection{System Design}
-
-The Interactive score consists of two thin layers. The first layer is the traditional sheet
-music, printed on cardstock paper, with holes punched for each note. Under this sheet
-is a polyimide substrate with conductive lines printed on it. 
-
-% TODO mentionner les photos
-
-\begin{figure}[h]
-    \centering
     \includegraphics{images/IS_demo.png}
     \caption{Interactive Score Prototype}
     \label{fig:IS_demo}
 \end{figure}
 
-The conductive lines are connected to an Adafruit Circuit Playground printed circuit
-board (PCB) using double-sided “z-tape.”
-When the user touches a note on the top layer, contact is made between the finger and
-the conductive lines through the holes in the cardstock. The signal travels through the
-ink paths and the z-tape to the PCB, which detects a potential difference using
-capacitive touch and plays the relevant note. The detection of several simultaneous
-signals on multiple pins allows the playing of eleven different notes with only six lines.
+The user has to supply the electronic part (substrate and PCB), then he places a partition (a cardboard stencil) on top of the substrate (where
+the conductive lines are located) \ref{fig:IS_demo}. He can play the music and change it to another one.
 
-% TODO Justifier les choix techniques
+\subsection{System Design}
+
+The Interactive score consists of two thin layers. The first layer is the traditional sheet
+music, printed on cardstock paper, with holes punched for each note. Under this sheet
+is a polyimide substrate with conductive lines printed on it \ref{fig:IS_schema}. 
+
+\begin{figure}[h]
+    \centering
+    \includegraphics{images/IS_schema.png}
+    \caption{Interactive Musical Score architecture.}
+    \label{fig:IS_schema}
+\end{figure}
+
+The conductive lines are connected to an Adafruit Circuit Playground printed circuitnboard (PCB) using double-sided “z-tape”.
+
+When the user touches a note on the top layer, contact is made between the finger and the conductive lines through the holes in the cardstock.
+ The signal travels through the ink paths and the z-tape to the PCB, which detects a potential difference using capacitive touch and plays the relevant note. The detection of several simultaneous signals on multiple pins allows the playing of eleven different notes with only six lines \ref{fig:IS_schema}.
+
+The whole system is kept in a 3D printed case, maintaining contact between the polyimide, the z tape, and the PCB. The case is designed to be easily opened and closed, allowing the user to change the music.
+
+
 
 \subsection{Electronic Music Box}
 
+The signal is recovered and used in capacitive touch with an Adafruit Circuit Playground Classic \ref{fig:circuit_playground_classic}. An Arduino program allows to generate a vast number of different notes. The code is retrievable on GitHub \cite{adrien2022capacitive_to_notes}.
 
 \begin{marginfigure}
     \centering
@@ -149,22 +161,17 @@ signals on multiple pins allows the playing of eleven different notes with only 
     \label{fig:circuit_playground_classic}
 \end{marginfigure}
 
-The whole system is kept in a 3D printed case, maintaining contact between the polyimide, the z tape, and the PCB.
+About the sound, the Adafruit Circuit Playground embarks a built in buzzer. The Mini Speaker that is implemented here is the SQMS5002S4036A. This device is a miniature magnetic speaker not adapted for playing detailed audio. It is more used for beeping and buzzing and for simple bleepy tunes. It is also possible to change the tone by changing the name of a variable in the code on the microcontroller.
 
-The signal is recovered and used in capacitive touch with an Adafruit Circuit Playground Classic. An Arduino program allows to generate a vast number of different notes. The code is retrievable on GitHub \cite{adrien2022capacitive_to_notes}.
-
-About the sound, the Adafruit Circuit Playground embarks a built in buzzer. The Mini Speaker that is implemented here is the SQMS5002S4036A. This device is a miniature magnetic speaker not adapted for playing detailed audio. It is more used for beeping and buzzing and for simple bleepy tunes. 
-
-% TODO dire qu'il est possible de changer de tonalité
-% TODO Justifier les choix techniques
+The adafruit circuit playground has 10 mini NeoPixels of all colors, which can be animated with light when a note is played. The controller includes motion, temperature, light, and sound sensors, as well as a switch and a mini speaker. This device is therefore perfectly suited for use on the score and integrates many features in one.
 
 \subsection{Paper Score Manufacturing}
 
-For perfect dimensional compatibility between the different elements of the score, The music score printed on the stencil was entirely designed in photoshop. Notes, staves, lines, hyphenation, and cutouts were all placed on the same project. It allows the elements to fit together perfectly and export the cutout locations at the correct size relative to the partition's rest.
+For perfect dimensional compatibility between the different elements of the score, The music score printed on the stencil was entirely designed in PhotoShop. Notes, staves, lines, hyphenation, and cutouts were all placed on the same project. It allows the elements to fit together perfectly and export the cutout locations at the correct size relative to the partition's rest.
 
 An inkjet printer draws all cardboard lines, hyphenation, notes, and numbers.
 
-A score of "J'ai du bon tabac" (on the left) is positioned on the substrate. Then, the notes were isolated in another PNG file, selected on Cricut design, and cut directly into the cardboard with Cricut maker 3 (on the right).
+A score of "J'ai du bon tabac" (on the left) is positioned on the substrate. Then, the notes were isolated in another PNG file, selected on Cricut design, and cut directly into the cardboard with Cricut maker 3.
 
 % TODO Justifier les choix techniques
 
@@ -181,17 +188,9 @@ The conductive ink lines paths are 1mm thick, 5cm in length, with a resistance o
 
 This prototype comprises four staffs of 6 lines made of conductive ink on a Kapton polyimide sheet substrate. This polymer does not melt at high temperatures and has excellent mechanical strength, and is very dimensionally stable and creep resistant at temperatures above 260°C. The lines are 1mm thick, and at a distance of 15cm in length, it gave a resistance of 0.07 Ohms.
 
-%TODO Mettre une photo du sheet  
-% \begin{figure}[h]
-%     \centering
-%     \includegraphics{images/IS_schema.png}
-%     \caption{Interactive Musical Score architecture.}
-%     \label{fig:IS_schema}
-% \end{figure}
-
 An Epson WF-2010 printer printed the lines on the substrate \cite{adrien2022capacitive_to_notes}.
 
-% TODO Justifier les choix techniques
+The use of conductive ink allows the score to be flexible like a real musical score. The choice of ink rather than flexible brass strips is explained by the advantage of being able to print interactive scores on an industrial scale very quickly. The material needed is only simple printers as well as ink and cleaning products for the printers. This facilitates and accelerates the production possibilities.
 
 \subsection{Integration and Usability}
 
@@ -266,21 +265,13 @@ The speaker driver circuitry is an on/off transistor driver, so the device is on
 
 \subsection{Future works}
 
-% TODO Ajouter capacitée de changer la tonalité automatiquement en fonction de la partition. Possibilité de rajouter le jeu d'une alteration avec trois boutons bémol, dièse et bécart jouable avec l'index de la main gauche
+To answer the problem of changing the key, one idea is to add the play of an alteration with three "buttons" usable thanks to the capacitive touch: flat, sharp and natural which can be played with the index finger of the left hand. This would allow the user to discover the notion of these three tools and their meaning. This would be an interesting tool that would add an improvisation capacity to the system.
 
-% TODO Refaire l'electronique avec un meilleur speaker
+A "musical tutorial" should be added so that the user can listen to the score's music before having to play it. This would allow the user to assimilate the musical rhythm (the time between playing each note) with the physical rhythm (the time between pressing notes).
 
-% TODO relire ce qui suit
-A "musical tutorial" mode will soon be added so that the user can listen to the score's
-music before having to play it. This will allow the user to assimilate the musical rhythm
-(the time between playing each note) with the physical rhythm (the time between
-pressing notes).
-The electronic PCB/microcontroller part will be redesigned to no longer integrate an
-Adafruit Circuit Playground but a much smaller circuit entirely made by us. The
-learner can replace each component in case of a problem. It will be possible to
-improve the speaker's quality and connect the device to Bluetooth or Wi-Fi to play
-music at a distance.
-We are currently looking for partnerships in children's education to research
+The electronic PCB/microcontroller part should also be redesigned to no longer integrate an Adafruit Circuit Playground but a much smaller circuit entirely handmade. It would so be possible to
+improve the speaker's quality and connect the device to Bluetooth or Wi-Fi to play music at a distance.
+The next steps are also about looking for partnerships in children's education to research
 experimentations on the impact of this interactive score on music assimilation. Several
 parameters would be evaluated, such as the concentration level, playing time, and
-knowledge retention. We will consider different strategies to transcript musical-rhythmic on this interactive score.
+knowledge retention. It is necessary to consider different strategies to transcript musical-rhythmic on this interactive score.
