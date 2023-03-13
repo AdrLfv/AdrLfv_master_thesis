@@ -2,32 +2,126 @@
 
 \section{Introduction}
 
+Sign Language is considered the main communication tool for deaf or hard of hearing people. It is a visual language that uses movements to provide people communication with the world. 
+
+This sign language is too little used because it requires a significant investment to learn it and most people do not use it directly in their lives. SL is not understood by everyone, forming a communication gap between the mute and the able people. According to the World Health Organization (WHO) report, the number of people affected by hearing disability in 2020 was 466 million whose 34 million are children \cite{el2020sign}. Over 900 million people will have this disability by 2050.
+
+In France in 2020, there were approximately 4 and 5 million deaf or hard of hearing people who have difficulties or are simply unable to communicate through speech. Concerning the deaf speakers of French Sign Language (LSF), the figures are uncertain: they oscillate between 80,000 and 120,000, depending on the sources.
+
+In this work, we introduce a short video game to teach sign language. The application is intended to work on the DVIC Interactive Mirror but is fully functional on a simple PC.
+
+This report deals with the implementation of an AI for sign language recognition (SLR) using the mediapipe framework in order to extract the user’s coordinates and to analyze them through a model in pytorch. The model is then implemented in a game engine to create a visual novel video game. The game is then adapted to an augmented mirror to allow the user to play it in augmented reality. The game stimulates the motivation of the player in order to favorise his learning.
+
 \subsection{GOSAI for Augmented Mirroir}
 
 \section{Related work}
 
-\subsection{Sign Language Video Games}
 \subsection{Sign Language Recognition}
+
+A wide range of domains use SLR for different purposes. It can be found in robotics, human services, games, virtual reality applications, direct or remote communication or HCI projects \cite{adeyanju2021machine}.
+
+Many early SLR systems used data gloves and accelerometers to acquire specifics of the hands. The devices mesure x,y,z, orientation, velocity directly using a sensor such as the Polhemus tracker \cite{413199} \cite{5738842} or DataGlove \cite{Kadous1970} \cite{Metaxas1970} including accelerometers, gyroscopes, and electromyography sensors. . Those techniques did not allow full natural movement and constricted the mobility of the signer, altering the signs performed and being restrictive because of the need of supplementary material.
+
+Most techniques based on data gloves convert the position of fingers and hands according to their angles into electrical signals to obtain the desired sign. 
+%TODO ajouter des paragraphes pour séparer les deux
+
+Computer vision based techniques use pose estimation on the face, body, hands and fingers to detect their position. This method uses images or videos of the signs through the use of a camera and calculations on the images assisted by artificial intelligence \cite{adeyanju2021machine}. 
+
+The identification of signs must take into account many different parameters. Facial expressions and body posture are key in determining the meaning of sentences, e.g. eyebrow position can determine the question type. Some signs are distinguishable only by lip shape, as they share a
+common manual sign \cite{cooper2011sign}. The speed of the sign realization can change the notion of speed induced by the performed sign. A sign can also depend on its position on the body. All limbs must therefore be taken into account during the analysis. These challenges include sensor placement, data collection and preprocessing, and model training and evaluation \cite{9178440}.
+
+Sign language recognition systems based on computer vision and wearable sensors have been proposed by several researchers \cite{ionescu2005dynamic} \cite{yu2010vision} \cite{li2015feature} \cite{sonkusare2015review} \cite{bobic2016hand} \cite{islam2017real} \cite{islam2017real} \cite{saha2018machine}, \cite{rastgoo2021hand} \cite{xu2021application}. 
+
+Most recent SLR techniques use various image or vision based SLR systems comprising feature extraction and classification \cite{nimisha2020brief}. 
+
+Many projects using computer vision assisted SLR exist \cite{admasu2010ethiopian} \cite{deriche2019intelligent} \cite{ahram2021advances} \cite{song2021intelligent} \cite{lee2021american} \cite{lee2021comparative} \cite{gao2021rnn}. 
+
+A large part of these projects use a Convolutional Neural Network (CNN) model for predicting American Sign Language alphabet \cite{bin2019study}. Previously, different classifiers like support vector machine \cite{savur2015real}, random forest, multilayer perceptron, transfer learning, fine tuning \cite{saleh2020arabic} etc. have been introduced for sign language recognition on simple images. Recently, shallow CNN and Capsule Networks have obtained better results \cite{hasan2020classification}. 
+
+Skeleton coordinate-based action recognition with coordinates has recently been attracting more and more attention to compute sign language videos because of its invariance to subject or background, whereas skeleton coordinate-based SLR only takes the data that is important for its learning. 
+
+The recovered coordinates (extracted with computer vision or thanks to data gloves) are then processed with training methods. Various machine learning algorithms are then used for sign language recognition, including neural networks, support vector machines, and hidden Markov models \cite{9178440}.
+
+Adeyanju et al. provides a comprehensive review of the state-of-the-art techniques used in sign language recognition using machine learning \cite{almeida2014feature}. The paper highlights the significance of sign language recognition and its potential to revolutionize the way communication is done between the deaf community and the hearing community. The authors then review the different machine learning techniques used for sign language recognition, such as Hidden Markov Models (HMMs), Support Vector Machines (SVMs), and Deep Neural Networks (DNNs).
+The authors also highlight the importance of datasets in sign language recognition and review some of the commonly used datasets for sign language recognition. They emphasize the need for large, diverse datasets to train machine learning models effectively.
+
+However, sign language is far more than just a collection of well specified gestures.
+
+%TODO ajouter le concours de google
+
+\subsection{Sign Language Video Games}
+
+Very few games use sign language as a basic element in the gameplay. We can cite Moss \cite{moss2018}, in which the hero communicates with the player with SL. 
+
+Zahoor Zafrulla et al. present Copycat, a game designed to improve the American Sign Language (ASL) skills of deaf children \cite{zafrulla2011copycat}. The game was developed by a team of researchers from the University of California in collaboration with members of the deaf community.
+The game, called CopyCat, is a digital game that uses machine learning to provide feedback to the players. The game consists of a series of mini-games that focus on different aspects of ASL, such as finger spelling, vocabulary, and grammar. In each mini-game, the player is presented with a video clip of a person signing a word or phrase in ASL. The player is then asked to copy the sign or phrase using their own signing.
+CopyCat uses machine learning to analyze the player's signing and provide feedback on their performance. The game is designed to be adaptive, meaning that it adjusts the difficulty level based on the player's skill level. The game also tracks the player's progress and provides feedback on areas where they need improvement.
+CopyCat developpers then enhanced their SLR system with the Kinect depth-mapping camera which uses colored gloves and embedded accelerometers to track children's hand movements.
+
 \subsection{Visual Novel Engines}
+
+P5VN is an open-source student project, allowing to create a visual novel using P5.js. It allows you to read dialogues, display sprites, as well as backgrounds and use menus by clicking. The game scenario is easily editable through a script, which is then parsed by the engine.
+Other visual novel engine, Tuesday JS or Monogatari are simple web-based visual novel editor that can be used in a web browser. It is written in JavaScript allowing the use of vector graphics svg, gif animations and css styles but not running with p5.
 
 \section{Gameplay}
 
+The sign language game is an augmented reality game, a visual novel on the augmented mirror. We follow a character during a short adventure in which the user can take choices by making signs in front of the mirror. He can answer to the characters, interact with objects and choose a path.
+
 \subsection{Pose Estimation}
+
+
+
 \subsection{Making Choices}
+
+
 \subsection{Position Correction}
 
 \section{General Architecture}
 
 \subsection{Overview}
+
 \subsection{Visual Novel Engine}
-\subsection{Augmented Reality Avatar}
+
+I needed a game engine to create a visual novel using P5. I started with the implementation of P5VN in gosai. The engine is basically adaptable for the mirror because it is basically working with p5 and the code was not hard to handle.
+
+I almost completely transformed it to run asynchronously to adapt it to gosai, to allow it to load and play video animations, I adapted it to interact and select menus thanks to sign language and added many other features.
+
+
+\subsection{Animations}
+
+To make the sprites and animations, I improved my work on the interactive 3D avatar that I developed last year. I then recorded signs and poses for the characters and tutorials of the game. I implemented the Kalidokit module using mediapipe to make the avatar follow the movements of a user. I also implemented the module on the augmented mirror in an application on its own.
+
+
 \subsection{Position Segmentation}
 
 \section{Sign Language AI}
 
+\subsection{Overview}
+
+Sign language involves the usage of the upper part of the body, such as hand gestures, facial expression, lip-reading, head nodding and body postures to disseminate information \cite{adeyanju2021machine}.
+
+I then implemented the IA into the game engine to add control with motion. The data is transmitted from the slr module through gosai’s redis database to the game engine. When the probability of a detected sign overfits a threshold, the sign is considered as validated by the engine.
+
 \subsection{Structure}
+
+This year I also completely redesigned the AI for sign language recognition SLR, facilitating the creation of the dataset, implementing new models, visualization of training results, as well as a dynamic visualisation of recorded movements. The model is composed of a bidirectional LTSM, a linear, a dropout, a batchnorm1d, a relu, and an other Linear. The AI trained on 16 different signs or 1600 sequences. I reach an accuracy of 87\% on the test set and 96\% on the training.
+
+% TODO justifier création du dataset soi meme
+% TODO justifier choix du modèle
+
 \subsection{Evaluation}
-\subsection{User tests}
+
+After displaying the accuracy obtained on the train and the test we observe an accuracy of 100\% on the valid set, an accuracy of 96.67 on
+train set and a loss of 0.349 after 37 epochs. The program has an accuracy
+of 90\% on the final test set.
+After implementing a timer, each training loop takes 2.087 seconds.
+Knowing that during the test ten actions were implemented, with 23 sequences per action, the calculation time for each sequence is 9.074 milliseconds. By comparison, the implementation of an equivalent model
+with TensorFlow,implemented consisting of three LSTM layers and three Dense layers, this one reaches an accuracy of 41.5\% on the valid test after
+50 epochs.
+With 50 epochs, 3 actions, 30 sequences per action, we obtain a computation time of 10.706 seconds with the tensorflow model. That is a time of 0.168 seconds per sequence.
+The implemented model being very simple (two bi-directional layers) we observe that the computation time is much more reduced than for the model using tensorflow.
+After implementing another simple model with three Linear layers and two ReLu layers, we reach the maximum accuracy on the train and test datasets in 75 epochs, 95.18\% on the train dataset and 100\% on the test dataset.
+Comparing with actual models using keypoints learning, on the AUTSL test set, a Skel 2D reaches an accuracy of 96.90 on test set.
 
 \section{Usage scenario}
 
@@ -36,9 +130,12 @@
 \section{Discussion}
 
 \subsection{Playful Learning}
+
 \subsection{ASL in AR}
 
 \section{Conclusion}
 
 \subsection{Limitations}
+
+%* très petit dataset, modèle moyennement efficace, peu de signes différents, pas de PCA
 \subsection{Future Works}
