@@ -50,7 +50,7 @@ A wide range of domains use SLR for different purposes. It can be found in robot
 \begin{marginfigure}
     \centering
     \includegraphics{AdrLfv_master_thesis/images/polhemus_tracker.jpg}
-    \caption{Polhemus tracker, the premier precision motion tracking company}
+    \caption{Polhemus}
     \label{fig:Polhemus}
 \end{marginfigure}
 
@@ -69,12 +69,29 @@ In 2010, the ImageNet files appeared \cite{li2010crowdsourcing}. They provided a
 
 Computer vision based techniques use pose estimation on the face, body, hands and fingers to detect their position. This method uses images or videos of the signs through the use of a camera and calculations on the images assisted by artificial intelligence \cite{adeyanju2021machine}. 
 
-The identification of signs must take into account many different parameters. Facial expressions and body posture are key in determining the meaning of sentences, e.g. eyebrow position can determine the question type. Some signs are distinguishable only by lip shape, as they share a
-common manual sign \cite{cooper2011sign}. The speed of the sign realization can change the notion of speed induced by the performed sign. A sign can also depend on its position on the body. All limbs must therefore be taken into account during the analysis. These challenges include sensor placement, data collection and preprocessing, and model training and evaluation \cite{9178440}.
+The identification of signs must take into account many different parameters. Facial expressions and body posture are key in determining the meaning of sentences, e.g. eyebrow position can determine the question type. Some signs are distinguishable only by lip shape, as they share a common manual sign \cite{cooper2011sign}. 
+
+
+\begin{marginfigure}
+    \centering
+    
+    \includegraphics{AdrLfv_master_thesis/images/8-Figure2-1.png}
+    \caption{Various custom gloves constructed by researchers in the sign language recognition field.}
+    \label{fig:8-Figure2-1}
+\end{marginfigure}
+
+The speed of the sign realization can change the notion of speed induced by the performed sign. A sign can also depend on its position on the body. All limbs must therefore be taken into account during the analysis. These challenges include sensor placement, data collection and preprocessing, and model training and evaluation \cite{9178440} \ref{fig:8-Figure2-1}.
 
 Sign language recognition systems based on computer vision and wearable sensors have been proposed by several researchers \cite{ionescu2005dynamic} \cite{yu2010vision} \cite{li2015feature} \cite{sonkusare2015review} \cite{bobic2016hand} \cite{islam2017real} \cite{islam2017real} \cite{saha2018machine}, \cite{rastgoo2021hand} \cite{xu2021application}. 
 
-Most recent SLR techniques use various image or vision based SLR systems comprising feature extraction and classification \cite{nimisha2020brief}. 
+\begin{marginfigure}
+    \centering
+    \includegraphics{AdrLfv_master_thesis/AdrLfv-main.tex/images/2-Figure2-1.png}
+    \caption{Typical Vision Based Sign Language Recognition architecture.}
+    \label{fig:2-Figure2-1}
+\end{marginfigure}
+
+Most recent SLR techniques use various image or vision based SLR systems comprising feature extraction and classification \cite{nimisha2020brief} \ref{fig:2-Figure2-1}. 
 
 Many projects using computer vision assisted SLR exist \cite{admasu2010ethiopian} \cite{deriche2019intelligent} \cite{ahram2021advances} \cite{song2021intelligent} \cite{lee2021american} \cite{lee2021comparative} \cite{gao2021rnn}. 
 
@@ -82,10 +99,26 @@ A large part of these projects use a Convolutional Neural Network (CNN) model fo
 
 Skeleton coordinate-based action recognition with coordinates has recently been attracting more and more attention to compute sign language videos because of its invariance to subject or background, whereas skeleton coordinate-based SLR only takes the data that is important for its learning. 
 
+The most commonly used pose estimation frameworks that extract coordinates from a person using pose estimation are for example OpenPose \cite{cao2017realtime} \ref{1-Figure1-1}, MoveNet \cite{movenet}, PoseNet \cite{kendall2015posenet} and MediaPipe \cite{lugaresi2019mediapipe}.
+
+\begin{marginfigure}
+    \centering
+    \includegraphics{AdrLfv_master_thesis/AdrLfv-main.tex/images/1-Figure1-1.png}
+    \caption{Top: Multi-person pose estimation. Body parts belonging to the same person are linked, including foot keypoints (big toes, small toes, and heels). Bottom left: Part Affinity Fields (PAFs) corresponding to the limb connecting right elbow and wrist. The color encodes orientation. Bottom right: A 2D vector in each pixel of every PAF encodes the position and orientation of the limbs.}
+    \label{fig:1-Figure1-1}
+\end{marginfigure}
+
 The recovered coordinates (extracted with computer vision or thanks to data gloves) are then processed with training methods. Various machine learning algorithms are then used for sign language recognition, including neural networks, support vector machines, and hidden Markov models \cite{9178440}.
 
-Adeyanju et al. provides a comprehensive review of the state-of-the-art techniques used in sign language recognition using machine learning \cite{almeida2014feature}. The paper highlights the significance of sign language recognition and its potential to revolutionize the way communication is done between the deaf community and the hearing community. The authors then review the different machine learning techniques used for sign language recognition, such as Hidden Markov Models (HMMs), Support Vector Machines (SVMs), and Deep Neural Networks (DNNs).
+Adeyanju et al. provides a comprehensive review of the state-of-the-art techniques used in sign language recognition using machine learning \cite{almeida2014feature} \ref{S0957417414003042}. The paper highlights the significance of sign language recognition and its potential to revolutionize the way communication is done between the deaf community and the hearing community. The authors then review the different machine learning techniques used for sign language recognition, such as Hidden Markov Models (HMMs), Support Vector Machines (SVMs), and Deep Neural Networks (DNNs).
 The authors also highlight the importance of datasets in sign language recognition and review some of the commonly used datasets for sign language recognition. They emphasize the need for large, diverse datasets to train machine learning models effectively.
+
+\begin{marginfigure}
+    \centering
+    \includegraphics{AdrLfv_master_thesis/AdrLfv-main.tex/images/S0957417414003042.jpg}
+    \caption{Feature extraction in Brazilian Sign Language Recognition based on phonological structure and using RGB-D sensors}
+    \label{fig:S0957417414003042}
+\end{marginfigure}
 
 However, sign language is far more than just a collection of well specified gestures.
 
@@ -93,17 +126,31 @@ However, sign language is far more than just a collection of well specified gest
 
 \subsection{Sign Language Learning Video Games}
 
-The video game is a dynamic audiovisual entertainment platform, accessible and stimulating the imagination of players. There is a possibility of using them to strengthen skills and abilities within society. This is how video games are becoming a playful phenomenon, important in children's and youth cultur.
+The video game is a dynamic audiovisual entertainment platform, accessible and stimulating the imagination of players. There is a possibility of using them to strengthen skills and abilities within society. This is how video games are becoming a playful phenomenon, important in children's and youth culture.
 Video games enhance the function of the attentional system, stimulate visual attention, reduce reaction time, improve the ability to discriminate shape and color, plus efficiency when following multiple object \cite{green2006enumeration}.
 
 They are a good didactic way to promote interest and motivation by linking playfulness and pedagogical functions \cite{tejeiro2009efectos} .
 
 The augmentation of interfaces thanks to technology causes a better attractiveness of the learning method and thus an increase of the time voluntarily dedicated to self-learning and of the motivation to concentrate on the method \cite{baker1994}.
 
-Very few games use sign language as a basic element in the gameplay. We can cite Moss \cite{moss2018}, in which the hero communicates with the player with SL. 
+Very few games use sign language as a basic element in the gameplay. We can cite Moss \cite{moss2018} \ref{moss-1200-80}, a video game on PlayStation VR in which the hero communicates with the player with ASL. 
+
+\begin{marginfigure}
+    \centering
+    \includegraphics{AdrLfv_master_thesis/AdrLfv-main.tex/images/moss-1200-80.jpg}
+    \caption{Moss hero communicating with the player through american sign language}
+    \label{fig:moss-1200-80}
+\end{marginfigure}
 
 Zahoor Zafrulla et al. present Copycat, a game designed to improve the American Sign Language (ASL) skills of deaf children \cite{zafrulla2011copycat}. The game was developed by a team of researchers from the University of California in collaboration with members of the deaf community.
-The game, called CopyCat, is a digital game that uses machine learning to provide feedback to the players. The game consists of a series of mini-games that focus on different aspects of ASL, such as finger spelling, vocabulary, and grammar. In each mini-game, the player is presented with a video clip of a person signing a word or phrase in ASL. The player is then asked to copy the sign or phrase using their own signing.
+The game, called CopyCat, is a digital game that uses machine learning to provide feedback to the players. The game consists of a series of mini-games that focus on different aspects of ASL, such as finger spelling, vocabulary, and grammar \ref{aslgamecopycat}. In each mini-game, the player is presented with a video clip of a person signing a word or phrase in ASL. The player is then asked to copy the sign or phrase using their own signing.
+
+\begin{marginfigure}
+    \centering
+    \includegraphics{AdrLfv_master_thesis/AdrLfv-main.tex/images/aslgamecopycat.jpeg}
+    \caption{Screenshot of ASL Game Interface and the input devices for user  }
+    \label{fig:aslgamecopycat}
+\end{marginfigure}
 
 CopyCat uses machine learning to analyze the player's signing and provide feedback on their performance. The game is designed to be adaptive, meaning that it adjusts the difficulty level based on the player's skill level. The game also tracks the player's progress and provides feedback on areas where they need improvement.
 CopyCat developpers then enhanced their SLR system with the Kinect depth-mapping camera which uses colored gloves and embedded accelerometers to track children's hand movements \cite{zafrulla2011american}.
@@ -442,3 +489,5 @@ The user must then superimpose his skeleton on the second frame and so on until 
 
 The implementation of the correction phase of this training in the sign language game would have a real interest since it would allow the user to better remember the same sign by having to perform it several times, by focusing on the position of each finger. It also allows him to visualize the correct position he has to take in the space. 
 This implementation would thus answer most of the current problems of the game. It had not been done because it broke the rhythm of the game during its progress, but its implementation at the end of the game as a reminder of what has been seen would be an effective method for learning.
+
+%rajouter des effets stylés en latex
