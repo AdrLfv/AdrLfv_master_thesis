@@ -14,6 +14,8 @@ This report deals with the implementation of an AI for sign language recognition
 
 \subsection{GOSAI for Augmented Mirroir}
 
+\paragraph[short]{GOSAI}
+
 GOSAI is a new framework to help the development of augmented interfaces on the computer with a display. This framework targets all developers, from beginners to experts. GOSAI offers
 basic and often used augmented reality functionalities.
 
@@ -31,11 +33,22 @@ technologies of web development, and everyone can use it on both the
 front-end and the back-end.
 It is a versatile and robust language for video game. The developers can use JavaScript to make games using a variety of platforms and tools. They can use both 2d and 3d libraries in combination with JavaScript to create fully-fledged games in the browser or external game engine platforms \cite{javascriptgaming}.
 
+\paragraph[short]{The interactive mirror}
+
 The following projects presented in this thesis are implemented on an augmented mirror running on the GOSAI software system.
 
 The augmented mirror is a platform that provides extensive interaction between the real and the virtual world. The objective is to create a platform that can provide not only recreational use but also medical and educational use.
 
-A one-way mirror is placed against a screen. The mirror reflects perfectly where the screen is black and can display  information when the pixels are emitting light. A camera is placed at the top of the mirror, facing slightly down.  A laptop is placed at the back of the screen.
+A one-way mirror is placed against a screen. The mirror reflects perfectly where the screen is black and can display  information when the pixels are emitting light. A camera is placed at the top of the mirror, facing slightly down.  A laptop is placed at the back of the screen (see figure \ref{fig:mirror_062}).
+
+\begin{figure}[h]
+    \centering
+    \includegraphics{AdrLfv_master_thesis/images/mirror_062}
+    \caption{The Augmented Mirror}
+    \label{fig:mirror_062}
+\end{figure}
+
+%%TODO resize l'image
 
 The mirror can scan the room and detect and position objects the user interacts with. The augmented mirror uses the Intel D435 camera to estimate the position of a user in front of the mirror with Mediapipe. Thus, it can add a new dimension of interaction exploiting kinesthesia. This dimension is an advantage over traditional interfaces using touch or a mouse. 
 
@@ -45,7 +58,7 @@ This interface is ideal for the development of applications requiring movement. 
 
 \subsection{Sign Language Recognition}
 
-A wide range of domains use SLR for different purposes. It can be found in robotics, human services, games, virtual reality applications, direct or remote communication or HCI projects \cite{adeyanju2021machine} \ref{fig:Polhemus}.
+A wide range of domains use SLR for different purposes. It can be found in robotics, human services, games, virtual reality applications, direct or remote communication or HCI projects \cite{adeyanju2021machine} (see figure \ref{fig:Polhemus}).
 
 \begin{marginfigure}
     \centering
@@ -54,11 +67,11 @@ A wide range of domains use SLR for different purposes. It can be found in robot
     \label{fig:Polhemus}
 \end{marginfigure}
 
-Many early SLR systems used data gloves and accelerometers to acquire specifics of the hands. The devices mesure x,y,z, orientation, velocity directly using a sensor such as the Polhemus tracker \cite{413199} \cite{5738842} or DataGlove \cite{Kadous1970} \cite{Metaxas1970} including accelerometers, gyroscopes, and electromyography sensors  \ref{fig:data_gloves}. Those techniques did not allow full natural movement and constricted the mobility of the signer, altering the signs performed and being restrictive because of the need of supplementary material.
+Many early SLR systems used data gloves and accelerometers to acquire specifics of the hands. The devices mesure x,y,z, orientation, velocity directly using a sensor such as the Polhemus tracker \cite{413199} \cite{5738842} or DataGlove \cite{Kadous1970} \cite{Metaxas1970} including accelerometers, gyroscopes, and electromyography sensors  (see figure \ref{fig:data_gloves}). Those techniques did not allow full natural movement and constricted the mobility of the signer, altering the signs performed and being restrictive because of the need of supplementary material.
 
 \begin{marginfigure}
     \centering
-    \includegraphics{AdrLfv_master_thesis/images/data_gloves.jpg}
+    \includegraphics{AdrLfv_master_thesis/images/42979_2021_827_Fig3_HTML.png}
     \caption{Human–computer interaction using: a CyberGlove-II \cite{cyberglovesystems}, b vision-based system}
     \label{fig:data_gloves}
 \end{marginfigure}
@@ -75,23 +88,23 @@ The identification of signs must take into account many different parameters. Fa
 \begin{marginfigure}
     \centering
     
-    \includegraphics{AdrLfv_master_thesis/images/8-Figure2-1.png}
+    \includegraphics{AdrLfv_master_thesis/images/custom_gloves.png}
     \caption{Various custom gloves constructed by researchers in the sign language recognition field.}
-    \label{fig:8-Figure2-1}
+    \label{fig:custom_gloves}
 \end{marginfigure}
 
-The speed of the sign realization can change the notion of speed induced by the performed sign. A sign can also depend on its position on the body. All limbs must therefore be taken into account during the analysis. These challenges include sensor placement, data collection and preprocessing, and model training and evaluation \cite{9178440} \ref{fig:8-Figure2-1}.
+The speed of the sign realization can change the notion of speed induced by the performed sign. A sign can also depend on its position on the body. All limbs must therefore be taken into account during the analysis. These challenges include sensor placement, data collection and preprocessing, and model training and evaluation \cite{9178440} (see figure \ref{fig:custom_gloves}).
 
 Sign language recognition systems based on computer vision and wearable sensors have been proposed by several researchers \cite{ionescu2005dynamic} \cite{yu2010vision} \cite{li2015feature} \cite{sonkusare2015review} \cite{bobic2016hand} \cite{islam2017real} \cite{islam2017real} \cite{saha2018machine}, \cite{rastgoo2021hand} \cite{xu2021application}. 
 
 \begin{marginfigure}
     \centering
-    \includegraphics{AdrLfv_master_thesis/AdrLfv-main.tex/images/2-Figure2-1.png}
+    \includegraphics{AdrLfv_master_thesis/images/nimisha}
     \caption{Typical Vision Based Sign Language Recognition architecture.}
-    \label{fig:2-Figure2-1}
+    \label{fig:nimisha}
 \end{marginfigure}
 
-Most recent SLR techniques use various image or vision based SLR systems comprising feature extraction and classification \cite{nimisha2020brief} \ref{fig:2-Figure2-1}. 
+Most recent SLR techniques use various image or vision based SLR systems comprising feature extraction and classification \cite{nimisha2020brief} (see figure \ref{fig:nimisha}). 
 
 Many projects using computer vision assisted SLR exist \cite{admasu2010ethiopian} \cite{deriche2019intelligent} \cite{ahram2021advances} \cite{song2021intelligent} \cite{lee2021american} \cite{lee2021comparative} \cite{gao2021rnn}. 
 
@@ -99,23 +112,25 @@ A large part of these projects use a Convolutional Neural Network (CNN) model fo
 
 Skeleton coordinate-based action recognition with coordinates has recently been attracting more and more attention to compute sign language videos because of its invariance to subject or background, whereas skeleton coordinate-based SLR only takes the data that is important for its learning. 
 
-The most commonly used pose estimation frameworks that extract coordinates from a person using pose estimation are for example OpenPose \cite{cao2017realtime} \ref{1-Figure1-1}, MoveNet \cite{movenet}, PoseNet \cite{kendall2015posenet} and MediaPipe \cite{lugaresi2019mediapipe}.
-
 \begin{marginfigure}
     \centering
-    \includegraphics{AdrLfv_master_thesis/AdrLfv-main.tex/images/1-Figure1-1.png}
+    \includegraphics{AdrLfv_master_thesis/images/cao.png}
     \caption{Top: Multi-person pose estimation. Body parts belonging to the same person are linked, including foot keypoints (big toes, small toes, and heels). Bottom left: Part Affinity Fields (PAFs) corresponding to the limb connecting right elbow and wrist. The color encodes orientation. Bottom right: A 2D vector in each pixel of every PAF encodes the position and orientation of the limbs.}
-    \label{fig:1-Figure1-1}
+    \label{fig:cao}
 \end{marginfigure}
+
+The most commonly used pose estimation frameworks that extract coordinates from a person using pose estimation are for example OpenPose \cite{cao2017realtime} (see figure \ref{fig:cao}), MoveNet \cite{movenet}, PoseNet \cite{kendall2015posenet} and MediaPipe \cite{lugaresi2019mediapipe}.
+
+
 
 The recovered coordinates (extracted with computer vision or thanks to data gloves) are then processed with training methods. Various machine learning algorithms are then used for sign language recognition, including neural networks, support vector machines, and hidden Markov models \cite{9178440}.
 
-Adeyanju et al. provides a comprehensive review of the state-of-the-art techniques used in sign language recognition using machine learning \cite{almeida2014feature} \ref{S0957417414003042}. The paper highlights the significance of sign language recognition and its potential to revolutionize the way communication is done between the deaf community and the hearing community. The authors then review the different machine learning techniques used for sign language recognition, such as Hidden Markov Models (HMMs), Support Vector Machines (SVMs), and Deep Neural Networks (DNNs).
+Adeyanju et al. provides a comprehensive review of the state-of-the-art techniques used in sign language recognition using machine learning \cite{almeida2014feature} \ref{fig:S0957417414003042}. The paper highlights the significance of sign language recognition and its potential to revolutionize the way communication is done between the deaf community and the hearing community. The authors then review the different machine learning techniques used for sign language recognition, such as Hidden Markov Models (HMMs), Support Vector Machines (SVMs), and Deep Neural Networks (DNNs).
 The authors also highlight the importance of datasets in sign language recognition and review some of the commonly used datasets for sign language recognition. They emphasize the need for large, diverse datasets to train machine learning models effectively.
 
 \begin{marginfigure}
     \centering
-    \includegraphics{AdrLfv_master_thesis/AdrLfv-main.tex/images/S0957417414003042.jpg}
+    \includegraphics{AdrLfv_master_thesis/images/S0957417414003042.jpg}
     \caption{Feature extraction in Brazilian Sign Language Recognition based on phonological structure and using RGB-D sensors}
     \label{fig:S0957417414003042}
 \end{marginfigure}
@@ -133,21 +148,21 @@ They are a good didactic way to promote interest and motivation by linking playf
 
 The augmentation of interfaces thanks to technology causes a better attractiveness of the learning method and thus an increase of the time voluntarily dedicated to self-learning and of the motivation to concentrate on the method \cite{baker1994}.
 
-Very few games use sign language as a basic element in the gameplay. We can cite Moss \cite{moss2018} \ref{moss-1200-80}, a video game on PlayStation VR in which the hero communicates with the player with ASL. 
+Very few games use sign language as a basic element in the gameplay. We can cite Moss \cite{moss2018} (see figure \ref{fig:moss}), a video game on PlayStation VR in which the hero communicates with the player with ASL. 
 
 \begin{marginfigure}
     \centering
-    \includegraphics{AdrLfv_master_thesis/AdrLfv-main.tex/images/moss-1200-80.jpg}
+    \includegraphics{AdrLfv_master_thesis/images/moss.jpg}
     \caption{Moss hero communicating with the player through american sign language}
-    \label{fig:moss-1200-80}
+    \label{fig:moss}
 \end{marginfigure}
 
 Zahoor Zafrulla et al. present Copycat, a game designed to improve the American Sign Language (ASL) skills of deaf children \cite{zafrulla2011copycat}. The game was developed by a team of researchers from the University of California in collaboration with members of the deaf community.
-The game, called CopyCat, is a digital game that uses machine learning to provide feedback to the players. The game consists of a series of mini-games that focus on different aspects of ASL, such as finger spelling, vocabulary, and grammar \ref{aslgamecopycat}. In each mini-game, the player is presented with a video clip of a person signing a word or phrase in ASL. The player is then asked to copy the sign or phrase using their own signing.
+The game, called CopyCat, is a digital game that uses machine learning to provide feedback to the players. The game consists of a series of mini-games that focus on different aspects of ASL, such as finger spelling, vocabulary, and grammar (see figure \ref{fig:aslgamecopycat}). In each mini-game, the player is presented with a video clip of a person signing a word or phrase in ASL. The player is then asked to copy the sign or phrase using their own signing.
 
 \begin{marginfigure}
     \centering
-    \includegraphics{AdrLfv_master_thesis/AdrLfv-main.tex/images/aslgamecopycat.jpeg}
+    \includegraphics{AdrLfv_master_thesis/images/aslgamecopycat.jpeg}
     \caption{Screenshot of ASL Game Interface and the input devices for user  }
     \label{fig:aslgamecopycat}
 \end{marginfigure}
@@ -155,21 +170,48 @@ The game, called CopyCat, is a digital game that uses machine learning to provid
 CopyCat uses machine learning to analyze the player's signing and provide feedback on their performance. The game is designed to be adaptive, meaning that it adjusts the difficulty level based on the player's skill level. The game also tracks the player's progress and provides feedback on areas where they need improvement.
 CopyCat developpers then enhanced their SLR system with the Kinect depth-mapping camera which uses colored gloves and embedded accelerometers to track children's hand movements \cite{zafrulla2011american}.
 
-Bouzid et al. explore the use of a learning game for SignWriting, a system for writing sign languages, to enhance sign language learning for students \cite{bouzid2016using}. The game is designed to be played on a computer or tablet and includes a variety of activities such as matching signs to their written symbols and translating written symbols into signs.
+\begin{marginfigure}
+    \centering
+    \includegraphics{AdrLfv_master_thesis/images/bouzid.png}
+    \caption{The interpretation of the sign “house” via tuniSigner}
+    \label{fig:bouzid}
+\end{marginfigure}
 
-Lesmes et al. discusses the development of educational video games for deaf children in order to facilitate their inclusion in mainstream educational settings \cite{lesmes2022design}. The paper outlines the design and development process of educational video games, including the use of a participatory design approach that involved deaf children and educators throughout the design process. The games were designed to incorporate sign language, visual cues, and other features that would make them accessible to deaf children.
+Bouzid et al. explore the use of a learning game for SignWriting, a system for writing sign languages, to enhance sign language learning for students \cite{bouzid2016using}. The game is designed to be played on a computer or tablet and includes a variety of activities such as matching signs to their written symbols and translating written symbols into signs. The authors used a 3D human character to interpret the SignWriting notation. An avatar based sistem called tuniSigner \cite{bouzid2013avatar} (see figure \ref{fig:bouzid}).
 
-Many applications on smartphones aim at learning sign language. Some target children by displaying animals demonstrated in 3D (SignEveil).
-Most of these applications are in a quiz with a lesson part and a questionnaire part. It is not possible to interact by making the signs yourself.
-JavaScript is used extensively in games that do not require many resources. A 2D interactive game displays only a few details and elements.
+Lesmes et al. discusses the development of educational video games for deaf children in order to facilitate their inclusion in mainstream educational settings \cite{lesmes2022design}. 
+The paper outlines the design and development process of educational video games, including the use of a participatory design approach that involved deaf children and educators throughout the design process. 
+The games were designed to incorporate sign language, visual cues, and other features that would make them accessible to deaf children. The user can see an objective written on the left part of the interface, a character in the center, and an interpreter on the wright (see figure \ref{fig:lesmes}).
 
-JavaScript is a language adapted for such a creation. Frameworks like Phaser JS library or simply P5 are suitable for coding a small game. p5.js is a JavaScript library for creative coding, focusing on making coding accessible and inclusive for artists, designers, educators, beginners, and anyone else. It can display graphics and process many different elements.
+\begin{marginfigure}
+    \centering
+    \includegraphics{AdrLfv_master_thesis/images/lesmes.png}
+    \caption{Start interface of the videogame "Life of the Dinosaurs".}
+    \label{fig:lesmes}
+\end{marginfigure}
 
-% Parler de pocket sign
+Most of the mobile applications dedicated to sign language learning are simple quiz with a lesson part and a questionnaire part. PocketSign is an application for learning American Sign Language through interactive activities (see figure \ref{fig:pocketsign}). 
+The project offers learning lessons, a dictionary for translating words into sign language videos, as well as a "fingerspelling" mode in which the user watches video tutorials of words or letters of the alphabet and then has to repeat them. 
+
+\begin{marginfigure}
+    \centering
+    \includegraphics{AdrLfv_master_thesis/images/643x0w.jpg}
+    \caption{Example of exercise with tutorial in Pocket Sign}
+    \label{fig:pocketsign}
+\end{marginfigure}
+
+The application uses the phone's camera to film the user and verify that he or she is doing a word correctly before validating it and moving on to the next word.
 
 \subsection{Visual Novel Engines}
 
-P5VN is an open-source Interactive Design and Media Major at NYU Tandon School of Engineering student project, allowing to create a visual novel using P5.js. It allows to display dialogues, sprites, as well as backgrounds and use menus by clicking. The game scenario is easily editable through a script, which is then parsed by the engine. The original aim of the project was to implement a prototype engine based in p5.js with a custom scripting language.  
+\begin{marginfigure}
+    \centering
+    \includegraphics{AdrLfv_master_thesis/images/nyuchan.png}
+    \caption{Presentation of the visual novel engine P5VN}
+    \label{fig:nyuchan}
+\end{marginfigure}
+
+P5VN is an open-source Interactive Design and Media Major at NYU Tandon School of Engineering student project, allowing to create a visual novel using P5.js. It allows to display dialogues, sprites, as well as backgrounds and use menus by clicking (see figure \ref{fig:nyuchan}). The game scenario is easily editable through a script, which is then parsed by the engine. The original aim of the project was to implement a prototype engine based in p5.js with a custom scripting language.  
 
 Other visual novel engine, Tuesday JS \cite{TuesdayJS} or Monogatari \cite{monogatari} are simple web-based visual novel editor that can be used in a web browser. They are written in JavaScript allowing the use of vector graphics svg, gif animations and css styles.
 
@@ -177,12 +219,31 @@ Tuesay.js is an easy to use visual novel editor. Free and open source, it runs o
 
 Monogatari.io is similar to Tuesday.js. The platform support different medias (images, videos, music), multiple languages. It is highly customizable, open source and multi-platform. 
 
+JavaScript is a language adapted for the creation of projects as this one. 
+The language is used extensively in games that do not require many resources. A 2D interactive game displays only a few details and elements.
+
+Frameworks like Phaser JS library or p5.js are suitable for coding a simple game. p5.js is a JavaScript library for creative coding, focusing on making coding accessible and inclusive for artists, designers, educators, beginners, and anyone else. It can display graphics and process many different elements.
+
 \subsection{Animated 3D Avatar}
 
-For the creation of an animated avatar, most systems implement the display of an animated model from an animation software (Blender, 3DS Max, Maya, Unity, Houdini...). The animations are worked directly in the software and then imported into a program for display in a game. 
-Some projects allow the animation of a 3D model directly from the motion capture. In the project "Real-time Avatar Animation from a Single Image" \cite{saragih2011real} Saragih et Al. realize the modeling of 3D models from a simple photograph \cite{saragih2011real}. 
+\begin{marginfigure}
+    \centering
+    \includegraphics{AdrLfv_master_thesis/images/saragih.png}
+    \caption{Example of a real-time avatar animation from a single image thanks to semantic expression transfer.}
+    \label{fig:saragih}
+\end{marginfigure}
 
-A tool such as Unity or Maya can make its animation from MediaPipe coordinates. A tool that gives nice rendering for 2D animation is Pose Animator. A demonstration works with FaceMesh and PoseNet (from MediaPipe) online \cite{pose\_animator}. Unfortunately, this one does not understand finger movements. Adapting this system to MediaPipe by adding finger movements can give a free 2D avatar. 
+For the creation of an animated avatar, most systems implement the display of an animated model from an animation software (Blender, 3DS Max, Maya, Unity, Houdini...). The animations are worked directly in the software and then imported into a program for display in a game. 
+Some projects allow the animation of a 3D model directly from the motion capture. In the project "Real-time Avatar Animation from a Single Image" \cite{saragih2011real} Saragih et Al. realize the modeling of 3D models from a simple photograph (see figure \ref{fig:saragih}). 
+
+\begin{marginfigure}
+    \centering
+    \includegraphics{AdrLfv_master_thesis/images/pose_animator.png}
+    \caption{Animating full body character using FaceMesh and PoseNet with TensorFlow.js.}
+    \label{fig:pose_animator}
+\end{marginfigure}
+
+A tool such as Unity or Maya can make its animation from MediaPipe coordinates. A tool that gives nice rendering for 2D animation is Pose Animator. A demonstration works with FaceMesh and PoseNet (from MediaPipe) online \cite{pose_animator} (see figure \ref{fig:pose_animator}). Unfortunately, this one does not understand the finger movements necessary for precise sign language tutorials.
 
 Another way is to adapt the coordinates in real-time to animate a character on Blender using Daz Studio as Nguyen et Al. \cite{nguyen2021automatic}.
 Many other demos of characters built with MediaPipe exist. Most use MediaPipe and TensorFlow.js (namely FaceMesh, BlazePose and HandPose) \cite{blazepose}.
