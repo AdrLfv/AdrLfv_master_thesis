@@ -43,12 +43,12 @@ A one-way mirror is placed against a screen. The mirror reflects perfectly where
 
 \begin{figure}[h]
     \centering
-    \includegraphics{AdrLfv_master_thesis/images/mirror_062}
+    \includegraphics[width=0.9\columnwidth]{AdrLfv_master_thesis/images/mirror_062}
     \caption{The Augmented Mirror}
     \label{fig:mirror_062}
 \end{figure}
 
-%%TODO resize l'image
+% TODO resize l'image
 
 The mirror can scan the room and detect and position objects the user interacts with. The augmented mirror uses the Intel D435 camera to estimate the position of a user in front of the mirror with Mediapipe. Thus, it can add a new dimension of interaction exploiting kinesthesia. This dimension is an advantage over traditional interfaces using touch or a mouse. 
 
@@ -245,22 +245,62 @@ Some projects allow the animation of a 3D model directly from the motion capture
 
 A tool such as Unity or Maya can make its animation from MediaPipe coordinates. A tool that gives nice rendering for 2D animation is Pose Animator. A demonstration works with FaceMesh and PoseNet (from MediaPipe) online \cite{pose_animator} (see figure \ref{fig:pose_animator}). Unfortunately, this one does not understand the finger movements necessary for precise sign language tutorials.
 
-Another way is to adapt the coordinates in real-time to animate a character on Blender using Daz Studio as Nguyen et Al. \cite{nguyen2021automatic}.
-Many other demos of characters built with MediaPipe exist. Most use MediaPipe and TensorFlow.js (namely FaceMesh, BlazePose and HandPose) \cite{blazepose}.
+\begin{marginfigure}
+    \centering
+    \includegraphics{AdrLfv_master_thesis/images/nguyen2021.png}
+    \caption{Holistic tracking applied to a video frame. A) is the annotated original footage where
+    the red dots are the tracked landmarks, while the green lines connect the joints. B) is the same
+    frame in Blender with landmarks plotted as orange spheres and cyan coloured bones. C) shows
+    the motion capture data applied to an avatar. \cite{nguyen2021automatic}}
+    \label{fig:nguyen2021}
+\end{marginfigure}
 
-Another project allows moving a 3D model with Three.js (React Three Fiber) and Tensorflow’s Pose Estimation model (PoseNet). The model uses Tensorflow and PoseNet to detect the key points of the joints in each frame and then send those points over to the Model file. The project uses an Adobe Mixamo 3D model in FBX format and Blender to import the FBX format and export a GLB format \cite{posenet}.
+\begin{marginfigure}
+    \centering
+    \includegraphics{AdrLfv_master_thesis/images/blazepose.png}
+    \caption{BlazePose results on yoga use-cases}
+    \label{fig:blazepose}
+\end{marginfigure}
+
+Another way is to adapt the coordinates in real-time to animate a character on Blender using Daz Studio as Nguyen et Al. \cite{nguyen2021automatic} (see \ref{fig:nguyen2021}). Most interactive avatars with pose estimation use MediaPipe and TensorFlow.js (namely FaceMesh, BlazePose and HandPose) \cite{blazepose} (see \ref{fig:blazepose}).
+
+\begin{marginfigure}
+    \centering
+    \includegraphics{AdrLfv_master_thesis/images/posenet_demo.jpg}
+    \caption{React project that will allow us to move a 3D model with Three.js (React Three Fiber) and Tensorflow's Pose Estimation model (PoseNet).}
+    \label{fig:posenet_demo}
+\end{marginfigure}
+
+Posenet\_demo \cite{posenet_demo} is a project allowing moving a 3D model with Three.js and Tensorflow’s Pose Estimation model (PoseNet). The model uses Tensorflow and PoseNet to detect the key points of the joints in each frame and then send those points over to the Model file. 
+
+The project uses an Adobe Mixamo \cite{mixamo} 3D model in FBX format and Blender to import the FBX format and export a GLB format \cite{posenet}. The avatar follows the head and shoulder's inclination (see \ref{fig:posenet_demo}).
 
 A last interesting example is that of Kalidokit \cite{kalidokit}. Kalidokit is a tool that uses Mediapipe/Tensorflow.js models for tracking face, eyes, pose, and hand movements. It is compatible with various models such as Facemesh, Blazepose, Handpose, and Holistic. The tool calculates simple euler rotations and blendshape face values based on the predicted 3D landmarks.
 
-Kalidokit is the core component for Vtuber web apps, such as Kalidoface and Kalidoface 3D. Its purpose is to rig 3D VRM models and Live2D avatars. The project is a JS library intended for developers using Mediapipe pretrained models and not a complete app on its own. The library still has to be adapted to run on different platforms. The project is based on Three.js, a powerful library for creating three-dimensional models and games. 
-With just a few lines of JavaScript, it allows the creation of simple 3D patterns to photorealistic, real-time scenes. The library can create complex 3D geometrics, and animate and move objects.
+\begin{marginfigure}
+    \centering
+    \includegraphics{AdrLfv_master_thesis/images/kalidoface.jpg}
+    \caption{KalidoKit can move 3D avatars by tracking the movement of face and body with a simple webcam.}
+    \label{fig:kalidoface}
+\end{marginfigure}
 
-Three.js enables the application of textures and materials. It also provides various light sources to illuminate scenes, advanced postprocessing effects, custom shaders, load objects from 3D modeling software... It is easy to use, intuitive, and a well-documented library.
+Kalidokit is the core component for Vtuber web apps, such as Kalidoface and Kalidoface 3D. Its purpose is to rig 3D VRM models and Live2D avatars. The project is a JS library intended for developers using Mediapipe pretrained models and not a complete app on its own. The library still has to be adapted to run on different platforms. The project is based on Three.js, a powerful library for creating three-dimensional models and games. 
+With few lines of JavaScript, Kalidokit allows the creation of simple 3D patterns to photorealistic, real-time scenes. The library can create complex 3D geometrics, and animate and move objects.
+
+Three.js is a JavaScript library for creating 3D scenes in a web browser. It can be used with the HTML5 canvas tag without the need for a plugin. The library enables the application of textures and materials. It also provides various light sources to illuminate scenes, advanced postprocessing effects, custom shaders, load objects from 3D modeling software... It is easy to use, intuitive, and a well-documented library.
 
 \section{Gameplay}
 
 The sign language game is an augmented reality game, a visual novel on the augmented mirror. We follow a character during a short adventure in which the user can take choices by making American Sign Language signs in front of the mirror. He can answer to the characters, interact with objects, choose actions and choose a path. 
-Sometimes the player sees the tutorial of one, two, or three signs at the same time. The user must then make the sign of the choice he takes. For example he can choose to turn right or left by making the appropriate sign. 
+Sometimes the player sees the tutorial of one, two, or three signs at the same time. The user must then make the sign of the choice he takes. For example he can choose to turn right or left by making the appropriate sign (see \ref{fig:sleg_left_right}). 
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[]{AdrLfv_master_thesis/images/sleg_left_right}
+    \caption{Choice to go left or right in the sign language learning game}
+    \label{fig:sleg_left_right}
+\end{figure}
+
 3D avatars are the models for all the characters. Their limbs (including fingers) are animated. Only the character Aria (the hero's friend) is performing the sign tutorials.
 The signs made are detected by the camera and guessed by an AI working in back end. Dialogue lines appear during the adventure to guide and discuss with the player. The user must make the "ok" sign with his hand to scroll the text.
 
@@ -339,7 +379,16 @@ The model is easily changeable locally in the application created to allow the u
 
 Such an application therefore allows to record qualitative signs and poses for the characters and tutorials of the game.
 
-The models used for the characters of Aria, the grandmother and the salesman were recovered on Vroid Hub and are free to use. The VRM models are mainly adapted for Vtubers, that's why the characters can look very childish and like Japanese anime characters.
+The models used for the characters of Aria, the grandmother and the salesman were recovered on Vroid Hub and are free to use. The VRM models are mainly adapted for Vtubers, that's why the characters can look childish and can look like Japanese anime characters.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1.4\columnwidth]{AdrLfv_master_thesis/images/iloveyou.png}
+    \caption{Aria's character performing the "I love you" sign.}
+    \label{fig:iloveyou}
+\end{figure}
+
+All sprites and 3D video animations of the avatars were recorded from the "Aria" application on the mirror. This includes 22 video animations and 14 sprites for the character of Aria in the sign language game (see \ref{fig:iloveyou}).
 
 \section{Sign Language AI}
 
@@ -383,11 +432,7 @@ At the start of the dataset creation, the user alternates one second of video re
 \paragraph{The recorded signs visualisation}
 
 The recorded signs visualisation module (data\_vis) retrieves the coordinates of a video by action, stored in the dataset.
-It sorts the coordinates of the points of each part of the body,
-finds the different links between each point and the posters, frame
-by frame. Arrays of all the sorted coordinates for each body
-part (Face if activated, Body, Hand) are used, as well as all the links
-of the body arrays.
+It sorts the coordinates of the points of each part of the body, finds the different links between each point and the posters, frame by frame. Arrays of all the sorted coordinates for each body part (Face if activated, Body, Hand) are used, as well as all the links of the body arrays.
 
 For each point detected in the dataset, the visualization displays the links it has with the points it is linked to in the table. The program also display the action to which the visualization is associated, above the drawn character.
 
