@@ -275,7 +275,8 @@ Posenet\_demo \cite{posenet_demo} is a project allowing moving a 3D model with T
 
 The project uses an Adobe Mixamo \cite{mixamo} 3D model in FBX format and Blender to import the FBX format and export a GLB format \cite{posenet}. The avatar follows the head and shoulder's inclination (see \ref{fig:posenet_demo}).
 
-A last interesting example is that of Kalidokit \cite{kalidokit}. Kalidokit is a tool that uses Mediapipe/Tensorflow.js models for tracking face, eyes, pose, and hand movements. It is compatible with various models such as Facemesh, Blazepose, Handpose, and Holistic. The tool calculates simple euler rotations and blendshape face values based on the predicted 3D landmarks.
+A last interesting example is that of Kalidokit \cite{kalidokit}. Kalidokit is a tool that uses Mediapipe\/Tensorflow.js models for tracking face, eyes, pose, and hand movements.
+It is compatible with various models such as Facemesh, Blazepose, Handpose, and Holistic. The tool calculates simple euler rotations and blendshape face values based on the predicted 3D landmarks.
 
 \begin{marginfigure}
     \centering
@@ -296,8 +297,8 @@ Sometimes the player sees the tutorial of one, two, or three signs at the same t
 
 \begin{figure}[h]
     \centering
-    \includegraphics[]{AdrLfv_master_thesis/images/sleg_left_right}
-    \caption{Choice to go left or right in the sign language learning game}
+    \includegraphics[]{AdrLfv_master_thesis/images/sleg_left_right.png}
+    \caption{Choice to go left or right in the sign language learning game.}
     \label{fig:sleg_left_right}
 \end{figure}
 
@@ -306,6 +307,19 @@ The signs made are detected by the camera and guessed by an AI working in back e
 
 
 \section{General Architecture}
+
+\subsection{The Sign Language Video Game in Gosai}
+
+The application is connected to the get\_sign and slr drivers of gosai to estimate the sign of a person in front of the mirror. The data is then transmitted to the engine.js which is in charge of running the game taking into account the user's movements (see \ref{fig:sleg_architecture}).
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1.6\columnwidth]{AdrLfv_master_thesis/images/sleg_architecture.png}
+    \caption{The Sign Language Video Game architecture in Gosai.}
+    \label{fig:sleg_architecture}
+\end{figure}
+
+The engine.js accesses the script containing the whole game, and the components contained locally (sprites, animations or backgrounds).
 
 \subsection{Visual Novel Engine}
 
@@ -322,27 +336,29 @@ The engine now loads and plays video animations automaticaly at launch, the user
 
 In a visual novel, the player does not interact directly with the keyboard but must click on menu buttons to make choices. As the user interacts with the mirror only by the estimated pose, the menu system had to be adapted to both enable debugging by clicking and making choices with movements.
 
-Each time a menu appears, it takes the form of three words aligned and distributed horizontally on the screen. An avatar of Aria appears behind each word to demonstrate the sign related to this word. The location of the words and the 3D tutorials are spread over the width of the screen according to the number of buttons in the displayed menu. 
+Each time a menu appears, it takes the form of two or three words aligned and distributed horizontally on the screen. An avatar of Aria appears behind each word to demonstrate the sign related to this word (see \ref{fig:sleg_left_right}). The location of the words and the 3D tutorials are spread over the width of the screen according to the number of buttons in the displayed menu. 
 
 Aria's avatar animation plays in a loop until the player makes a sign detected by the SLR module and included in the menu. The path taken by the game is then directed towards the continuity of the chosen branch.
 
 \subsubsection{Script}
 
 The game script is contained in a script.txt file in the application components. It contains a set of commands starting with the \$ symbol telling the game to do a particular action. These commands can be :
-\$tag which indicates a specific point in the script
-\$jump to jump to a tag
-\$defineC to define a character (name, sprite address, text color)
-\$defineImg to define an image
-\$bg to display a background
-\$show to display a character
-\$addAnimation to play an animation to a character
-\$setSprite to display the sprite of a character
-\$menu to create a new menu
-\$hide to hide a character
-\$setvar to set a variable to a value
-\$if to manage if then else commands
+\begin{itemize}
+    \item \$tag which indicates a specific point in the script
+    \item \$jump to jump to a tag
+    \item \$defineC to define a character (name, sprite address, text color)
+    \item \$defineImg to define an image
+    \item \$bg to display a background
+    \item \$show to display a character
+    \item \$addAnimation to play an animation to a character
+    \item \$setSprite to display the sprite of a character
+    \item \$menu to create a new menu
+    \item \$hide to hide a character
+    \item \$setvar to set a variable to a value
+    \item \$if to manage if then else commands
+\end{itemize}
 
-All the loading of sprites, animations, their playback, display is now managed automatically at startup in asynchronous instead of being set manually in the script or in the code as before. The engine running in synchronous mode at the beginning, a sprite could not be called before being loaded. The game starts on a loading time at startup corresponding to the loading of sprites and animation videos in the memory of gosai. This allows each animation to be played instantly when each one is called.
+All the loading of sprites, animations, their playback, display are now managed automatically at startup in asynchronous instead of being set manually in the script or in the code as before. The engine running in synchronous mode at the beginning, a sprite could not be called before being loaded. The game starts on a loading time at startup corresponding to the loading of sprites and animation videos in the memory of gosai. This allows each animation to be played instantly when each one is called.
 
 \subsection{Animations}
 
@@ -352,9 +368,28 @@ An application to control an avatar remotely thanks to the estimation pose has b
 
 \subsubsection{Esla}
 
-The Educative Sign Language Avatar (ESLA) is a 3-dimensional avatar controllable in a gosai application following the estimated MediaPipe pose. Its movements copy live those of the user in front of the mirror \cite{esla}. It was the first version of the interactive avatar on the augmented mirror.
+The Educative Sign Language Avatar (ESLA) is a 3-dimensional avatar controllable in a gosai application following the estimated MediaPipe pose. 
 
-An animated 3D character appears on top of the scenery at the launch of the application. Its animation is made possible by playing features using MediaPipe and OpenCV. The program can retrieve the coordinates of a user’s position in real time. These coordinates are processed, and the avatar copies the movements Animation Retargeting, a video game animation technique using motion capture.
+\begin{figure}[h]
+    \centering
+    \includegraphics[]{AdrLfv_master_thesis/images/esla_architecture.jpg}
+    \caption{ESLA architecture on GOSAI.}
+    \label{fig:esla_architecture}
+\end{figure}
+
+The program uses the driver of the mirror camera, processed by an estimation module (see \ref{fig:esla_architecture}). The data is then transmitted to the back end of the application in python through the Redis database. The calculations related to three.js and the display is finally managed in the front end written in Javascript. The data is transmitted from the back end through a socket.io server.
+Its movements copy live those of the user in front of the mirror \cite{esla}. It was the first version of the interactive avatar on the augmented mirror.
+
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1.4\columnwidth]{AdrLfv_master_thesis/images/esla.png}
+    \caption{The Educative Sign Language Avatar (ESLA).}
+    \label{fig:esla}
+\end{figure}
+
+
+An animated 3D character appears on top of the scenery at the launch of the application (see \ref{fig:esla}). Its animation is made possible by playing features using MediaPipe and OpenCV. The program can retrieve the coordinates of a user’s position in real time. These coordinates are processed, and the avatar copies the movements Animation Retargeting, a video game animation technique using motion capture.
 
 The programs retrieves the links between each point of the pose provided by MediaPipe and Three.js calculates and display the 3D part. 
 
@@ -371,12 +406,20 @@ Unfortunately, the project lacks a lot of precision in the movements, especially
 
 \subsubsection{Kalidokit module implementation}
 
-The most important part of making the 3D animations the management of the avatar from Mediapipe, it is enabled by the Kalidokit solver. This JS library allowing the animation of arms, hands, fingers, face, mouth, eyelids, pupil of VRM models (Virtual Reality Model). The VRM is formulated on the basis of the standard 3D format glTF2.0 to manage humanoid models. It aims to be particularly expressive. This type of model has a large number of articulations, can blink and animate its mouth. It is very often used in the world of VR games (VR chat for example), or by Vtubers (entertainment broadcasters who use a virtual avatar).  
+The creation of an avatar controllable with Mediapipe on the mirror has been by the implementation of the Kalidokit solver. This JS library allowing the animation of arms, hands, fingers, face, mouth, eyelids, pupil of VRM models (Virtual Reality Model). The VRM is formulated on the basis of the standard 3D format glTF2.0 to manage humanoid models. It aims to be particularly expressive. This type of model has a large number of articulations, can blink and animate its mouth. It is very often used in the world of VR games (VR chat for example), or by Vtubers (entertainment broadcasters who use a virtual avatar).  
 
-The models used are downloaded from the site Vroid Hub cite\cite{vroid}. They must respect specific conditions of use: use by a third party, downloadable, use as an avatar, commercial use by a company. The avatar must also be sober. The one that has been selected to be implemented in the demo application allowing to control the avatar in augmented reality on the mirror is called "papa\_de\_him\_chan". 
+The models used in the game were downloaded from the site Vroid Hub cite\cite{vroid}. They must respect specific conditions of use: use by a third party, downloadable, use as an avatar, commercial use by a company. The avatar must also be sober. The one that has been selected to be implemented in the demo application allowing to control the avatar in augmented reality on the mirror is called "papa\_de\_him\_chan". 
 
 The model is easily changeable locally in the application created to allow the user to manipulate different characters. It is with this application that will be created the animations of tutorials of sign language for the learning game on the mirror.
 
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1.6\columnwidth]{AdrLfv_master_thesis/images/aria_v1.png}
+    \caption{The first version of the Augmented Reality Interactive Avatar (ARIA).}
+    \label{fig:aria_v1}
+\end{figure}
+
+The implementation of Kalidokit on the mirror has been reworked to suit the operation of gosai, and the joints set to a greater degree of freedom to allow more flexible animations (see \ref{fig:aria_v1}).
 Such an application therefore allows to record qualitative signs and poses for the characters and tutorials of the game.
 
 The models used for the characters of Aria, the grandmother and the salesman were recovered on Vroid Hub and are free to use. The VRM models are mainly adapted for Vtubers, that's why the characters can look childish and can look like Japanese anime characters.
@@ -396,7 +439,7 @@ All sprites and 3D video animations of the avatars were recorded from the "Aria"
 
 Sign language involves the usage of the upper part of the body, such as hand gestures, facial expression, lip-reading, head nodding and body postures to disseminate information \cite{adeyanju2021machine}.
 
-The final goal of this work is to implement an SLR AI inside the sign language learning game. This AI allows the recognition of choices in the game thanks to the esimation of the user's pose but also the control of the game using commands linked to signs.
+The final goal of this work is to implement an SLR AI inside the sign language learning game. This AI allows the recognition of choices in the game thanks to the estimation of the user's pose but also the control of the game using commands linked to signs.
 
 Many models with sign language recognition already exist. The work done here proposes a model, as well as an easy system of creation, dataset management, training and visualization of the data.
 
