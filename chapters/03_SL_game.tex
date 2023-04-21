@@ -372,7 +372,7 @@ The Educative Sign Language Avatar (ESLA) is a 3-dimensional avatar controllable
 
 \begin{figure}[h]
     \centering
-    \includegraphics[]{AdrLfv_master_thesis/images/esla_architecture.jpg}
+    \includegraphics[width=2.8\columnwidth]{AdrLfv_master_thesis/images/esla_architecture.jpg}
     \caption{ESLA architecture on GOSAI.}
     \label{fig:esla_architecture}
 \end{figure}
@@ -468,13 +468,13 @@ between the three folders train (80\% of them), test (10\%) and valid
 (10\%). Each sequence is 30 frames each by default, including coordinates, that is to say and now 116 data per frame (that is to say 58 points) after having removed  431 points of the face and just Keeping 4. The 4 kept points are one for the chin, for the forehead, for the wright and left cheek.
 It enables signs using the head to be better detected.
 
-The coordinates are retrieved from Mediapipe during the creation of the dataset. The recording is done from the webcam of the device used, an intel real sense or the default pc webcam if the intel is not detected. When implementing on another device such as the interractive mirror, this driver must be modified to match that of the camera used.
+The coordinates are retrieved from Mediapipe during the creation of the dataset. The recording is done from the webcam of the device used, an intel real sense or the default pc webcam if the intel is not detected. When implementing on another device such as the interactive mirror, this driver must be modified to match that of the camera used.
 
 At the start of the dataset creation, the user alternates one second of video recording, then two seconds to reposition in a loop for each sign. He has a video feedback on himself to check if he is well positioned in the plan.
 
 \paragraph{The recorded signs visualisation}
 
-The recorded signs visualisation module (data\_vis) retrieves the coordinates of a video by action, stored in the dataset.
+The recorded signs visualization module (data\_vis) retrieves the coordinates of a video by action, stored in the dataset.
 It sorts the coordinates of the points of each part of the body, finds the different links between each point and the posters, frame by frame. Arrays of all the sorted coordinates for each body part (Face if activated, Body, Hand) are used, as well as all the links of the body arrays.
 
 For each point detected in the dataset, the visualization displays the links it has with the points it is linked to in the table. The program also display the action to which the visualization is associated, above the drawn character.
@@ -491,39 +491,42 @@ The preprocess does not use all the coordinates of the face, this allows to have
 
 \paragraph{Data augmentation}
 
-The data augmentation is called during the pre-processing phase,
-just after retrieving the data of the concerned sequence. It is given
-the data as a parameter, it reviews the data and will apply a random
-horizontal and vertical shift and scale to it. This process artificially
-increases the number of positions in which the user can stand.
+The data augmentation is called during the pre-processing phase, just after retrieving the data of the concerned sequence. It is given the data as a parameter, it reviews the data and will apply a random horizontal and vertical shift and scale to it. This process artificially increases the number of positions in which the user can stand.
 
 \paragraph{Model}
 
 The model is composed of a bidirectional LTSM, a linear, a dropout, a batchnorm1d, a relu, and an other Linear. The AI trained on 16 different signs or 1600 sequences. The model reaches an accuracy of 87\% on the test set and 96\% on the training.
 
-Recurrent Neural Networks (RNN) allow to process temporal sequences (language, videos, numerical data). They keep the memory of past data to predict data sequences in the near future. This is why LSTM and Bidirectional layers are used into the model. The LSTM (Long-Short-Term-Memory) are composed of several gates (respectively 3 and 2) which allow to forget or to selectively memorize the information of the previous temporal sequence in a dynamic memory.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=2.2\columnwidth]{AdrLfv_master_thesis/images/slr_results.png}
+    \caption{Visualization of testing and training accuracy over 200 epochs. In yellow the accuracy without data augmentation, and in green with data augmentation.}
+    \label{fig:slr_results}
+\end{figure}
+
+Recurrent Neural Networks (RNN) allow to process temporal sequences (language, videos, numerical data). They keep the memory of past data to predict data sequences in the near future. 
+This is why LSTM (Long-Short-Term-Memory) and Bidirectional layers are used into the model. 
+The LSTMs are composed of several gates (respectively 3 and 2) which allow to forget or to selectively memorize the information of the previous temporal sequence in a dynamic memory.
 LSTMs have an internal memory that is constantly changing dynamically according to the input data sequences.
 
 The training uses the optimizer AdamW, a stochastic gradient descent method that is based on adaptive estimation of first-order and second-order moments with an added method to decay weights \cite{loshchilov2017decoupled}. 
 
-Models are automatically exported in pth format, a common PyTorch convention is to save models. They can also be exported to onnx (Open Neural Network Exchange) \cite{onnx}, an open format designed to represent machine learning models. This extension enables greater interoperability in the AI tool community, allowing a large number of AI frameworks to be more compatible by allowing them to share models. This interoperability allows trained models to be easily deployed in different software platforms like GOSAI.
+Models are automatically exported in pth format, a common PyTorch convention is to save models. They can also be exported to onnx (Open Neural Network Exchange) \cite{onnx}, an open format designed to represent machine learning models.
+
+This extension enables greater interoperability in the AI tool community, allowing a large number of AI frameworks to be more compatible by allowing them to share models. This interoperability allows trained models to be easily deployed in different software platforms like GOSAI.
 
 The onnx models retrieved from the project output are then directly implemented in the SLR module of gosai.
 
-%TODO Ajouter une image des résultats
 
 \subsection{Configuration}
 
 All the processes mentioned above are optional. This management is located in a config.json file in which the user can enable or disable a large number of project features. 
 
-All the options are : "actions" (all the signs recognized by the AI, "adapt\_for\_mirror" (to transform the coordinates specificaly for the augmented mirror),"convert\_files" (to convert the files from pth to onnx), "erase\_dataset" (to erase the dataset before recording a new one, by default the program automaticaly completes the existing dataset), "erase\_runs" (erase the local tensorboard files), "make\_data\_augmentation", "make\_dataset", "make\_train", "make\_tuto"  (visualization of the recorded movements), "nb\_epochs", "nb\_sequences" (total video number the user wants to record for a sign), "sequence\_length" (one video frame number).
+All the options are : "actions" (all the signs recognized by the AI, "adapt\_for\_mirror" (to transform the coordinates specificaly for the augmented mirror),"convert\_files" (to convert the files from pth to onnx), "erase\_dataset" (to erase the dataset before recording a new one, by default the program automatically completes the existing dataset), "erase\_runs" (erase the local tensorboard files), "make\_data\_augmentation", "make\_dataset", "make\_train", "make\_tuto"  (visualization of the recorded movements), "nb\_epochs", "nb\_sequences" (total video number the user wants to record for a sign), "sequence\_length" (one video frame number).
 
 The default actions are "nothing", "empty", "ok", "yes", "no", "left", "right", "house", "store", "hello", "goodbye", "television", "leave", "eat", "apple", and "peach". Those are all the signs used inside the SL video game.
 
 The project aims for making it as easy as possible for the user to create weights according to his desired characteristics.
-
-% ajouter schéma du modele
-% parler de la visualisation des résultats
 
 \subsection{Visualization of the results}
 
@@ -575,13 +578,14 @@ One user took 8:25 to complete the game. He had great difficulty in making the "
 
 Users were tested after their session on some random signs. Their average score was 2.33 signs learned out of 4. The errors made are related to several elements. The AI sometimes finds a sign far too quickly when the user has not yet placed his hands correctly. The user then has no time to look at the signs and make his choice. Another error is related to the fact that when there are three tutorials at the same time (menus with three choices), the user has more difficulty to concentrate on each one and his memorization of the signs is less efficient.
 
-To correct the problem related to the too high detection speed of the AI, increasing the detection treshold value would be an efficient method.
+To correct the problem related to the too high detection speed of the AI, increasing the detection threshold value would be an efficient method.
 
 To conclude, people were asked to note on 10 their opinion about diverse questions. Their average motivation to learn sign language in this particular way (with an augmented mirror and the video game) was 7,91/10.
 The average fun in interacting notation was 8,25/10. Their ease of understanding what needs to be done had a notation 7,58/10. The practicality of using this learning method (augmented mirror) had a notation of 8,25/10.The effectivity of using this learning method received a notation of 6,41/10. And the capacity of the AI to guess the correct sign was noted 6,11/10.
 
 The global feedbacks were that the avatar sometimes moves his fingers too much and could not be very precise. The fact that the display is in 2D (on the mirror screen) and not in 3D makes it difficult to understand the signs.
 One user was blocked by the fact that the characters look like anime characters and not more realistic ones, which can put off the desire to practice.
+
 Some users forgot the "ok" sign to skip dialogues during the game although the sign was shown twice at the beginning of the game. This prevented them from continuing the practice without external intervention to remind them of the sign. 
 One user had learning difficulties due to the avatar's movements being considered unclear. Interacting with a real person, however, allowed him to learn more effectively. The lack of accuracy of the AI was also strongly criticized (rated 6.11/10 by users). This accuracy is almost perfect for the creator of the dataset, but low to other users with a different morphology.
 
@@ -590,7 +594,7 @@ The 3D animated tutorials were generally liked and were considered more attracti
 
 \paragraph{Videos}
 
-%TODO implémenter la seconde partie de la user study 
+\textit{POTENTIAL USER STUDY ABOUT LEARNING WITH VIDEO TUTORIALS}
 
 \section{Discussions}
 
