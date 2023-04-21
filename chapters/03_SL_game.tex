@@ -457,15 +457,23 @@ The guessed sign is then transmitted from the slr module through gosai’s redis
 
 The project is divided into 6 different local modules and a main file that initializes the parameters and launches the different processes. The processes are an optional phase of dataset creation, a tutorial phase that displays the skeleton for data vizualisation, a preprocess phase that retrieves the data from the dataset and formats them, a data augmentation module, and a weight calculation and exportation in different file types.
 
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1.4\columnwidth]{AdrLfv_master_thesis/images/SLR_structure.png}
+    \caption{}
+    \label{fig:SLR_structure}
+\end{figure}
+
+The developed AI is a full-fledged project that does not require gosai to run. It takes place in 5 steps, each one being optional (see \ref{fig:SLR_structure}). These steps are: the creation of a dataset, the training, test and validation (with data augmentation or not), the conversion of the created files, the visualization of the recorded signs, as well as the visualization of the training and test results.
+
 \paragraph{Dataset}
 
 If a movement is included in the known actions but is not found in the files, the creation of the dataset of this movement is launched automatically. 
 
 The dataset is created by the user and stored in a folder "MP data" created, and separated in three
-folders : train, valid, test containing the actions (name of the
-movement). The recorded sequences are automatically separated
-between the three folders train (80\% of them), test (10\%) and valid
-(10\%). Each sequence is 30 frames each by default, including coordinates, that is to say and now 116 data per frame (that is to say 58 points) after having removed  431 points of the face and just Keeping 4. The 4 kept points are one for the chin, for the forehead, for the wright and left cheek.
+folders : train, valid, test containing the actions (name of the movement). The recorded sequences are automatically separated between the three folders train (80\% of them), test (10\%) and valid (10\%). 
+
+Each sequence is 30 frames each by default, including coordinates, that is to say and now 116 data per frame (that is to say 58 points) after having removed  431 points of the face and just Keeping 4. The 4 kept points are one for the chin, for the forehead, for the wright and left cheek.
 It enables signs using the head to be better detected.
 
 The coordinates are retrieved from Mediapipe during the creation of the dataset. The recording is done from the webcam of the device used, an intel real sense or the default pc webcam if the intel is not detected. When implementing on another device such as the interactive mirror, this driver must be modified to match that of the camera used.
@@ -495,7 +503,7 @@ The data augmentation is called during the pre-processing phase, just after retr
 
 \paragraph{Model}
 
-The model is composed of a bidirectional LTSM, a linear, a dropout, a batchnorm1d, a relu, and an other Linear. The AI trained on 16 different signs or 1600 sequences. The model reaches an accuracy of 87\% on the test set and 96\% on the training.
+The model is composed of a bidirectional LTSM, a linear, a dropout, a batchnorm1d, a relu, and an other Linear. The AI trained on 16 different signs or 1600 sequences. The model reaches an accuracy of 87\% on the test set and 96\% on the training (see \ref{fig:slr_results}).
 
 \begin{figure}[h]
     \centering
@@ -576,7 +584,9 @@ Notably for the sign "peach" and the sign "eat" difficult for two users.
 
 One user took 8:25 to complete the game. He had great difficulty in making the "go" sign in the house. This bias is explained by the fact that the dataset was created by a tall person (1,84m) and this user had a much smaller height (1,60m). 
 
-Users were tested after their session on some random signs. Their average score was 2.33 signs learned out of 4. The errors made are related to several elements. The AI sometimes finds a sign far too quickly when the user has not yet placed his hands correctly. The user then has no time to look at the signs and make his choice. Another error is related to the fact that when there are three tutorials at the same time (menus with three choices), the user has more difficulty to concentrate on each one and his memorization of the signs is less efficient.
+Users were tested after their session on some random signs. Their average score was 2.33 signs learned out of 4. The errors made are related to several elements. The AI sometimes finds a sign far too quickly when the user has not yet placed his hands correctly. 
+
+The user then has no time to look at the signs and make his choice. Another error is related to the fact that when there are three tutorials at the same time (menus with three choices), the user has more difficulty to concentrate on each one and his memorization of the signs is less efficient.
 
 To correct the problem related to the too high detection speed of the AI, increasing the detection threshold value would be an efficient method.
 
@@ -614,7 +624,8 @@ The stimulation of three different intelligences, added to the motivating gamifi
 
 Playful learning and gamification are learning methods that use playful elements to facilitate the assimilation of knowledge. 
 
-Learning video games are a popular form of these approaches and are often used to teach practical skills such as sign language. The use of augmented reality, pose estimation, and artificial intelligence in the Sign Language Video Game creates an immersive and interactive experience for the learner to practice reproducing signs correctly in real time. This approach promotes learning by providing instant feedback and allowing the learner to practice as many times as they want. 
+Learning video games are a popular form of these approaches and are often used to teach practical skills such as sign language. The use of augmented reality, pose estimation, and artificial intelligence in the Sign Language Video Game creates an immersive and interactive experience for the learner to practice reproducing signs correctly in real time. 
+This approach promotes learning by providing instant feedback and allowing the learner to practice as many times as they want. 
 
 In addition, the use of cutting-edge technology often generates interest and engagement in the learner, which can help to increase motivation and perseverance in learning sign language.
 
@@ -643,4 +654,4 @@ The user must then superimpose his skeleton on the second frame and so on until 
 The implementation of the correction phase of this training in the sign language game would have a real interest since it would allow the user to better remember the same sign by having to perform it several times, by focusing on the position of each finger. It also allows him to visualize the correct position he has to take in the space. 
 This implementation would thus answer most of the current problems of the game. It had not been done because it broke the rhythm of the game during its progress, but its implementation at the end of the game as a reminder of what has been seen would be an effective method for learning.
 
-%rajouter des effets stylés en latex
+%TODO rajouter des effets stylés en latex
