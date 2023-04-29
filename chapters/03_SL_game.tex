@@ -303,11 +303,12 @@ Sometimes the player sees the tutorial of one, two, or three signs simultaneousl
 The camera captures the signs, and AI in the back end guesses them. Dialogue lines appear during the adventure to guide and discuss with the player. The user must make the "ok" sign to scroll the text with his hand.
 
 
+
 \section{General Architecture}
 
 \subsection{The Sign Language Video Game in Gosai}
 
-The application is connected to the get\_sign and slr drivers of gosai to estimate the sign of a person in front of the mirror. The data is then transmitted to the engine.js which is in charge of running the game taking into account the user's movements (see \ref{fig:sleg_architecture}).
+The application is connected to the get\_sign and SLR drivers of Gosai to estimate the sign of a person in front of the mirror. The socket.io then transmits the data to the engine.js, which runs the game, considering the user's movements (see \ref{fig:sleg_architecture}).
 
 \begin{figure}[h]
     \centering
@@ -316,32 +317,32 @@ The application is connected to the get\_sign and slr drivers of gosai to estima
     \label{fig:sleg_architecture}
 \end{figure}
 
-The engine.js accesses the script containing the whole game, and the components contained locally (sprites, animations or backgrounds).
+The engine.js accesses the script containing the whole game and the components contained locally (sprites, animations, or backgrounds).
 
 \subsection{Visual Novel Engine}
 
 \subsubsection{Engine implementation}
 
-The best solution to make such a game was the implementation of a visual novel engine on the mirror from which to develop everything else in the game. P5VN engine is precisely  basically adaptable for the mirror because the engine is basically working with p5.js.
+The best solution to make such a game was implementing a visual novel engine on the mirror to develop everything else in the game. The P5VN engine is precisely adaptable for the mirror because the engine works with p5.js.
 
-Previouly, p5VN was able to load and display background, sprites of characters, some text interactive with the mouse click, menus with multiple buttons for the user to take choices.
+Previously, p5VN could load and display background, sprites of characters, some text interactive with the mouse click, and menus with multiple buttons.
 The engine was running synchronously in a single thread.
-After an important adaption. The module is now running asynchronously to be compatible with gosai. 
-The engine now loads and plays video animations automaticaly at launch, the user can now interact and select menus thanks to sign language and added many other features.
+Thanks to an important adaptation, the module is now running asynchronously to be compatible with Gosai. 
+The engine loads video animations automatically at launch and can then play them. The user can now interact and select menus thanks to sign language and added many other features.
 
 \subsubsection{Menu}
 
-In a visual novel, the player does not interact directly with the keyboard but must click on menu buttons to make choices. As the user interacts with the mirror only by the estimated pose, the menu system had to be adapted to both enable debugging by clicking and making choices with movements.
+In a visual novel, the player does not interact directly with the keyboard but must click on menu buttons to make choices. As the user interacts with the mirror only by the estimated pose, the menu system had to be adapted to enable debugging by clicking and making choices with movements.
 
-Each time a menu appears, it takes the form of two or three words aligned and distributed horizontally on the screen. An avatar of Aria appears behind each word to demonstrate the sign related to this word (see \ref{fig:sleg_left_right}). The location of the words and the 3D tutorials are spread over the width of the screen according to the number of buttons in the displayed menu. 
+Each time a menu appears, it takes the form of two or three words aligned and distributed horizontally on the screen. An avatar of Aria (the principal character) appears behind each word to demonstrate the sign related to this word (see \ref{fig:sleg_left_right}). The location of the words and the 3D tutorials are spread over the screen's width according to the number of buttons in the displayed menu. 
 
-Aria's avatar animation plays in a loop until the player makes a sign detected by the SLR module and included in the menu. The path taken by the game is then directed towards the continuity of the chosen branch.
+Aria's avatar animation plays in a loop until the player makes a sign detected by the SLR module and included in the menu. 
 
 \subsubsection{Script}
 
-The game script is contained in a script.txt file in the application components. It contains a set of commands starting with the \$ symbol telling the game to do a particular action. These commands can be :
+A script.txt file contains the game script in the application components. It contains a set of commands starting with the \$ symbol telling the game to do a particular action. These commands can be :
 \begin{itemize}
-    \item \$tag which indicates a specific point in the script
+    \item \$tag indicating a specific point in the script
     \item \$jump to jump to a tag
     \item \$defineC to define a character (name, sprite address, text color)
     \item \$defineImg to define an image
@@ -355,17 +356,17 @@ The game script is contained in a script.txt file in the application components.
     \item \$if to manage if then else commands
 \end{itemize}
 
-All the loading of sprites, animations, their playback, display are now managed automatically at startup in asynchronous instead of being set manually in the script or in the code as before. The engine running in synchronous mode at the beginning, a sprite could not be called before being loaded. The game starts on a loading time at startup corresponding to the loading of sprites and animation videos in the memory of gosai. This allows each animation to be played instantly when each one is called.
+All the loading of sprites, animations, playback, and display are now managed automatically at startup in asynchronous instead of being set manually in the script or the code as before. The engine was running in synchronous mode at the beginning. The game starts on a loading time at startup corresponding to the loading of sprites and animation videos in the memory of Gosai. This loading allows the game to play each animation instantly. The game directs the chosen path toward the continuity of the chosen branch. The player can choose different paths to finish the game.
 
 \subsection{Animations}
 
-The most efficient way to create accurate custom 3D animations for the animated sign language tutorials was to implement a module allowing to control an avatar in 3D through pose estimation and then record the movements produced or a video of the animation.
+The most efficient way to create accurate custom 3D animations for the animated sign language tutorials was to implement a module allowing one to control an avatar in 3D through pose estimation and then record the movements produced or a video of the animation.
 
-An application to control an avatar remotely thanks to the estimation pose has been developed on the augmented mirror. The avatar is able to track and copy accurately the position of the user's limbs. The created application is now in free demonstration on the mirror. It also allowed to create all the 3D character animations on the sign language learning game.
+An application to control an avatar remotely has been developed on the augmented mirror thanks to the estimation pose. The avatar can track and copy the position of the user's limbs accurately. The created application is now a free demonstration on the mirror. It also allowed the creation of all the 3D character animations on the sign language learning game.
 
 \subsubsection{Esla}
 
-The Educative Sign Language Avatar (ESLA) is a 3-dimensional avatar controllable in a gosai application following the estimated MediaPipe pose. 
+The Educative Sign Language Avatar (ESLA) is a 3-dimensional avatar controllable in a Gosai application following the estimated MediaPipe pose. 
 
 \begin{figure}[h]
     \centering
@@ -374,8 +375,7 @@ The Educative Sign Language Avatar (ESLA) is a 3-dimensional avatar controllable
     \label{fig:esla_architecture}
 \end{figure}
 
-The program uses the driver of the mirror camera, processed by an estimation module (see \ref{fig:esla_architecture}). The data is then transmitted to the back end of the application in python through the Redis database. The calculations related to three.js and the display is finally managed in the front end written in Javascript. The data is transmitted from the back end through a socket.io server.
-Its movements copy live those of the user in front of the mirror \cite{esla}. It was the first version of the interactive avatar on the augmented mirror.
+The program uses the driver of the mirror camera, processed by an estimation module (see \ref{fig:esla_architecture}). The Redis database then transmits the data to other modules of the back end in Python. The front end, written in Javascript, manages the display, particularly the calculations related to three.js. Its movements copy live those of the user in front of the mirror \cite{esla}. This version was the first version of the interactive avatar on the augmented mirror.
 
 
 \begin{figure}[h]
@@ -386,28 +386,35 @@ Its movements copy live those of the user in front of the mirror \cite{esla}. It
 \end{figure}
 
 
-An animated 3D character appears on top of the scenery at the launch of the application (see \ref{fig:esla}). Its animation is made possible by playing features using MediaPipe and OpenCV. The program can retrieve the coordinates of a user’s position in real time. These coordinates are processed, and the avatar copies the movements Animation Retargeting, a video game animation technique using motion capture.
+An animated 3D character appears on top of the scenery at the launch of the application (see \ref{fig:esla}). Its animation is made possible by playing features using MediaPipe and OpenCV. The program can retrieve the coordinates of a user's position in real-time. These coordinates are processed, and the avatar copies the movements thanks to Animation Retargeting, a video game animation technique to map movements on 3D objects.
 
-The programs retrieves the links between each point of the pose provided by MediaPipe and Three.js calculates and display the 3D part. 
+The program retrieves the links between each point of the pose provided by MediaPipe, and Three.js calculates and displays the 3D part. 
 
-Three.js entirely manage the loading of the character, its display, its animation, the rendering, the light and the camera .
+Three.js entirely manages the loading of the character, its display, its animation, the rendering, the light, and the camera.
 
 Three.js uses a pivot system with matrix4 and quaternions. However, some functions to transfer rotations from one base to
-another are missing (even though they are very much in demand by the community). Therefore, the entire limb rotation system was implemented by hand.
-MediaPipe first retrieves the (real) coordinates of the user. These coordinates are converted into the world base (x-axis to the right, y-axis to the top, z-axis to the camera) of the three.js scene with transformations. The program retrieves the coordinates of the top of the spine, the shoulder, and the elbow. It creates two vectors spine/shoulder and shoulder/elbow. The coordinates of these two vectors are then read from the base of the parent of the bone to be rotated (here the left shoulder). An algorithm then calculates a quaternion containing the rotation data from the first vector to the second.
+another still need to be included (even though they are very much in demand by the community). Therefore, the entire limb rotation system was implemented by hand.
+MediaPipe first retrieves the (real) coordinates of the user. Transformations convert these coordinates into the world base (x-axis to the right, y-axis to the top, z-axis to the camera) of the three.js scene. The program retrieves the coordinates of the top of the spine, the shoulder, and the elbow (see \ref{fig:esla_bones}). It creates two vectors spine/shoulder and shoulder/elbow. The coordinates of these two vectors are then read from the base of the parent of the bone to be rotated (here, the left shoulder). An algorithm then calculates a quaternion containing the rotation data from the first vector to the second.
 
-This quaternion is then applied to the limb, which takes in its local base the same rotation as the user’s arm with his shoulder.
-This allows you to make precise rotation transfers from one base to another and thus animate all parts of the avatar.
+\begin{figure}[h]
+    \centering
+    \includegraphics[]{AdrLfv_master_thesis/images/esla_bones.png}
+    \caption{ESLA's squeletton.}
+    \label{fig:esla_bones}
+\end{figure}
 
-Unfortunately, the project lacks a lot of precision in the movements, especially at the level of the fingers, which is very inconvenient for the creation of accurate tutorials in sign language. Another more efficient solution for the creation of 3D animations with the estimated pose had to be implemented.
+Three.js then applies this quaternion to the limb, which rotates the same as the user's arm with his shoulder in its local base.
+This rotation allows precise rotation transfers from one base to another, thus animating all parts of the avatar.
+
+Unfortunately, the project lacks much precision in the movements, especially at the level of the fingers, which is very inconvenient for creating accurate tutorials in sign language. Another more efficient solution for creating 3D animations with the estimated pose had to be implemented.
 
 \subsubsection{Kalidokit module implementation}
 
-The creation of an avatar controllable with Mediapipe on the mirror has been by the implementation of the Kalidokit solver. This JS library allowing the animation of arms, hands, fingers, face, mouth, eyelids, pupil of VRM models (Virtual Reality Model). The VRM is formulated on the basis of the standard 3D format glTF2.0 to manage humanoid models. It aims to be particularly expressive. This type of model has a large number of articulations, can blink and animate its mouth. It is very often used in the world of VR games (VR chat for example), or by Vtubers (entertainment broadcasters who use a virtual avatar).  
+The creation of an avatar controllable with Mediapipe on the mirror has been by the implementation of the Kalidokit solver. This JS library allows the animation of arms, hands, fingers, face, mouth, eyelids, and pupils of VRM models (Virtual Reality Models). The VRM is based on the standard 3D format glTF2.0 to manage humanoid models. It aims to be particularly expressive. This model has many articulations and can blink and animate its mouth. It is often used in VR games (VR chat) or by Vtubers (entertainment broadcasters who use a virtual avatar).  
 
-The models used in the game were downloaded from the site Vroid Hub cite\cite{vroid}. They must respect specific conditions of use: use by a third party, downloadable, use as an avatar, commercial use by a company. The avatar must also be sober. The one that has been selected to be implemented in the demo application allowing to control the avatar in augmented reality on the mirror is called "papa\_de\_him\_chan". 
+The models used in the game come from the site Vroid Hub cite\cite{vroid}. They must respect specific conditions of use: use by a third party, downloadable, use as an avatar, and commercial use by a company. The avatar must also be sober, as it should be a model taking part in a demonstration on the augmented mirror deployed at the De Vinci Innovation Center. The one selected in the demo application allowing to control the avatar in augmented reality is called "papa\_de\_him\_chan". 
 
-The model is easily changeable locally in the application created to allow the user to manipulate different characters. It is with this application that will be created the animations of tutorials of sign language for the learning game on the mirror.
+The model is easily changeable locally in the application, allowing the user to manipulate different characters. This application makes creating sign language tutorial animations for the learning game possible.
 
 \begin{figure}[h]
     \centering
@@ -416,10 +423,10 @@ The model is easily changeable locally in the application created to allow the u
     \label{fig:aria_v1}
 \end{figure}
 
-The implementation of Kalidokit on the mirror has been reworked to suit the operation of gosai, and the joints set to a greater degree of freedom to allow more flexible animations (see \ref{fig:aria_v1}).
-Such an application therefore allows to record qualitative signs and poses for the characters and tutorials of the game.
+The implementation of Kalidokit on the mirror has been reworked to suit the operation of Gosai. The joints are set to greater freedom to allow more flexible animations (see \ref{fig:aria_v1}).
+Such an application allows recording qualitative signs and poses for the characters and tutorials of the game.
 
-The models used for the characters of Aria, the grandmother and the salesman were recovered on Vroid Hub and are free to use. The VRM models are mainly adapted for Vtubers, that's why the characters can look childish and can look like Japanese anime characters.
+The models used for the characters of Aria, the grandmother, and the salesman were recovered on Vroid Hub and are free to use. The VRM models are mainly adapted for Vtubers, explaining why the characters look childish and look like Japanese anime characters.
 
 \begin{figure}[h]
     \centering
@@ -428,31 +435,31 @@ The models used for the characters of Aria, the grandmother and the salesman wer
     \label{fig:iloveyou}
 \end{figure}
 
-All sprites and 3D video animations of the avatars were recorded from the "Aria" application on the mirror. This includes 22 video animations and 14 sprites for the character of Aria in the sign language game (see \ref{fig:iloveyou}).
+All the avatars' sprites and 3D video animations were recorded from the "Aria" application on the mirror. These animations include 22 video animations and 14 sprites for the character of Aria in the sign language game (see \ref{fig:iloveyou}).
 
 \section{Sign Language AI}
 
 \subsection{Overview}
 
-Sign language involves the usage of the upper part of the body, such as hand gestures, facial expression, lip-reading, head nodding and body postures to disseminate information \cite{adeyanju2021machine}.
+Sign language involves using the upper part of the body, such as hand gestures, facial expressions, lip-reading, head nodding, and body postures to disseminate information \cite{adeyanju2021machine}.
 
-The final goal of this work is to implement an SLR AI inside the sign language learning game. This AI allows the recognition of choices in the game thanks to the estimation of the user's pose but also the control of the game using commands linked to signs.
+The final goal of this work is to implement an SLR AI inside the sign language learning game. This AI allows the recognition of choices in the game thanks to the estimation of the user's pose and the control of the game using commands linked to signs.
 
-Many models with sign language recognition already exist. The work done here proposes a model, as well as an easy system of creation, dataset management, training and visualization of the data.
+Many models with sign language recognition already exist. The work done here proposes a model and an easy system of creation, dataset management, training, and visualization of the data.
 
 \subsection{Integration in Gosai}
 
-The project of creating the SLR AI is apart from gosai \cite{slr\_mirror}. Only the weights are integrated in gosai in a module making the comparison between a sign made in front of the camera and the values of the weights recorded locally.
+The project of creating the SLR AI is apart from Gosai \cite{slr\_mirror}. Gosai integrates only the weights in a module, making the comparison between a sign made in front of the camera and the values of the weights recorded locally.
 
-The video game retrieves the coordinates of the user and place them in tensors containing the data of a video of 30 frames.
+The video game retrieves the user's coordinates and places them in tensors containing the data of a video of 30 frames.
 
-The model is called by passing the data to it and a table of probabilities concerning each action is retrieved as a result. 
+The program passes the model by passing the data to it, retrieving a table of probabilities concerning each action. 
 
-The guessed sign is then transmitted from the slr module through gosai’s redis database to the game engine. When the probability of a detected sign overfits a threshold, the sign is considered as validated by the game engine.
+The guessed sign is then transmitted from the SLR module through Gosai's Redis database to the game engine. When the probability of a detected sign overfits a threshold, the game engine considers the sign as validated.
 
 \subsection{Structure}
 
-The project is divided into 6 different local modules and a main file that initializes the parameters and launches the different processes. The processes are an optional phase of dataset creation, a tutorial phase that displays the skeleton for data vizualisation, a preprocess phase that retrieves the data from the dataset and formats them, a data augmentation module, and a weight calculation and exportation in different file types.
+The project contains six local modules and a main file that initializes the parameters and launches the different processes. The processes are an optional phase of dataset creation, a tutorial phase that displays the skeleton for data visualization, a preprocessing phase that retrieves the data from the dataset and formats them, a data augmentation module, and a weight calculation and exportation in different file types.
 
 \begin{figure}[h]
     \centering
@@ -461,113 +468,106 @@ The project is divided into 6 different local modules and a main file that initi
     \label{fig:SLR_structure}
 \end{figure}
 
-The developed AI is a full-fledged project that does not require gosai to run. It takes place in 5 steps, each one being optional (see \ref{fig:SLR_structure}). These steps are: the creation of a dataset, the training, test and validation (with data augmentation or not), the conversion of the created files, the visualization of the recorded signs, as well as the visualization of the training and test results.
+The developed AI is a full-fledged project that does not require a goal. It takes five optional steps (see \ref{fig:SLR_structure}). These steps are: the creation of a dataset, the training, test, and validation (with data augmentation or not), the conversion of the created files, the visualization of the recorded signs, and the visualization of the training and test results.
 
 \paragraph{Dataset}
 
-If a movement is included in the known actions but is not found in the files, the creation of the dataset of this movement is launched automatically. 
+If a movement is included in the known actions but is not present in the files, the creation of the dataset of this movement launches automatically. 
 
-The dataset is created by the user and stored in a folder "MP data" created, and separated in three
-folders : train, valid, test containing the actions (name of the movement). The recorded sequences are automatically separated between the three folders train (80\% of them), test (10\%) and valid (10\%). 
+The user creates the dataset, which is stored in a folder "MP data" created and separated into three folders: train, valid, and test containing the actions (name of the movement). The recorded sequences are automatically separated between the three folders train (80\% of them), test (10\%), and valid (10\%). The program automatically completes the existing dataset by default according to the number of sequences entered in the configuration file.
 
-Each sequence is 30 frames each by default, including coordinates, that is to say and now 116 data per frame (that is to say 58 points) after having removed  431 points of the face and just Keeping 4. The 4 kept points are one for the chin, for the forehead, for the wright and left cheek.
+Each sequence is 30 frames each by default, including coordinates, that is to say, and now 116 data per frame (that is to say 58 points) after removing 431 points of the face and just Keeping 4. The four kept points are one for the chin, forehead, right, and left cheek.
 It enables signs using the head to be better detected.
 
-The coordinates are retrieved from Mediapipe during the creation of the dataset. The recording is done from the webcam of the device used, an intel real sense or the default pc webcam if the intel is not detected. When implementing on another device such as the interactive mirror, this driver must be modified to match that of the camera used.
+The program retrieves the coordinates from Mediapipe during the creation of the dataset. If the Intel camera is undetected, the device's webcam record, an Intel real sense, or the default pc webcam. When implemented on another device, such as the interactive mirror, this driver must be modified to match the camera used.
 
-At the start of the dataset creation, the user alternates one second of video recording, then two seconds to reposition in a loop for each sign. He has a video feedback on himself to check if he is well positioned in the plan.
+At the start of the dataset creation, the user alternates one second of video recording, then two seconds to reposition in a loop for each sign. He has video feedback on himself to check if he is well-positioned in the plan.
 
-\paragraph{The recorded signs visualisation}
+\paragraph{The recorded signs visualization}
 
-The recorded signs visualization module (data\_vis) retrieves the coordinates of a video by action, stored in the dataset.
-It sorts the coordinates of the points of each part of the body, finds the different links between each point and the posters, frame by frame. Arrays of all the sorted coordinates for each body part (Face if activated, Body, Hand) are used, as well as all the links of the body arrays.
+The recorded signs visualization module (data\_vis) shows a visualization of every recorded sign (stored in the dataset). This process verifies that the signs have been made and are stored correctly on site.
+The program retrieves the coordinates of a person stored in the dataset (for each video), sorts the coordinates of the points of each body part, and finds the different links between each point frame by frame. 
 
-For each point detected in the dataset, the visualization displays the links it has with the points it is linked to in the table. The program also display the action to which the visualization is associated, above the drawn character.
+The visualization displays all the links between the points stored in the dataset. The program also displays the action with which the visualization of the sign is associated above the drawn character.
 
 \paragraph{Preprocess}
 
-The preprocess phase retrieves all the data from the dataset and places them in tensors to provide them to the model.
-After creating the preprocess instances (according to their type: train, test, valid) we pass them to the dataloader. 
+The preprocessing phase retrieves all the data from the dataset and places them in tensors to provide them to the model.
+After creating the preprocess instances (according to their type: train, test, valid), we pass them to the data loader. 
 
 These pass an index to them (concerning a sequence among all the sequences attributed to the type of the preprocess). Their program calculates which action is concerned by the desired sequence and recovers all the coordinates of the frames of this sequence. 
-In some papers, it is said that some sign language movements are only possible by giving some indications with lips or facial expressions \cite{cooper2011sign}. Some of the lip coordinates should therefore be kept in the dataset retrieval during the preprocess. For other papers, it is just not necessary to keep these points which take a lot of storage for nothing \cite{dreuw2007speech}.
-
-The preprocess does not use all the coordinates of the face, this allows to have much faster train loops because all these points are not necessary.
+Some papers express that sign language movement is only possible by indicating with lips or facial expressions cite{cooper2011sign}. Therefore, the dataset should keep some lip coordinates integrated during the preprocessing. For other papers, keeping facial and lips expressions is unnecessary to keep these points, which takes much storage for nothing \cite{dreuw2007speech}. Here, the preprocess takes into consideration only four coordinates of the face. This selection allows for much faster train loops because all these points are unnecessary.
 
 \paragraph{Data augmentation}
 
-The data augmentation is called during the pre-processing phase, just after retrieving the data of the concerned sequence. It is given the data as a parameter, it reviews the data and will apply a random horizontal and vertical shift and scale to it. This process artificially increases the number of positions in which the user can stand.
+The preprocessing phase optionally calls the data augmentation just after retrieving the data of the concerned sequence. The functionality reviews the data and applies a random horizontal and vertical shift and scale to it. This process artificially increases the number of positions the user can stand.
 
 \paragraph{Model}
 
-The model is composed of a bidirectional LTSM, a linear, a dropout, a batchnorm1d, a relu, and an other Linear. The AI trained on 16 different signs or 1600 sequences. The model reaches an accuracy of 87\% on the test set and 96\% on the training (see \ref{fig:slr_results}).
+The model comprises a bidirectional LTSM, a linear, a dropout, a batchnorm1d, a relu, and another Linear. The AI trained on 16 different signs or 1600 sequences. The model reaches an accuracy of 87\% on the test set and 96\% on the training (see \ref{fig:slr_results}).
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=2.2\columnwidth]{AdrLfv_master_thesis/images/slr_results.png}
-    \caption{Visualization of testing and training accuracy over 200 epochs. In yellow the accuracy without data augmentation, and in green with data augmentation.}
+    \caption{Visualization of testing and training accuracy over 200 epochs. In yellow is the accuracy without data augmentation, and in green with data augmentation.}
     \label{fig:slr_results}
 \end{figure}
 
-Recurrent Neural Networks (RNN) allow to process temporal sequences (language, videos, numerical data). They keep the memory of past data to predict data sequences in the near future. 
-This is why LSTM (Long-Short-Term-Memory) and Bidirectional layers are used into the model. 
-The LSTMs are composed of several gates (respectively 3 and 2) which allow to forget or to selectively memorize the information of the previous temporal sequence in a dynamic memory.
-LSTMs have an internal memory that is constantly changing dynamically according to the input data sequences.
+Recurrent Neural Networks (RNN) allow the processing of temporal sequences (language, videos, numerical data). They keep the memory of past data to predict data sequences shortly. 
+LSTM (Long-Short-Term-Memory) and Bidirectional layers are RNNs used in the current model to consider the different coordinates and frames already passed for better performance. The LSTMs are composed of several gates (respectively 3 and 2), which allow one to forget or to selectively memorize the information of the previous temporal sequence in dynamic memory. This RNN is particularly adapted to multiple input dimensions. For example, here, the data is composed of sequences containing frames and coordinates (3 dimensions).
+  
+The training uses the optimizer AdamW, a stochastic gradient descent method based on adaptive estimation of first-order and second-order moments with an added method to decay weights \cite{loshchilov2017decoupled}. 
 
-The training uses the optimizer AdamW, a stochastic gradient descent method that is based on adaptive estimation of first-order and second-order moments with an added method to decay weights \cite{loshchilov2017decoupled}. 
+The program exports the output models in pth format. Pth is a standard PyTorch convention to save models. They can also be exported to onnx (Open Neural Network Exchange) \cite{onnx}, an open format designed to represent machine learning models.
 
-Models are automatically exported in pth format, a common PyTorch convention is to save models. They can also be exported to onnx (Open Neural Network Exchange) \cite{onnx}, an open format designed to represent machine learning models.
+Onnx extension enables greater interoperability in the AI tool community, allowing many AI frameworks to be more compatible by allowing them to share models. This interoperability allows users to deploy trained models in different software platforms like GOSAI quickly.
 
-This extension enables greater interoperability in the AI tool community, allowing a large number of AI frameworks to be more compatible by allowing them to share models. This interoperability allows trained models to be easily deployed in different software platforms like GOSAI.
-
-The onnx models retrieved from the project output are then directly implemented in the SLR module of gosai.
+Here, the onnx models retrieved from the project output are directly implemented in the SLR module of Gosai.
 
 
 \subsection{Configuration}
 
-All the processes mentioned above are optional. This management is located in a config.json file in which the user can enable or disable a large number of project features. 
+All the processes mentioned above are optional. The user can enable or disable many project features in the config.json file. 
 
-All the options are : "actions" (all the signs recognized by the AI, "adapt\_for\_mirror" (to transform the coordinates specificaly for the augmented mirror),"convert\_files" (to convert the files from pth to onnx), "erase\_dataset" (to erase the dataset before recording a new one, by default the program automatically completes the existing dataset), "erase\_runs" (erase the local tensorboard files), "make\_data\_augmentation", "make\_dataset", "make\_train", "make\_tuto"  (visualization of the recorded movements), "nb\_epochs", "nb\_sequences" (total video number the user wants to record for a sign), "sequence\_length" (one video frame number).
+All the options are: "actions" (all the signs recognized by the AI, "adapt\_for\_mirror" (to transform the coordinates specifically for the augmented mirror), "convert\_files" (to convert the files from pth to onnx), "erase\_dataset" (erasing the dataset before recording a new one), "erase\_runs" (erase the local TensorBoard files), "make\_data\_augmentation", "make\_dataset", "make\_train", "make\_tuto" (visualization of the recorded movements), "nb\_epochs", "nb\_sequences" (total video number the user wants to record for a sign), "sequence\_length" (one video frame number).
 
 The default actions are "nothing", "empty", "ok", "yes", "no", "left", "right", "house", "store", "hello", "goodbye", "television", "leave", "eat", "apple", and "peach". Those are all the signs used inside the SL video game.
 
-The project aims for making it as easy as possible for the user to create weights according to his desired characteristics.
+The project aims to make it as easy as possible for the user to create weights according to his desired characteristics.
 
 \subsection{Visualization of the results}
 
-TensorBoard is a tool providing visualization solutions to machine learning tests. It allows to track and visualize metrics such as loss and correctness. TensorBoard allows displaying the graph of the exported model, displaying histograms of weights, biases or other Tensors, and many other functions.
+TensorBoard is a tool providing visualization solutions to machine learning tests. It allows for tracking and visualizing metrics such as loss and correctness. TensorBoard allows displaying the exported model's graph, histograms of weights, biases or other Tensors, and many other functions.
 
-Just by entering the "make set-up\_tensorboard" function in the terminal (or by doing a "make first\_boot"), the user launches the creation of a local server running on port 6006, retrieving the weights as the model is trained. 
+Just by entering the "make set-up\_tensorboard" function in the terminal (or by doing a "make first\_boot"), the user launches the creation of a local server running on port 6006, retrieving the weights as the model trains. 
 
-A browser page then opens automatically to access the local server address. On this page the user can study a graph of the training and test phase (percentage of success according to the number of epochs). 
+A browser page then opens automatically to access the local server address. The user can study a graph of the training and test phase (percentage of success according to the number of epochs) on this page. 
 
-The logs of these results are stored locally, they are accessible and can be easily compared between them. This makes experimentation easier and more intuitive.
+The logs of these results are stored locally. They are accessible on a webpage, and the user can easily compare them. This visualization makes experimentation easier.
 
 \subsection{Limitations}
 
-After many experiments, several biases have appeared that directly affect the AI results. For example, the size of a user differing too much from the person who created the dataset is sometimes problematic, resulting in a strong difference in recognition performance between users with the same or different morphology. 
+After many experiments, several biases have appeared that directly affect the AI results. For example, the size of a user differing too much from the person who created the dataset is sometimes problematic, resulting in a consequent difference in recognition performance between users with the same or different morphology. 
 
-Since the AI bases its training on the data obtained from Mediapipe, the results of the SLR also depend on its parameters. It was observed that Mediapipe was better at recognizing the limbs of a person with a strong contrast with the background. 
+The results of the SLR also depend on Mediapipe parameters since the AI bases the training on the data obtained from the pose estimation. The training results show that Mediapipe was better at recognizing a person's limbs with a strong contrast with the background. The background choice resulted in a significant difference of about 15\% in performance on the training and test set. Mediapipe better detects the contrast between white skin and a black shirt and better recognizes afterward when a person creates the dataset or tests the SLR wearing one. 
 
-This resulted in a very significant difference of about 15\% in performance on the training and test set. When the dataset was created by a person wearing a black shirt, his white skin was better detected by Mediapipe and better recognized afterwards. 
-
-The same thing happened when using the sign recognition directly, with a t-shirt allowing a better contrast, the recognition was only favored. This also causes the fact that signs made on the belly (being a plain background without detail) are much better recognized than those made on other places with more potential details in the background.
+This contrast causes the SLR to be more effective on signs made on the belly (being a plain background without detail) than those made on other places with more details in the background.
 
 \section{Usage scenario}
 
-The augmented mirror is primarily aimed at families and is designed to be placed in a living room. Its use is very wide and allows to have fun as well as to learn by interacting.
-The mirror does not require any additional material, so its use remains very simple.
-The learning game of the sign language is directly launched from the menu of the mirror. The user just has to follow the instructions given by Aria to follow the course of the adventure. The game is primarily aimed at young children. Through repetition and distraction, they intuitively learn certain gestures.
+The augmented mirror primarily aims to be placed in a living room. Its extensive use allows one to have fun and learn by interacting.
+The mirror requires no additional material, so its use remains very simple.
+The user directly launches the learning game of sign language from the menu of the mirror. The user has to follow the instructions given by Aria to follow the course of the adventure. The game is primarily aimed at young children. Through repetition and distraction, they intuitively learn certain gestures.
 
 \section{User study}
 
 \subsection{Set Up}
 
 As the sign language learning game is intended for young users, this test focuses on a sample of 12 people between 18 and 25 years old.
-6 people watch a number of video sign language tutorials on the "pocket sign" application. The signs viewed correspond to those encountered in the game when choosing the path through the house ("ok", "yes", "left", "right", "house", "store", "hello", "goodbye", "television", "leave", "eat") or the path through the store ("ok", "yes", "no", "left", "right", "house", "store", "goodbye", "apple", "peach"). 4 people view the signs of the passage through the house and 2 view the signs of the passage through the store.
+Six people watch a number of video sign language tutorials on the "pocket sign" application. The signs viewed correspond to those encountered in the game when choosing the path through the house ("ok", "yes", "left", "right", "house", "store", "hello", "goodbye", "television", "leave", "eat") or the path through the store ("ok", "yes", "no", "left", "right", "house", "store", "goodbye", "apple", "peach"). 4 people view the signs of the passage through the house, and two view the signs of the passage through the store.
 When they think they have understood the sign viewed, they skip to the next sign. 
 
-6 other people use the sign language learning game on the mirror. They are told the principle of the game before using it. Two of them go through the house and four of them go through the store.
+Six other people use the sign language learning game on the mirror. They are told the principle of the game before using it. Two of them go through the house, and four of them go through the store.
 
 Both groups are told at the beginning that they will be evaluated on certain signs at the end of the study. 
 For both groups, the session is timed from start to finish.
