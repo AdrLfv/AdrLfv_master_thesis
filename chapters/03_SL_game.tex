@@ -10,11 +10,11 @@ In France in 2020, there were approximately 4 and 5 million deaf or hard-of-hear
 
 This work introduces a short video game to teach sign language. The application is intended to work on the DVIC Interactive Mirror but is fully functional on a simple PC.
 
-This report deals with implementing an AI for sign language recognition (SLR) using the Mediapipe framework to extract the user's coordinates and analyze them through a model in Pytorch. The model is then implemented in a game engine to create a visual novel video game. The game is then adapted to an augmented mirror to allow the user to play it in augmented reality. The game stimulates the player's motivation to favor his learning.
+This report deals with implementing an AI for sign language recognition (SLR) using the Mediapipe framework to extract the user's coordinates and analyze them through a model in Pytorch. The outputted model is then implemented in a video game engine to create a visual novel video game. The application is adapted to an augmented mirror to allow the user to play it in augmented reality. The game stimulates the player's motivation to favor his learning.
 
 \subsection{GOSAI for Augmented Mirroir}
 
-\paragraph[short]{GOSAI}
+\subsubsection{GOSAI}
 
 GOSAI is a new framework to help the development of augmented interfaces on the computer with a display. This framework targets all developers, from beginners to experts. GOSAI offers
 basic and often used augmented reality functionalities. Thomas Juldo is a DVIC alumnus who developed the project, the augmented mirror system, and some applications. 
@@ -31,7 +31,7 @@ technologies of web development, and everyone can use it on both the
 front-end and the back-end.
 It is a versatile and robust language for video games. The developers can use JavaScript to make games using a variety of platforms and tools. They can use 2d and 3d libraries combined with JavaScript to create fully-fledged games in the browser or external game engine platforms \cite{javascriptgaming}.
 
-\paragraph[short]{The interactive mirror}
+\subsubsection{The interactive mirror}
 
 The following projects presented in this thesis are implemented on an augmented mirror running on the GOSAI software system.
 
@@ -306,14 +306,14 @@ The camera captures the signs, and AI in the back end guesses them. Dialogue lin
 
 \section{General Architecture}
 
-\subsection{The Sign Language Video Game in Gosai}
+\subsection{The Sign Language Video Game in GOSAI}
 
-The application is connected to the get\_sign and SLR drivers of Gosai to estimate the sign of a person in front of the mirror. The socket.io then transmits the data to the engine.js, which runs the game, considering the user's movements (see \ref{fig:sleg_architecture}).
+The application is connected to the get\_sign and SLR drivers of GOSAI to estimate the sign of a person in front of the mirror. The socket.io then transmits the data to the engine.js, which runs the game, considering the user's movements (see \ref{fig:sleg_architecture}).
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=1.6\columnwidth]{AdrLfv_master_thesis/images/sleg_architecture.png}
-    \caption{The Sign Language Video Game architecture in Gosai.}
+    \caption{The Sign Language Video Game architecture in GOSAI.}
     \label{fig:sleg_architecture}
 \end{figure}
 
@@ -327,7 +327,7 @@ The best solution to make such a game was implementing a visual novel engine on 
 
 Previously, p5VN could load and display background, sprites of characters, some text interactive with the mouse click, and menus with multiple buttons.
 The engine was running synchronously in a single thread.
-Thanks to an important adaptation, the module is now running asynchronously to be compatible with Gosai. 
+Thanks to an important adaptation, the module is now running asynchronously to be compatible with GOSAI. 
 The engine loads video animations automatically at launch and can then play them. The user can now interact and select menus thanks to sign language and added many other features.
 
 \subsubsection{Menu}
@@ -356,7 +356,7 @@ A script.txt file contains the game script in the application components. It con
     \item \$if to manage if then else commands
 \end{itemize}
 
-All the loading of sprites, animations, playback, and display are now managed automatically at startup in asynchronous instead of being set manually in the script or the code as before. The engine was running in synchronous mode at the beginning. The game starts on a loading time at startup corresponding to the loading of sprites and animation videos in the memory of Gosai. This loading allows the game to play each animation instantly. The game directs the chosen path toward the continuity of the chosen branch. The player can choose different paths to finish the game.
+All the loading of sprites, animations, playback, and display are now managed automatically at startup in asynchronous instead of being set manually in the script or the code as before. The engine was running in synchronous mode at the beginning. The game starts on a loading time at startup corresponding to the loading of sprites and animation videos in the memory of GOSAI. This loading allows the game to play each animation instantly. The game directs the chosen path toward the continuity of the chosen branch. The player can choose different paths to finish the game.
 
 \subsection{Animations}
 
@@ -366,7 +366,7 @@ An application to control an avatar remotely has been developed on the augmented
 
 \subsubsection{Esla}
 
-The Educative Sign Language Avatar (ESLA) is a 3-dimensional avatar controllable in a Gosai application following the estimated MediaPipe pose. 
+The Educative Sign Language Avatar (ESLA) is a 3-dimensional avatar controllable in a GOSAI application following the estimated MediaPipe pose. 
 
 \begin{figure}[h]
     \centering
@@ -398,7 +398,7 @@ MediaPipe first retrieves the (real) coordinates of the user. Transformations co
 
 \begin{figure}[h]
     \centering
-    \includegraphics[]{AdrLfv_master_thesis/images/esla_bones.png}
+    \includegraphics[width=1.6\columnwidth]{AdrLfv_master_thesis/images/esla_bones.png}
     \caption{ESLA's squeletton.}
     \label{fig:esla_bones}
 \end{figure}
@@ -423,7 +423,7 @@ The model is easily changeable locally in the application, allowing the user to 
     \label{fig:aria_v1}
 \end{figure}
 
-The implementation of Kalidokit on the mirror has been reworked to suit the operation of Gosai. The joints are set to greater freedom to allow more flexible animations (see \ref{fig:aria_v1}).
+The implementation of Kalidokit on the mirror has been reworked to suit the operation of GOSAI. The joints are set to greater freedom to allow more flexible animations (see \ref{fig:aria_v1}).
 Such an application allows recording qualitative signs and poses for the characters and tutorials of the game.
 
 The models used for the characters of Aria, the grandmother, and the salesman were recovered on Vroid Hub and are free to use. The VRM models are mainly adapted for Vtubers, explaining why the characters look childish and look like Japanese anime characters.
@@ -447,15 +447,15 @@ The final goal of this work is to implement an SLR AI inside the sign language l
 
 Many models with sign language recognition already exist. The work done here proposes a model and an easy system of creation, dataset management, training, and visualization of the data.
 
-\subsection{Integration in Gosai}
+\subsection{Integration in GOSAI}
 
-The project of creating the SLR AI is apart from Gosai \cite{slr\_mirror}. Gosai integrates only the weights in a module, making the comparison between a sign made in front of the camera and the values of the weights recorded locally.
+The project of creating the SLR AI is apart from GOSAI \cite{slr\_mirror}. GOSAI integrates only the weights in a module, making the comparison between a sign made in front of the camera and the values of the weights recorded locally.
 
 The video game retrieves the user's coordinates and places them in tensors containing the data of a video of 30 frames.
 
 The program passes the model by passing the data to it, retrieving a table of probabilities concerning each action. 
 
-The guessed sign is then transmitted from the SLR module through Gosai's Redis database to the game engine. When the probability of a detected sign overfits a threshold, the game engine considers the sign as validated.
+The guessed sign is then transmitted from the SLR module through GOSAI's Redis database to the game engine. When the probability of a detected sign overfits a threshold, the game engine considers the sign as validated.
 
 \subsection{Structure}
 
@@ -522,7 +522,7 @@ The program exports the output models in pth format. Pth is a standard PyTorch c
 
 Onnx extension enables greater interoperability in the AI tool community, allowing many AI frameworks to be more compatible by allowing them to share models. This interoperability allows users to deploy trained models in different software platforms like GOSAI quickly.
 
-Here, the onnx models retrieved from the project output are directly implemented in the SLR module of Gosai.
+Here, the onnx models retrieved from the project output are directly implemented in the SLR module of GOSAI.
 
 
 \subsection{Configuration}
@@ -571,32 +571,31 @@ Six other people use the sign language learning game on the mirror. They are tol
 
 Both groups are told at the beginning that they will be evaluated on certain signs at the end of the study. 
 For both groups, the session is timed from start to finish.
-
 \subsection{Results}
 
 \paragraph{Sign Language Video Game}
 
-In one session, users took an average of 4.44 seconds from game launch to completion. Some users have experienced problems related to poor AI recognition.
-Notably for the sign "peach" and the sign "eat" difficult for two users.
+Users took an average of 4.44 minutes from game launch to completion in one session. Some users have experienced problems related to poor AI recognition.
+Notably, the sign "peach" and the sign "eat" were difficult for two users.
 
-One user took 8:25 to complete the game. He had great difficulty in making the "go" sign in the house. This bias is explained by the fact that the dataset was created by a tall person (1,84m) and this user had a much smaller height (1,60m). 
+One user took 8:25 to complete the game. He had difficulty making the "go" sign in the house. The fact that a tall person  (1,84m) created the dataset and this user had a much smaller height (1,60m) explains the bias. Users were tested after their session on some random signs. Their average score was 2.33 signs learned out of 4. The errors made are related to several elements. The AI sometimes finds a sign too quickly when the user still needs to place his hands correctly. 
 
-Users were tested after their session on some random signs. Their average score was 2.33 signs learned out of 4. The errors made are related to several elements. The AI sometimes finds a sign far too quickly when the user has not yet placed his hands correctly. 
+The user then needs more time to look at the signs and choose. Another error is related to the fact that when there are three tutorials simultaneously (menus with three choices), the user needs help concentrating on each one, and memorizing the signs is less efficient.
 
-The user then has no time to look at the signs and make his choice. Another error is related to the fact that when there are three tutorials at the same time (menus with three choices), the user has more difficulty to concentrate on each one and his memorization of the signs is less efficient.
+Increasing the detection threshold value would be an efficient method to correct the problem related to the too-high detection speed of the AI.
 
-To correct the problem related to the too high detection speed of the AI, increasing the detection threshold value would be an efficient method.
+To conclude, people had to note their opinion about diverse questions (on a score of 10). Their average motivation to learn sign language this way (with an augmented mirror and the video game) was 7,91/10.
+The average fun in interacting notation was 8,25/10. People's ease of understanding what needs to be done had a notation of 7,58/10. The practicality of using this learning method (augmented mirror) had a notation of 8,25/10. The effectiveness of using this learning method received a notation of 6,41/10. Moreover, they noted the capacity of the AI to guess the correct sign 6,11/10.
 
-To conclude, people were asked to note on 10 their opinion about diverse questions. Their average motivation to learn sign language in this particular way (with an augmented mirror and the video game) was 7,91/10.
-The average fun in interacting notation was 8,25/10. Their ease of understanding what needs to be done had a notation 7,58/10. The practicality of using this learning method (augmented mirror) had a notation of 8,25/10.The effectivity of using this learning method received a notation of 6,41/10. And the capacity of the AI to guess the correct sign was noted 6,11/10.
+The global feedback is that the avatar sometimes moves his fingers too much and cannot be precise. The fact that the display is in 2D (on the mirror screen) and not in 3D makes it challenging to understand the signs.
+The fact that the characters look like anime characters and not more realistic ones blocked a user. His aspect can put off the desire to practice.
 
-The global feedbacks were that the avatar sometimes moves his fingers too much and could not be very precise. The fact that the display is in 2D (on the mirror screen) and not in 3D makes it difficult to understand the signs.
-One user was blocked by the fact that the characters look like anime characters and not more realistic ones, which can put off the desire to practice.
+Some users forgot the "ok" sign to skip dialogues during the game, although the sign was shown twice at the beginning of the game. Their forgetfulness prevented them from continuing the practice without external intervention to remind them of the sign. 
+One user had learning difficulties due to the avatar's movements being considered unclear. However, interacting with a real person allowed him to learn more effectively. The lack of accuracy of the AI was also strongly criticized (rated 6.11/10 by users). 
 
-Some users forgot the "ok" sign to skip dialogues during the game although the sign was shown twice at the beginning of the game. This prevented them from continuing the practice without external intervention to remind them of the sign. 
-One user had learning difficulties due to the avatar's movements being considered unclear. Interacting with a real person, however, allowed him to learn more effectively. The lack of accuracy of the AI was also strongly criticized (rated 6.11/10 by users). This accuracy is almost perfect for the creator of the dataset, but low to other users with a different morphology.
+The 3D animated tutorials were generally liked and considered more attractive than simple video tutorials. Users enjoyed using the game on an augmented mirror. They considered the mirror's interface mainstream and easy to integrate into a living room.
 
-The 3D animated tutorials were generally liked and were considered more attractive than simple video tutorials. The fact that the game was implemented on an augmented mirror was praised because this interface is considered to be mainstream and easy to integrate in a living room.
+Implementing the game on an augmented mirror
 
 
 \paragraph{Videos}
@@ -605,15 +604,14 @@ The 3D animated tutorials were generally liked and were considered more attracti
 
 \section{Discussions}
 
-The SL Game stimulates the visual, verbal and kinesthetic intelligence. 
+The SL Game stimulates visual, verbal, and kinesthetic intelligence. 
+Visual intelligence is the ability to create mental images and perceive the visible world precisely in its three dimensions. Viewing 3D sign language tutorials and having to "decode" the different movements and positions of the avatars' limbs stimulate the user's visual intelligence. The user needs to perceive, to make a mental projection before re-performing the identified signs.
 
-The visual intelligence is the ability to create mental images, and to perceive the visible world with precision in its three dimensions. Viewing 3D sign language tutorials and having to "decode" the different movements and positions of the avatars' limbs stimulate the user's visual intelligence. The user needs to perceive, to make a mental projection before re-performing the identified signs.
+Verbal intelligence is the ability to read, speak quickly and connect mental ideas into words. Connecting a picture to a word in the project leads to the ability to express oneself fluently and connect a word's mental idea into a gesture. 
 
-Verbal intelligence is the ability to read, speak easily and connect mental ideas into words. Having to connect a picture to a word in the project leads to the ability to express oneself fluently and therefore to connect the mental idea of a word into a gesture. 
+Kinesthetic intelligence is the ability to use one's body finely and elaborately, express oneself through movement, and control one's body movements well. This type of intelligence is stimulated through play in this project because the brain must translate the mental image of body positions and movements in space into real positions and movements. 
 
-Kinesthetic intelligence is the ability to use one's body in a fine and elaborate way, to express oneself through movement, to control one's body movements well. This type of intelligence is stimulated through play in this project because the brain must translate the mental image of body positions and movements in space into real positions and movements. 
-
-The stimulation of three different intelligences, added to the motivating gamification aspect, favors information retention. The user can remember a particular gesture by the memory of having seen it and projected it mentally, by the memory of having given it a linguistic meaning, and by the memory of having performed it physically in space.
+The stimulation of three different intelligences, added to the motivating gamification aspect, favors information retention. The user can remember a particular gesture by having seen it and projected it mentally, by the memory of giving it a linguistic meaning, and by having performed it physically in space.
 
 \section{Conclusion}
 
@@ -621,34 +619,31 @@ The stimulation of three different intelligences, added to the motivating gamifi
 
 Playful learning and gamification are learning methods that use playful elements to facilitate the assimilation of knowledge. 
 
-Learning video games are a popular form of these approaches and are often used to teach practical skills such as sign language. The use of augmented reality, pose estimation, and artificial intelligence in the Sign Language Video Game creates an immersive and interactive experience for the learner to practice reproducing signs correctly in real time. 
-This approach promotes learning by providing instant feedback and allowing the learner to practice as many times as they want. 
+Video games are a popular form of these approaches and are often used to teach practical skills such as sign language. Using augmented reality, pose estimation, and artificial intelligence in the Sign Language Video Game creates an immersive and interactive experience for the learner to practice reproducing signs correctly in real-time. 
+This approach promotes learning by providing instant feedback and allowing learners to practice as often as they want. 
 
-In addition, the use of cutting-edge technology often generates interest and engagement in the learner, which can help to increase motivation and perseverance in learning sign language.
+In addition, using cutting-edge technology often generates interest and engagement in the learner, which can help increase motivation and perseverance in learning sign language.
 
 \subsection{Limitations}
 
 The results of the user studies make it possible to extract a certain number of limitations from the project.
 
-The size difference between the person who created the dataset and a potentially taller or shorter user is problematic. This can be solved by applying a compression of the coordinates to the horizontal and vertical axis randomly in the data augmentation or by registering the dataset by people of different sizes.
+The size difference between the person who created the dataset and a potentially taller or shorter user is problematic. The accuracy is high for the dataset creator but low for other users with a different morphology. This problem can be solved by randomly compressing the coordinates to the horizontal and vertical axis in the data augmentation or by people of different sizes registering the dataset.
 
-The dataset produced and used is small. It contains little noise, little variation, and little mixing. The model is also moderately efficient and could be reworked especially with the use of transformers. The model is also trained on few different signs (15). This means that in the case of an enlargement of the dataset, the accuracy would tend to decrease even more. It is therefore necessary that the model and the dataset be reworked in the future.
+The dataset produced and used is small. It contains little noise, slight variation, and little mixing. The model is also moderately efficient, even if he trains on several different signs. In the case of an enlargement of the dataset, the accuracy would decrease even more. The model should therefore be reworked in the future. Implementing transformers in the model could be relevant and improve performance. Transformers are used in areas such as image processing, biological sequence analysis, and video understanding.
 
-Another important limitation is the sometimes difficult clarity of avatars in sign language tutorials. The pivot angles of each of the avatar's bones being limited to avoid glitches and ragdolls, it is sometimes hard to record precise signs especially at the finger level. The user must then imitate and learn a model that is not totally accurate. The avatar can be slightly reworked to widen the achievable angles and thus gain in precision.
+Another area for improvement is the sometimes tricky clarity of avatars in sign language tutorials. Each avatar's bones' pivot angles are limited to avoid glitches and ragdolls. It is sometimes hard to record clear signs, especially at the finger level. The user must then imitate and learn a model that is not accurate. The avatar can be slightly reworked to widen the possible angles and thus gain precision.
 
 \subsection{Future Works}
 
-The current system is good for direct practice but too easy because users can afford to just copy the sign. It would be necessary to add an evaluation dimension with signs that come up in the potential choices without giving the tutorials every time. Thus the user will have to force himself to remember and will have a better learning by repetition.
+The current game is suitable for direct practice. However, the learning system is too simple because users can afford to copy the sign without actually learning it. It would be necessary to add an evaluation dimension with signs that come up in the potential choices without giving the tutorials every time. Thus the user will have to force himself to remember and learn better by repetition.
 
-This work has already been done in another application on the mirror similar to a sign language training. The application consists of successive viewings of sign language tutorial videos, practice, and finally correction. 
+\paragraph(Current work) 
+This training dimension is already present in another application on the mirror, similar to sign language training. The application consists of successive viewings of sign language tutorial videos, practice, and correction. 
 
-The correction phase consists of a frozen Mediapipe skeleton appearing on the mirror and performing the beginning of a sign (first frame of a recorded movement). 
+The correction phase consists of frozen Mediapipe bones and points (forming a skeleton) appearing on the mirror and performing the beginning of a sign.
 
-The user also has a Mediapipe skeleton displayed on the mirror and following his position. When he superimposes his own skeleton on that of the model, the model's skeleton moves slightly to display the next frame. 
+The user also has a Mediapipe skeleton displayed on the mirror and following his position. When he superimposes his skeleton on that of the model, the model's skeleton moves slightly to display the next frame of the recorded sign movement. The user must then superimpose his skeleton on the second frame until he validates the 30 frames that make up a sign. The person must superimpose some points of his body, especially his hands, and fingers. These corrections allow him to learn the sign he has just made precisely. The training then moves to a tutorial of another sign. 
 
-The user must then superimpose his skeleton on the second frame and so on until he has validated the 30 frames that make up a sign. The person must superimpose some points of his body, but especially his hands and in particular his fingers. This allows him to learn with precision the sign he has just made. The training then moves to a tutorial of another sign. 
-
-The implementation of the correction phase of this training in the sign language game would have a real interest since it would allow the user to better remember the same sign by having to perform it several times, by focusing on the position of each finger. It also allows him to visualize the correct position he has to take in the space. 
-This implementation would thus answer most of the current problems of the game. It had not been done because it broke the rhythm of the game during its progress, but its implementation at the end of the game as a reminder of what has been seen would be an effective method for learning.
-
-%TODO rajouter des effets stylés en latex
+Implementing the correction phase of this training in the sign language game would have a genuine interest. The corrections allow the user to better remember the signs by having to perform them several times by focusing on the position of each finger. The clear demonstrations of the signs allow him to visualize the correct position he has to take in the space. 
+This implementation would thus answer some of the current problems of the game. The correction phase is not implemented for now because it broke the game's rhythm during its progress, but its implementation at the end of the game as a reminder of the learned signs would be an effective learning method.
