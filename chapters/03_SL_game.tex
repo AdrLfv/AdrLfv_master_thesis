@@ -2,21 +2,25 @@
 
 \section{Introduction}
 
-Sign Language (SL) is the primary communication tool for deaf or hard-of-hearing people. It is a visual language that uses movements to provide people communication with the world. 
+Sign Language (SL) serves as the primary means of communication for individuals who are deaf or hard-of-hearing, utilizing visual movements to facilitate interaction with the world. However, the practice of SL requires a significant investment in learning, resulting in a communication gap between individuals who are mute and those who are able-bodied. According to the World Health Organization (WHO), as of 2020, the number of people affected by hearing disabilities was estimated at 466 million, including 34 million children \cite{el2020sign}. This number is projected to exceed 900 million by 2050.
 
-Everyone does not understand SL because its practice requires a significant learning investment, forming a communication gap between the mute and the able people. According to the World Health Organization (WHO) report, the number of people affected by hearing disability in 2020 was 466 million, of whose 34 million are children \cite{el2020sign}. Over 900 million people will have this disability by 2050.
+In France alone, approximately 4 to 5 million individuals experienced difficulties or inability to communicate through speech due to hearing impairment in 2020. However, the exact figures for French Sign Language (LSF) users remain uncertain, with estimates ranging from 80,000 to 120,000, depending on the sources.
 
-In France in 2020, there were approximately 4 and 5 million deaf or hard-of-hearing people who have difficulties or cannot communicate through speech. Concerning the deaf speakers of French Sign Language (LSF), the figures are uncertain: they oscillate between 80,000 and 120,000, depending on the sources.
+The human brain exhibits a natural affinity for learning through gestures, thanks to its innate mimicry reflex \cite{10.3389/fnhum.2012.00153}. Consequently, an effective learning solution should leverage this mimetic capability to guide learners in performing accurate gestures. With the advancements in augmented reality, the possibilities of dynamic and engaging learning experiences have significantly expanded. These techniques facilitate the acquisition of skills involving spatial movements through compelling visualizations.
 
-This work introduces a short video game to teach sign language. The application is intended to work on the DVIC Interactive Mirror but is fully functional on a simple PC.
+Enhancing the learning process of SL can be achieved by fostering user engagement, surpassing the limitations of traditional methods such as watching sign language tutorial videos, utilizing apps, or attending lessons with an instructor. Augmented reality offers the potential to develop interactive characters that can effectively demonstrate gestures to learners. Combining such a program with gamification elements holds promise for promoting both user involvement and comprehension of movements.
 
-This report deals with implementing an AI for sign language recognition (SLR) using the Mediapipe framework to extract the user's coordinates and analyze them through a model in Pytorch. The outputted model is then implemented in a video game engine to create a visual novel video game. The application is adapted to an augmented mirror to allow the user to play it in augmented reality. The game stimulates the player's motivation to favor his learning.
+The present work introduces a short video game designed for teaching sign language. While the application is intended to be used with the DVIC Interactive Mirror, it is fully functional on a standard personal computer as well.
+
+The DVIC Augmented Mirror is a project developed with the goal of enabling the display of graphical elements overlaid onto the real environment as observed through the mirror glass. This device empowers users to monitor their own movements and compare them with a model, while also employing computer vision techniques to analyze the position of their limbs and verify the accuracy of performed gestures.
+
+Consequently, the architecture of the learning game incorporates an artificial intelligence (AI) system for sign language recognition (SLR), utilizing the Mediapipe framework to extract the user's coordinates and analyzing them through a Pytorch-based model.
 
 \subsection{GOSAI for Augmented Mirroir}
 
 \subsubsection{GOSAI}
 
-GOSAI is a new framework to help the development of augmented interfaces on the computer with a display. This framework targets all developers, from beginners to experts. GOSAI offers
+GOSAI \cite{gosai} is a new framework to help the development of augmented interfaces on the computer with a display. This framework targets all developers, from beginners to experts. GOSAI offers
 basic and often used augmented reality functionalities. Thomas Juldo is a DVIC alumnus who developed the project, the augmented mirror system, and some applications. 
 
 The system's structure allows it to reuse components between its applications and thus build a general catalog of tools that grows over time.
