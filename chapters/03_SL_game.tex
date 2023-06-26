@@ -82,7 +82,7 @@ Most techniques based on data gloves convert the position of fingers and hands a
 
 In 2010, the ImageNet files appeared \cite{li2010crowdsourcing}. They provided a basis for the current CNNs and deep learning models, which was the beginning of computer vision. In 2012, AlexNet appeared and dramatically reduced the error rate for image recognition \cite{alom2018history}. After the appearance of these models, the use of data gloves is gradually abandoned to focus on the implementation of modules using computer vision.
 
-Computer vision-based techniques use pose estimation on the face, body, hands, and fingers to detect their position. This method uses images or videos of the signs through a camera and calculations on the images assisted by artificial intelligence \cite{adeyanju2021machine}. 
+Modern Computer vision-based techniques use pose estimation on the face, body, hands, and fingers to detect their position. This method uses images or videos of the signs through a camera and calculations on the images assisted by artificial intelligence \cite{adeyanju2021machine}. 
 
 The identification of signs must take into account many different parameters. Facial expressions and body posture are vital in determining the meaning of sentences; e.g., eyebrow position can determine the question type. Some signs are distinguishable only by lip shape, as they share a common manual sign \cite{cooper2011sign}. 
 
@@ -162,15 +162,15 @@ Very few games use sign language as a primary element in the gameplay. We can ci
 Zahoor Zafrulla et al. present Copycat, a game designed to improve the American Sign Language (ASL) skills of deaf children \cite{zafrulla2011copycat}. A team of researchers developed the game at the University of California in collaboration with members of the deaf community.
 The game, called CopyCat, is a digital game that uses machine learning to provide feedback to the players. The game consists of a series of mini-games that focus on different aspects of ASL, such as finger spelling, vocabulary, and grammar (see figure \ref{fig:aslgamecopycat}). In each mini-game, the player watches a video clip of someone signing a word or phrase in ASL. The player is then asked to copy the sign or phrase using their signing.
 
+CopyCat uses machine learning to analyze the player's signing and provide feedback on their performance. The authors designed the game to be adaptive, meaning it adjusts the difficulty level based on the player's skill level. The game also tracks the player's progress and provides feedback on improvement areas.
+CopyCat developers then enhanced their SLR system with the Kinect depth-mapping camera, which uses colored gloves and embedded accelerometers to track children's hand movements \cite{zafrulla2011american}.
+
 \begin{marginfigure}
     \centering
     \includegraphics{AdrLfv_master_thesis/images/aslgamecopycat.jpeg}
     \caption{Screenshot of ASL Game Interface and the input devices for user  }
     \label{fig:aslgamecopycat}
 \end{marginfigure}
-
-CopyCat uses machine learning to analyze the player's signing and provide feedback on their performance. The authors designed the game to be adaptive, meaning it adjusts the difficulty level based on the player's skill level. The game also tracks the player's progress and provides feedback on improvement areas.
-CopyCat developers then enhanced their SLR system with the Kinect depth-mapping camera, which uses colored gloves and embedded accelerometers to track children's hand movements \cite{zafrulla2011american}.
 
 \begin{marginfigure}
     \centering
@@ -327,7 +327,7 @@ The engine.js accesses the script containing the whole game and the components c
 
 \subsubsection{Engine implementation}
 
-The best solution to make such a game was implementing a visual novel engine on the mirror to develop everything else in the game. The P5VN engine is precisely adaptable for the mirror because the engine works with p5.js.
+A visual novel engine had to be implemented to enable the game to function. The P5VN engine is precisely adaptable for the mirror because the engine works with, library already installed on the mirror and used by the majority of its applications.
 
 Previously, p5VN could load and display background, sprites of characters, some text interactive with the mouse click, and menus with multiple buttons.
 The engine was running synchronously in a single thread.
@@ -364,9 +364,16 @@ All the loading of sprites, animations, playback, and display are now managed au
 
 \subsection{Animations}
 
-The most efficient way to create accurate custom 3D animations for the animated sign language tutorials was to implement a module allowing one to control an avatar in 3D through pose estimation and then record the movements produced or a video of the animation.
+A module was implemented on the mirror to create accurate custom 3D animations for the animated sign language tutorials. The program allows one to control an avatar in 3D through pose estimation and then record the movements produced or a video of the animation.
 
-An application to control an avatar remotely has been developed on the augmented mirror thanks to the estimation pose. The avatar can track and copy the position of the user's limbs accurately. The created application is now a free demonstration on the mirror. It also allowed the creation of all the 3D character animations on the sign language learning game.
+An application to control an avatar remotely has been developed on the augmented mirror thanks to the estimation pose. The avatar can track and copy the position of the user's limbs accurately (see \ref{fig:aria_v1}). The created application is now a free demonstration on the mirror. It also allowed the creation of all the 3D character animations on the sign language learning game.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1.6\columnwidth]{AdrLfv_master_thesis/images/aria_v1.png}
+    \caption{The first version of the Augmented Reality Interactive Avatar (ARIA).}
+    \label{fig:aria_v1}
+\end{figure}
 
 \subsubsection{Esla}
 
@@ -396,7 +403,7 @@ The program retrieves the links between each point of the pose provided by Media
 
 Three.js entirely manages the loading of the character, its display, its animation, the rendering, the light, and the camera.
 
-Three.js uses a pivot system with matrix4 and quaternions. However, some functions to transfer rotations from one base to
+Three.js uses a pivot system with matrixes and quaternions. However, some functions to transfer rotations from one base to
 another still need to be included (even though they are very much in demand by the community). Therefore, the entire limb rotation system was implemented by hand.
 MediaPipe first retrieves the (real) coordinates of the user. Transformations convert these coordinates into the world base (x-axis to the right, y-axis to the top, z-axis to the camera) of the three.js scene. The program retrieves the coordinates of the top of the spine, the shoulder, and the elbow (see \ref{fig:esla_bones}). It creates two vectors spine/shoulder and shoulder/elbow. The coordinates of these two vectors are then read from the base of the parent of the bone to be rotated (here, the left shoulder). An algorithm then calculates a quaternion containing the rotation data from the first vector to the second.
 
@@ -407,8 +414,14 @@ MediaPipe first retrieves the (real) coordinates of the user. Transformations co
     \label{fig:esla_bones}
 \end{figure}
 
-Three.js then applies this quaternion to the limb, which rotates the same as the user's arm with his shoulder in its local base.
-This rotation allows precise rotation transfers from one base to another, thus animating all parts of the avatar.
+Three.js then applies this quaternion to the limb, which rotates the same as the user's arm with his shoulder in its local base (see \ref{fig:quaternion_rotations}). This rotation allows precise rotation transfers from one base to another, thus animating all parts of the avatar.
+
+\begin{marginfigure}
+    \centering
+    \includegraphics{AdrLfv_master_thesis/images/quaternion_CG.png}
+    \caption{Spherical parameterization of rotations: (a) Movement of unit vectors attached to body axes during a rotation of the object. (b) Parametric representation of unit vectors on a sphere \cite{what_when_how}}
+    \label{fig:quaternion_rotations}
+\end{marginfigure}
 
 Unfortunately, the project lacks much precision in the movements, especially at the level of the fingers, which is very inconvenient for creating accurate tutorials in sign language. Another more efficient solution for creating 3D animations with the estimated pose had to be implemented.
 
@@ -419,13 +432,6 @@ The creation of an avatar controllable with Mediapipe on the mirror has been by 
 The models used in the game come from the site Vroid Hub cite\cite{vroid}. They must respect specific conditions of use: use by a third party, downloadable, use as an avatar, and commercial use by a company. The avatar must also be sober, as it should be a model taking part in a demonstration on the augmented mirror deployed at the De Vinci Innovation Center. The one selected in the demo application allowing to control the avatar in augmented reality is called "papa\_de\_him\_chan". 
 
 The model is easily changeable locally in the application, allowing the user to manipulate different characters. This application makes creating sign language tutorial animations for the learning game possible.
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=1.6\columnwidth]{AdrLfv_master_thesis/images/aria_v1.png}
-    \caption{The first version of the Augmented Reality Interactive Avatar (ARIA).}
-    \label{fig:aria_v1}
-\end{figure}
 
 The implementation of Kalidokit on the mirror has been reworked to suit the operation of GOSAI. The joints are set to greater freedom to allow more flexible animations (see \ref{fig:aria_v1}).
 Such an application allows recording qualitative signs and poses for the characters and tutorials of the game.
@@ -445,21 +451,17 @@ All the avatars' sprites and 3D video animations were recorded from the "Aria" a
 
 \subsection{Overview}
 
-Sign language involves using the upper part of the body, such as hand gestures, facial expressions, lip-reading, head nodding, and body postures to disseminate information \cite{adeyanju2021machine}.
+A program using computer vision was developed and implemented in the project to enable SLR. This AI allows the recognition of choices in the game thanks to the estimation of the user's pose and the control of the game using commands linked to signs.
 
-The final goal of this work is to implement an SLR AI inside the sign language learning game. This AI allows the recognition of choices in the game thanks to the estimation of the user's pose and the control of the game using commands linked to signs.
+Sign language involves using the upper part of the body, such as hand gestures, facial expressions, lip-reading, head nodding, and body postures to disseminate information \cite{adeyanju2021machine}. The model must be able to recognize these different elements.
 
 Many models with sign language recognition already exist. The work done here proposes a model and an easy system of creation, dataset management, training, and visualization of the data.
 
 \subsection{Integration in GOSAI}
 
-The project of creating the SLR AI is apart from GOSAI \cite{slr\_mirror}. GOSAI integrates only the weights in a module, making the comparison between a sign made in front of the camera and the values of the weights recorded locally.
+The project of creating the SLR AI is apart from GOSAI \cite{slr_mirror}. GOSAI integrates only the weights in a module, making the comparison between a sign made in front of the camera and the values of the weights recorded locally. This architecture means that not all of SLR's AI code is integrated into gosai's code, and only lightweights can be accessed for the comparison.
 
-The video game retrieves the user's coordinates and places them in tensors containing the data of a video of 30 frames.
-
-The program passes the model by passing the data to it, retrieving a table of probabilities concerning each action. 
-
-The guessed sign is then transmitted from the SLR module through GOSAI's Redis database to the game engine. When the probability of a detected sign overfits a threshold, the game engine considers the sign as validated.
+The video game retrieves the user's coordinates and places them in tensors containing the data of a video of 30 frames. The tensors are then passed to the model, which returns a table of probabilities concerning each action. When the most probable sign is performed for one second, it is transmitted from the SLR module through GOSAI's Redis database to the game engine. The game engine considers a sign to be validated if it is received more than 5 times in a row. This prevents accidental signing.
 
 \subsection{Structure}
 
@@ -478,10 +480,18 @@ The developed AI is a full-fledged project that does not require a goal. It take
 
 If a movement is included in the known actions but is not present in the files, the creation of the dataset of this movement launches automatically. 
 
-The user creates the dataset, which is stored in a folder "MP data" created and separated into three folders: train, valid, and test containing the actions (name of the movement). The recorded sequences are automatically separated between the three folders train (80\% of them), test (10\%), and valid (10\%). The program automatically completes the existing dataset by default according to the number of sequences entered in the configuration file.
+A user creates the database on-live during a dataset recording phase. The data is stored in a folder "MP data" created and separated into three folders: train, valid, and test containing the actions (name of the movement). The recorded sequences are automatically separated between the three folders train (80\% of them), test (10\%), and valid (10\%). The program automatically completes the existing dataset by default according to the number of sequences entered in the configuration file.
 
-Each sequence is 30 frames each by default, including coordinates, that is to say, and now 116 data per frame (that is to say 58 points) after removing 431 points of the face and just Keeping 4. The four kept points are one for the chin, forehead, right, and left cheek.
-It enables signs using the head to be better detected.
+Each recorded sign sequence lasts one second, or 30 frames by default. The frames include 58 point coordinates, (or 116 data per frame) after removing 431 points of the face and just Keeping 4. The four kept points are one for the chin, forehead, right, and left cheek. It enables signs using the head to be better detected without recording a large number of points that would not be useful for detection. There are 1600 sequences in all, for a total of 16 different signs, i.e. 100 sequences for each sign (see \ref{fig:sl_dataset}).
+
+
+//TODO dimension à modifier
+\begin{margin}[h]
+    \centering
+    \includegraphics[width=2.2\columnwidth]{AdrLfv_master_thesis/images/Dataset.png}
+    \caption{Sign language dataset structure.}
+    \label{fig:sl_dataset}
+\end{margin}
 
 The program retrieves the coordinates from Mediapipe during the creation of the dataset. If the Intel camera is undetected, the device's webcam record, an Intel real sense, or the default pc webcam. When implemented on another device, such as the interactive mirror, this driver must be modified to match the camera used.
 
@@ -500,7 +510,7 @@ The preprocessing phase retrieves all the data from the dataset and places them 
 After creating the preprocess instances (according to their type: train, test, valid), we pass them to the data loader. 
 
 These pass an index to them (concerning a sequence among all the sequences attributed to the type of the preprocess). Their program calculates which action is concerned by the desired sequence and recovers all the coordinates of the frames of this sequence. 
-Some papers express that sign language movement is only possible by indicating with lips or facial expressions cite{cooper2011sign}. Therefore, the dataset should keep some lip coordinates integrated during the preprocessing. For other papers, keeping facial and lips expressions is unnecessary to keep these points, which takes much storage for nothing \cite{dreuw2007speech}. Here, the preprocess takes into consideration only four coordinates of the face. This selection allows for much faster train loops because all these points are unnecessary.
+Some papers express that sign language movement is only possible by indicating with lips or facial expressions \cite{cooper2011sign}. Therefore, the dataset should keep some lip coordinates integrated during the preprocessing. For some other papers \cite{dreuw2007speech}, keeping facial and lips expressions is unnecessary to keep these points, which takes much storage for nothing. Here, the preprocess takes into consideration only four coordinates of the face. This selection allows for much faster train loops because all these points are unnecessary.
 
 \paragraph{Data augmentation}
 
@@ -508,7 +518,7 @@ The preprocessing phase optionally calls the data augmentation just after retrie
 
 \paragraph{Model}
 
-The model comprises a bidirectional LTSM, a linear, a dropout, a batchnorm1d, a relu, and another Linear. The AI trained on 16 different signs or 1600 sequences. The model reaches an accuracy of 87\% on the test set and 96\% on the training (see \ref{fig:slr_results}).
+The model comprises a bidirectional LTSM, a linear, a dropout, a batchnorm1d, a relu, and another Linear. The model reaches an accuracy of 87\% on the test set and 96\% on the training (see \ref{fig:slr_results}).
 
 \begin{figure}[h]
     \centering
@@ -559,9 +569,8 @@ This contrast causes the SLR to be more effective on signs made on the belly (be
 
 \section{Usage scenario}
 
-The augmented mirror primarily aims to be placed in a living room. Its extensive use allows one to have fun and learn by interacting.
-The mirror requires no additional material, so its use remains very simple.
-The user directly launches the learning game of sign language from the menu of the mirror. The user has to follow the instructions given by Aria to follow the course of the adventure. The game is primarily aimed at young children. Through repetition and distraction, they intuitively learn certain gestures.
+One of the primary aims of the augmented mirror is to enable learning by interacting in augmented reality. It offers several applications that combine entertainment and practice. The user can choose and launch an application from the mirror's menu. In the sign language game application, the user must read and follow the instructions given by Aria to complete the adventure. The game is particularly suitable for stimulating practice in children.
+The mirror doesn't require any additional equipment, but it does need a certain amount of space to be used. The user must be able to stand two meters away from the device and make various movements without being disturbed. The mirror is also not suitable for use in a dark room. The user must be in a well-lit room to be detected by the camera.
 
 \section{User study}
 
@@ -579,10 +588,7 @@ For both groups, the session is timed from start to finish.
 
 \paragraph{Sign Language Video Game}
 
-Users took an average of 4.44 minutes from game launch to completion in one session. Some users have experienced problems related to poor AI recognition.
-Notably, the sign "peach" and the sign "eat" were difficult for two users.
-
-One user took 8:25 to complete the game. He had difficulty making the "go" sign in the house. The fact that a tall person  (1,84m) created the dataset and this user had a much smaller height (1,60m) explains the bias. Users were tested after their session on some random signs. Their average score was 2.33 signs learned out of 4. The errors made are related to several elements. The AI sometimes finds a sign too quickly when the user still needs to place his hands correctly. 
+Some users have experienced problems related to poor AI recognition. One user took 8:25 to complete the game (against 4.44 minutes on average). He had difficulty making the "go" sign in the house. The high difference (1,84m for the dataset creator against 1,60m for the user) explains the bias. Users were tested after their session on some random signs. Their average score was 2.33 signs learned out of 4. The errors made are related to several elements. The AI sometimes finds a sign too quickly when the user still needs to place his hands correctly. 
 
 The user then needs more time to look at the signs and choose. Another error is related to the fact that when there are three tutorials simultaneously (menus with three choices), the user needs help concentrating on each one, and memorizing the signs is less efficient.
 
@@ -602,9 +608,9 @@ The 3D animated tutorials were generally liked and considered more attractive th
 Implementing the game on an augmented mirror
 
 
-\paragraph{Videos}
+% \paragraph{Videos}
 
-\textit{POTENTIAL USER STUDY ABOUT LEARNING WITH VIDEO TUTORIALS}
+% \textit{POTENTIAL USER STUDY ABOUT LEARNING WITH VIDEO TUTORIALS}
 
 \section{Discussions}
 
@@ -615,7 +621,7 @@ Verbal intelligence is the ability to read, speak quickly and connect mental ide
 
 Kinesthetic intelligence is the ability to use one's body finely and elaborately, express oneself through movement, and control one's body movements well. This type of intelligence is stimulated through play in this project because the brain must translate the mental image of body positions and movements in space into real positions and movements. 
 
-The stimulation of three different intelligences, added to the motivating gamification aspect, favors information retention. The user can remember a particular gesture by having seen it and projected it mentally, by the memory of giving it a linguistic meaning, and by having performed it physically in space.
+The stimulation of three different intelligences, added to the motivating gamification aspect, favors information retention. The user better remembers a particular gesture by having seen it, projected it mentally, and by having performed it physically in space. Indeed, it has been proven that certain non-verbal behaviors, such as gestures, can have a powerful impact on the understanding and memorization of communication \cite{kelly1999offering}.
 
 \section{Conclusion}
 
