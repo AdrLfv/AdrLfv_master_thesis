@@ -482,16 +482,18 @@ If a movement is included in the known actions but is not present in the files, 
 
 A user creates the database on-live during a dataset recording phase. The data is stored in a folder "MP data" created and separated into three folders: train, valid, and test containing the actions (name of the movement). The recorded sequences are automatically separated between the three folders train (80\% of them), test (10\%), and valid (10\%). The program automatically completes the existing dataset by default according to the number of sequences entered in the configuration file.
 
-Each recorded sign sequence lasts one second, or 30 frames by default. The frames include 58 point coordinates, (or 116 data per frame) after removing 431 points of the face and just Keeping 4. The four kept points are one for the chin, forehead, right, and left cheek. It enables signs using the head to be better detected without recording a large number of points that would not be useful for detection. There are 1600 sequences in all, for a total of 16 different signs, i.e. 100 sequences for each sign (see \ref{fig:sl_dataset}).
 
 
-//TODO dimension à modifier
-\begin{margin}[h]
+
+Each recorded sign sequence lasts one second, or 30 frames by default. The frames include 58 point coordinates, (or 116 data per frame) after removing 431 points of the face and just Keeping 4. The four kept points are one for the chin, forehead, right, and left cheek. It enables signs using the head to be better detected without recording a large number of points that would not be useful for detection. There are 1600 sequences in all, for a total of 16 different signs, i.e. 100 sequences for each sign (see \ref{fig:slr_dataset}).
+
+%TODO dimension à modifier
+\begin{figure}[h]
     \centering
     \includegraphics[width=2.2\columnwidth]{AdrLfv_master_thesis/images/Dataset.png}
     \caption{Sign language dataset structure.}
-    \label{fig:sl_dataset}
-\end{margin}
+    \label{fig:slr_dataset}
+\end{figure}
 
 The program retrieves the coordinates from Mediapipe during the creation of the dataset. If the Intel camera is undetected, the device's webcam record, an Intel real sense, or the default pc webcam. When implemented on another device, such as the interactive mirror, this driver must be modified to match the camera used.
 
@@ -598,7 +600,7 @@ To assess the users' performance, they were evaluated on a random selection of s
     \centering
     \includegraphics[width=2.2\columnwidth]{AdrLfv_master_thesis/images/slr_game_test.png}
     \caption{Sign Language Video Game user study.}
-    \label{fig:slr_results}
+    \label{fig:slr_game_test}
 \end{figure}
 
 Subsequently, users required additional time to observe the signs and make their choices. Another error stemmed from the presence of three simultaneous tutorials (menus with three choices), which hindered users' ability to concentrate on each tutorial, resulting in less efficient sign memorization.
@@ -607,7 +609,7 @@ Addressing the issue of AI detection speed can be achieved by increasing the det
 
 In conclusion, users were asked to provide their opinions on various aspects of the system using a rating scale of 10. The average motivation to learn sign language through the augmented mirror and video game approach was 7.91/10. Users rated the level of fun in interacting as 8.25/10, ease of understanding the tasks at 7.58/10, practicality of the augmented mirror as a learning method at 8.25/10, and the overall effectiveness of the learning method at 6.41/10. Additionally, users rated the AI's ability to correctly guess signs at 6.11/10.
 
-Overall feedback indicated that the avatars' excessive finger movements compromised precision. The use of a 2D display on the mirror screen, instead of 3D, posed challenges in understanding the signs. Some users were deterred by the anime-like appearance of the characters, which dampened their enthusiasm for practicing.
+Overall feedback indicated that the avatars' excessive finger movements compromised precision. The use of a 2D display on the mirror screen, instead of 3D (see \ref{fig:slr_game_test}), posed challenges in understanding the signs. Some users were deterred by the anime-like appearance of the characters, which dampened their enthusiasm for practicing.
 
 A few users forgot the "ok" sign to skip dialogues during the game, despite it being shown twice at the beginning. This forgetfulness hindered their progress and required external intervention for sign reminders. One user faced learning difficulties due to perceived ambiguity in the avatar's movements. However, interacting with a real person facilitated more effective learning. Users strongly criticized the AI's lack of accuracy, rating it at 6.11/10.
 

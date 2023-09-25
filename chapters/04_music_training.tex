@@ -4,12 +4,20 @@
 
 The DVIC augmented mirror overlays various digital information on top of the natural reflection of the user's head and upper body. Such overlaid information can be useful for the learning of embodied skills, and applications have already been created for the mirror to help people learn sign language and dance.
 
-Currently the best way to learn singing is through: Recording and listening to one’s own performances. Taking a good posture, which is important to learn to sing in tune. Paying attention to one’s breathing, which is the basis of vocal technique and can be improved through breathing exercises. Performing vocalization exercises, which require a lot of patience. A capella singing, practised by listening to and learning a piece many times before reinterpreting it. 
+Currently the most common way to learn singing is through: 
+\begin{itemize}
+    \item Recording and listening to one’s own performances. 
+    \item Taking a good posture, which is important to learn to sing in tune.
+    \item Paying attention to one’s breathing, which is the basis of vocal technique and can be improved through breathing exercises.
+    \item Performing vocalization exercises, which require a lot of patience.
+    \item A capella singing, practised by listening to and learning a piece many times before reinterpreting it. 
+\end{itemize}
+   
 
-This project explores how the mirror can help people learn music, in particular, singing. Seeing one's reflection is useful when practicing singing because it allows the monitoring of one's posture. This project adds the ability to monitor one's pitch accuracy to the mirror. This is done by adding a frequency tracking module that estimates notes sung by the user and an interface that gives the user real-time visual feedback.
+This project explores how the mirror can help people learn music, and in particular, singing. Seeing one's reflection is useful when practicing singing because it allows the monitoring of one's posture. The mirror adds the ability to monitor one's pitch accuracy. This is done by adding a frequency tracking module that estimates notes sung by the user and an interface that gives the user real-time visual feedback.
 The user can then train his or her ability to sing in tune by comparing the target frequency with that actually sung. This ability is called musical imagery, the ability to "imaginate" a note before playing/singing it \cite{godoy2012musical}. It can be perfected with practice. This ability is very important for a musician as it allows him/her to visualise a gap between two notes he/she wants to play/sing, and to translate it on his/her instrument or by voice.
 
-Practicing music can be very laborious, long, and difficult. For example, practicing singing requires attending singing classes that teach you to visualize the right note in your head before you sing it. This is called musical imagery. Singing also requires good posture and breath control to be effective.
+Practicing music can be very laborious, long, and difficult. For example, practicing singing requires attending singing classes that teach you to visualize the right note in your head before you sing it. Singing also requires good posture and breath control to be effective.
 The interactive mirror has the potential to give users the ability to monitor their posture, an important element in singing. The user can get double feedback by singing in front of the augmented mirror. He can see the position of the notes in relation to the ones he is singing and can correct himself.
 At the same time, he sees his reflection in the mirror and can correct his posture to sing more effectively. In order to implement the singing application, a frequency tracking module estimates the notes sung by the user, and the user interface gives feedback on the accuracy of his pitch.
 The singer can also activate a tutorial with falling notes, activate the playback of music to learn it before singing it, and use a calibration to set the singable range of notes for him.
@@ -21,7 +29,7 @@ The singer can also activate a tutorial with falling notes, activate the playbac
 The development of new electronic musical interfaces gives rise to potential novel approaches in music education. The gestual interactive systems and interfaces have great potential for practice in music pedagogy \cite{farrugia2015tunes}.
 A number of smartphone apps exist for people learning to sing that focus on giving feedback on correct intonation.
 Yousician is a fairly comprehensive application that allows you to quickly learn and master piano, guitar, bass, singing, and other instruments by practicing on your real instrument.
-It offers to learn music theory through special exercises and lessons. The application listens to the user singing/playing, evaluates his/her performance with a frequency estimation, and proposes to play different songs with tutorials and games. It offers a system of notes in the form of bars coming from the right, which the user must sing afterwards. If he sings right, the bar turns green, if not, red.
+It offers to learn music theory through special exercises and lessons. The application listens to the user singing/playing, evaluates his/her performance with a frequency estimation, and proposes to play different songs with tutorials and games. It offers a system of notes in the form of bars coming from the right, which the user must sing afterwards (see \ref{fig:yousician}). If he sings right, the bar turns green, if not, red.
 
 \begin{marginfigure}
     \centering
@@ -37,8 +45,7 @@ The general strategy of these applications is to use learning methods by practic
 It is possible to learn how to play music by means of video games created for this purpose. Among the best known video games in this field are Guitar Hero and Rock Band. These two games allow you to learn to play the guitar in a fun way, always using a system of falling notes \cite{farrugia2015tunes}.
 
 \subsection{AR Music Practise}
-//TODO refaire cette partie avec des meilleurs outils
-Frederic Bevilacqua & al. proposed a project with miniature wireless sensor system that is used with accelerometers and gyroscopes to make gesture recognition in musical pedagocial scenarios. Music teaching methods are often based on playful approaches and exercises focusing on body movements. The project aimed to experience and practice “smoothness” and “fluidity” of musical gestures by analizing the curves of the movements \cite{bevilacqua2007wireless}.
+Frederic Bevilacqua \& al. proposed a project with miniature wireless sensor system that is used with accelerometers and gyroscopes to make gesture recognition in musical pedagocial scenarios (see \ref{fig:Wireless-sensor-interface}). Music teaching methods are often based on playful approaches and exercises focusing on body movements. The project aimed to experience and practice “smoothness” and “fluidity” of musical gestures by analizing the curves of the movements \cite{bevilacqua2007wireless}.
 
 \begin{marginfigure}
     \centering
@@ -61,8 +68,8 @@ Frederic Bevilacqua & al. proposed a project with miniature wireless sensor syst
     \label{fig:Intonation-Level-Classifier}
 \end{marginfigure}
 
-Yu Ting Hang et al. proposed a visual interface for learning singing on the Internet. The aim is to link pitch and musical notation through frequency estimation and waveform recognition. The visualization of the sung notes in relation to the desired ones allows to correct vocal accuracy errors and thus to practice singing by sight \cite{huang2016visualized}.
-Kin Wah Edward Lin et al. presented a self-learning tool for singing on the smartphone. It allows the user to improve timing and intonation in a similar way to the previous project. It uses an intonation level classifier, a user performance rating mechanism, and a pitch training tool. The mix of visual demonstration/feedback is natural to understand and useful. The user’s intonation score improved by an average of 94.81 \% after training.
+Yu Ting Hang et al. proposed a visual interface for learning singing on the Internet. The aim is to link pitch and musical notation through frequency estimation and waveform recognition. The visualization of the sung notes in relation to the desired ones allows to correct vocal accuracy errors and thus to practice singing by sight \cite{huang2016visualized} (see \ref{fig:Practice-Session}).
+Kin Wah Edward Lin et al. presented a self-learning tool for singing on the smartphone. It allows the user to improve timing and intonation in a similar way to the previous project. It uses an intonation level classifier, a user performance rating mechanism, and a pitch training tool. The mix of visual demonstration/feedback is natural to understand and useful (see \ref{fig:Intonation-Level-Classifier}). The user’s intonation score improved by an average of 94.81 \% after training.
 
 \section{Singing Learning Program in AR}
 
@@ -78,27 +85,28 @@ Applications allow for example to have a return of its position with the display
 \subsection{Overview}
 
 The objective of the project is to be an example of a module allowing people to learn the practice of a musical instrument on the mirror. As the device only requires the person in front of it without any material, a musical module would not have been suitable for most musical instruments.
-The project is based on frequency estimation for practice. A user plays an instrument or sings in front of the mirror. The mirror collects the frequency emitted and displays it on the screen.
+The project is based on frequency estimation for practice. A user plays an instrument or sings in front of the mirror (see \ref{fig:xiao_singing}). The mirror collects the frequency emitted and displays it on the screen.
+
+\\TODO Refaire cette photo
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=2.2\columnwidth]{AdrLfv_master_thesis/images/xiao_singing.png}
     \caption{A use case of the musical training application on the augmented mirror.}
-    \label{fig:SLR_structure}
+    \label{fig:xiao_singing}
 \end{figure}
 
 The user sees the frequency he or she is emitting represented by a dot on the screen with a particle effect. The lower the frequency, the further to the left the dot is, and vice versa. Some options can be launched from the sub-menu of the "music\_training" application already
 implemented on the mirror. The user can launch different music tutorials.
 
 For example, he can launch the tutorial "La vie en rose", notes fall from the top of the screen and he must play them in rhythm. The module no longer has any aspect related to movement or position but only to the frequency emitted by the instrument or by the voice.
-When the user sings correctly, the bars falling from the top change colour, gradually turning green and the particle effect on the dot intensifies. They become increasingly red when the user sings out of tune. The score achieved is displayed for a few seconds at the
-end of the song.
+When the user sings correctly, the bars falling from the top change colour, gradually turning green and the particle effect on the dot intensifies (see \ref{fig:music_training}). They become increasingly red when the user sings out of tune. The score achieved is displayed for a few seconds at the end of the song.
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=2.2\columnwidth]{AdrLfv_master_thesis/images/music_training.png}
     \caption{The interface of the music learning application.}
-    \label{fig:SLR_structure}
+    \label{fig:music_training}
 \end{figure}
 
 The vision of the project is to train the user to more or less consciously link the manipulation of the instrument or his voice with the sound he visualises in his head. The visual present on the mirror allows him to know where he is, if he has played/sung the right note and how to correct it if not.
@@ -109,7 +117,7 @@ Practising on a mirror is a plus as the user practices standing up unlike with a
 
 The augmented mirror system runs on an operating system software called GOSAI. The music practice module takes the form of a JavaScript application coded directly on it. It uses the P5 library to display 2D elements and create the sketch. The backend will use two drivers coded on GOSAI for the occasion: a new driver allowing GOSAI to use the microphone of the device used and a driver allowing to make frequency estimation listening to the microphone. The latter takes a sound wave generated at the input and returns a musical frequency.
 
-The gosai microphone driver takes the audio stream from the device hardware. It passes it to the "frequency_estimation" module which detects the frequency emitted in the audio stream as well as the gain and other parameters. This module places this data in the reddis data. The processing.py file retrieves the frequency estimation data from the data and sends it to the display.js with socket.io. The display initializes a new music workout and sends it the necessary data to run.
+The GOSAI microphone driver takes the audio stream from the device hardware. It passes the data to the "frequency\_estimation" module which detects the frequency emitted in the audio stream as well as the gain and other parameters. This module places this data in the Reddis data. The processing.py file retrieves the frequency estimation data from the data and sends it to the display.js with socket.io. The display initializes a new music workout and sends it the necessary data to run.
 
 New various tools such as the sub-menu system are coded on GOSAI for the project. The sub-menu allows GOSAI applications to propose options to be activated or deactivated manually by the user thanks to the estimation pose according to his desires.
 
