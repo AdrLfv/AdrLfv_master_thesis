@@ -29,7 +29,7 @@ The singer can also activate a tutorial with falling notes, activate the playbac
 The development of new electronic musical interfaces gives rise to potential novel approaches in music education. The gestual interactive systems and interfaces have great potential for practice in music pedagogy \cite{farrugia2015tunes}.
 A number of smartphone apps exist for people learning to sing that focus on giving feedback on correct intonation.
 Yousician is a fairly comprehensive application that allows you to quickly learn and master piano, guitar, bass, singing, and other instruments by practicing on your real instrument.
-It offers to learn music theory through special exercises and lessons. The application listens to the user singing/playing, evaluates his/her performance with a frequency estimation, and proposes to play different songs with tutorials and games. It offers a system of notes in the form of bars coming from the right, which the user must sing afterwards (see \ref{fig:yousician}). If he sings right, the bar turns green, if not, red.
+It offers to learn music theory through special exercises and lessons. The application listens to the user singing/playing, evaluates his/her performance with a frequency estimation, and proposes to play different songs with tutorials and games. 
 
 \begin{marginfigure}
     \centering
@@ -38,14 +38,20 @@ It offers to learn music theory through special exercises and lessons. The appli
     \label{fig:yousician}
 \end{marginfigure}
 
+It offers a system of notes in the form of bars coming from the right, which the user must sing afterwards (see \ref{fig:yousician}). If he sings right, the bar turns green, if not, red.
+
 Other applications are very similar such as Sing Sharp, LearnSing... Riyaz is another application that allows you to load existing music to generate the notes of the song, and then view a tutorial of these falling notes.
 The application then gives statistics on the performance: pitch accuracy, control and breathing capacity, vocal range. These applications often start by determining a range of frequencies that the person can perform with the voice before starting the singing training. This allows the tutorial to be tailored to the user’s vocal abilities.
 
 The general strategy of these applications is to use learning methods by practice, measurement, and correction. The classic operation is the realization of tutorials on the placement of the hands for an instrument, or the position of the notes to be sung for the note, then by a graphic feedback with the visualization of the fact that a note has been correctly sung or not.
 It is possible to learn how to play music by means of video games created for this purpose. Among the best known video games in this field are Guitar Hero and Rock Band. These two games allow you to learn to play the guitar in a fun way, always using a system of falling notes \cite{farrugia2015tunes}.
 
-\subsection{AR Music Practise}
-Frederic Bevilacqua \& al. proposed a project with miniature wireless sensor system that is used with accelerometers and gyroscopes to make gesture recognition in musical pedagocial scenarios (see \ref{fig:Wireless-sensor-interface}). Music teaching methods are often based on playful approaches and exercises focusing on body movements. The project aimed to experience and practice “smoothness” and “fluidity” of musical gestures by analizing the curves of the movements \cite{bevilacqua2007wireless}.
+\subsection{Music Practise}
+
+\paragraph{Music practise assisted by AR}
+
+
+Augmented reality, which involves the integration of virtual objects into the real world and enabling interactivity through sensor technology, presents a novel paradigm for practical applications. 
 
 \begin{marginfigure}
     \centering
@@ -54,12 +60,57 @@ Frederic Bevilacqua \& al. proposed a project with miniature wireless sensor sys
     \label{fig:Wireless-sensor-interface}
 \end{marginfigure}
 
+Frederic Bevilacqua \& al. proposed a project with miniature wireless sensor system that is used with accelerometers and gyroscopes to make gesture recognition in musical pedagocial scenarios (see \ref{fig:Wireless-sensor-interface}). Music teaching methods are often based on playful approaches and exercises focusing on body movements. The project aimed to experience and practice “smoothness” and “fluidity” of musical gestures by analizing the curves of the movements \cite{bevilacqua2007wireless}.
+
 \begin{marginfigure}
     \centering
     \includegraphics{AdrLfv_master_thesis/images/Practice-Session.png}
     \caption{Practice Session Work Map of an expert player (E-1)’s hour-long practice of Chopin’s “Mazurka in A minor, Op. 17 No. 4".}
     \label{fig:Practice-Session}
 \end{marginfigure}
+
+Yu Ting Hang et al. proposed a visual interface for learning singing on the Internet. The aim is to link pitch and musical notation through frequency estimation and waveform recognition. The visualization of the sung notes in relation to the desired ones allows to correct vocal accuracy errors and thus to practice singing by sight \cite{huang2016visualized} (see \ref{fig:Practice-Session}).
+
+In this context of music assisted with AR,Giovanni Santini \cite{santini_giovanni_2020_4813449} delve into sound processing and synthesis facilitated by sensors, thereby unveiling innovative avenues for musical experimentation. Their work sheds light on the promising prospects that augmented reality offers in the augmentation of musical instruments, emphasizing the pivotal role of interface design in shaping the musical experience.
+The article highlights several notable projects at the intersection of augmented reality (AR) and musical instrument augmentation pertinent to our research endeavor. 
+
+\begin{marginfigure}
+    \centering
+    \includegraphics{AdrLfv_master_thesis/images/chromachord.png}
+    \caption{Performer operating ChromaChord. Oculus Rift and Leap Motion.}
+    \label{fig:chromachord}
+\end{marginfigure}
+
+ChromaChord \cite{fillwalk2015chromachord} is another example standing out as an initiative enabling users to engage with virtual interfaces through motion capture devices like Leap Motion and Oculus Rift (see \ref{fig:chromachord}). In this setup, virtual objects produce sound upon interaction with the user's hands. The users can play music by interacting with virtual strings in a three-dimensional environment. ChromaChord has potential applications in music education, composition, live performance, art creation, and other areas of music and VR.
+
+\begin{marginfigure}
+    \centering
+    \includegraphics{AdrLfv_master_thesis/images/vrmin.png}
+    \caption{A student practicing the theremin using VRMin with capture of the view on the right.}
+    \label{fig:vrmin}
+\end{marginfigure}
+
+VRMin \cite{johnson2017vrmin} is a virtual reality application that employs principles akin to AR interfaces to enhance the Theremin, thereby elevating gaming precision through virtual spatial representations \ref{fig:vrmin}. The project combines sensor input from the physical theremin with visual cues and feedback in a virtual environment to provide an enhanced learning experience. 
+
+Pianolens is an augmented reality system offering a dynamic and interactive sheet music display interface. The program displays intricate musical elements through intuitive adaptations to the sheet music and imparts comprehensive guidance on mastering new compositions, including precise timing and fingering techniques. 
+
+\begin{marginfigure}
+    \centering
+    \includegraphics{AdrLfv_master_thesis/images/PianoLens-demonstration.jpg}
+    \caption{PianoLens demonstration.}
+    \label{fig:pianolens}
+\end{marginfigure}
+
+The approach involves the utilization of colored blocks in an interactive musical setting. These blocks possess widths commensurate with the corresponding piano keys and lengths proportional to the note duration (see \ref{fig:pianolens}). They are set in motion towards the performer and intersect with a specific reference line, denoting the "current" moment. At this juncture, the pianist is required to depress the relevant piano key and sustain the keypress until the block's conclusion. Additionally, these systems offer real-time feedback regarding the accuracy of note execution and rhythmic precision.
+
+The features accelerate the acquisition of novel musical pieces but also elevate learner engagement during the rehearsal phase, standing as an effective tool in the field of music education and performance.
+
+These illustrative examples underscore the diversity of projects that unite music, AR, and instrumental augmentation, paving the way for fresh opportunities in interaction and musical expression. Each of these projects tackles the design of AR interfaces in distinctive ways, all aimed at enhancing musical practice.
+
+\paragraph{Music practice assisted by frequency estimation}
+
+
+Kin Wah Edward Lin et al. presented a self-learning tool for singing on the smartphone. It allows the user to improve timing and intonation in a similar way to the previous project. It uses an intonation level classifier, a user performance rating mechanism, and a pitch training tool. 
 
 \begin{marginfigure}
     \centering
@@ -68,8 +119,9 @@ Frederic Bevilacqua \& al. proposed a project with miniature wireless sensor sys
     \label{fig:Intonation-Level-Classifier}
 \end{marginfigure}
 
-Yu Ting Hang et al. proposed a visual interface for learning singing on the Internet. The aim is to link pitch and musical notation through frequency estimation and waveform recognition. The visualization of the sung notes in relation to the desired ones allows to correct vocal accuracy errors and thus to practice singing by sight \cite{huang2016visualized} (see \ref{fig:Practice-Session}).
-Kin Wah Edward Lin et al. presented a self-learning tool for singing on the smartphone. It allows the user to improve timing and intonation in a similar way to the previous project. It uses an intonation level classifier, a user performance rating mechanism, and a pitch training tool. The mix of visual demonstration/feedback is natural to understand and useful (see \ref{fig:Intonation-Level-Classifier}). The user’s intonation score improved by an average of 94.81 \% after training.
+The mix of visual demonstration/feedback is natural to understand and useful (see \ref{fig:Intonation-Level-Classifier}). The user’s intonation score improved by an average of 94.81 \% after training.
+
+Philip McLeod \cite{mcleodtartini} presents a program called "Tartini" developed by Philip McLeod of the University of Otago in New Zealand.Tartini is a program intended to provide real-time music analysis tools to musicians. It uses a microphone and computer to provide precise visual feedback on elements such as intonation, intensity and shape of vibrato.The project aims to help musicians improve their musical technique, focusing mainly on pitch-related aspects of music.
 
 \section{Singing Learning Program in AR}
 
@@ -78,23 +130,24 @@ Kin Wah Edward Lin et al. presented a self-learning tool for singing on the smar
 The DVIC augmented mirror project aims to change the way we perform certain tasks and disciplines in everyday life.
 It adds a dimension of interactivity through our reflection, our position, our movements.
 
-The mirror’s 3D camera makes it possible to precisely estimate the position of the user in  space. The person can then interact remotely, without touching the screen. A Plexiglas screen positioned above the screen of the device reflects the reflection of the user. This allows you to display elements over your reflection and thus interact with elements in augmented reality. The mirror’s augmentation gives people more awareness of their position and their movements. It allows full-body interactions with digital information, rather than accessing it through the small screens of computers and mobile devices. The added value of the project is to exploit mainly kinesthesia (which is not possible with other more traditional devices) as well as other forms of interaction. This is in addition to the various ways of interacting with the human body (human inputs/outputs) that can be exploited by the electronic devices we use every day.
+The mirror’s 3D camera makes it possible to precisely estimate the position of the user in  space. The person can then interact remotely, without touching the screen. A Plexiglas screen positioned above the screen of the device reflects the reflection of the user. This allows the display of elements over a reflection and thus interact with elements in augmented reality. The mirror’s augmentation gives people more awareness of their position and their movements. It allows full-body interactions with digital information, rather than accessing it through the small screens of computers and mobile devices. The added value of the project is to exploit mainly kinesthesia (which is not possible with other more traditional devices) as well as other forms of interaction. This is in addition to the various ways of interacting with the human body (human inputs/outputs) that can be exploited by the electronic devices we use every day.
 
 Applications allow for example to have a return of its position with the display of a mediapipe skeleton above its reflection, to learn elements of sign language thanks to a training module, as well as to test other games. One of the primary uses of the mirror is to enable much better learning, using as many forms of intelligence as possible.
 
 \subsection{Overview}
 
 The objective of the project is to be an example of a module allowing people to learn the practice of a musical instrument on the mirror. As the device only requires the person in front of it without any material, a musical module would not have been suitable for most musical instruments.
-The project is based on frequency estimation for practice. A user plays an instrument or sings in front of the mirror (see \ref{fig:xiao_singing}). The mirror collects the frequency emitted and displays it on the screen.
 
-\\TODO Refaire cette photo
+%TODO Refaire cette photo
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=2.2\columnwidth]{AdrLfv_master_thesis/images/xiao_singing.png}
+    \includegraphics[width=1.2\columnwidth]{AdrLfv_master_thesis/images/xiao_singing.png}
     \caption{A use case of the musical training application on the augmented mirror.}
     \label{fig:xiao_singing}
 \end{figure}
+
+The project is based on frequency estimation for practice. A user plays an instrument or sings in front of the mirror (see \ref{fig:xiao_singing}). The mirror collects the frequency emitted and displays it on the screen.
 
 The user sees the frequency he or she is emitting represented by a dot on the screen with a particle effect. The lower the frequency, the further to the left the dot is, and vice versa. Some options can be launched from the sub-menu of the "music\_training" application already
 implemented on the mirror. The user can launch different music tutorials.
@@ -129,6 +182,7 @@ New various tools such as the sub-menu system are coded on GOSAI for the project
 
 \subsection{Overview}
 
+The Theremin is known for its continuous and challenging nature, making it difficult for beginners to learn without visual cues and feedback. Our project uses a combination of extracted features input and augmented reality technology to provide real-time computer-assisted tutoring for theremin learners.
 
 \subsection{General Architecture}
 
