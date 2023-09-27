@@ -168,15 +168,43 @@ Practising on a mirror is a plus as the user practices standing up unlike with a
 
 \subsection{General Architecture}
 
-The augmented mirror system runs on an operating system software called GOSAI. The music practice module takes the form of a JavaScript application coded directly on it. It uses the P5 library to display 2D elements and create the sketch. The backend will use two drivers coded on GOSAI for the occasion: a new driver allowing GOSAI to use the microphone of the device used and a driver allowing to make frequency estimation listening to the microphone. The latter takes a sound wave generated at the input and returns a musical frequency.
+The augmented mirror system runs on an operating system software called GOSAI. The music practice module takes the form of a JavaScript application coded directly on it. It uses the P5 library to display 2D elements and create the sketch. The backend uses two drivers coded on GOSAI: a new driver allowing the OS to use the microphone of the device and another driver allowing to make frequency estimation listening to the microphone. The latter takes a sound wave generated as an input and returns a musical frequency.
 
 The GOSAI microphone driver takes the audio stream from the device hardware. It passes the data to the "frequency\_estimation" module which detects the frequency emitted in the audio stream as well as the gain and other parameters. This module places this data in the Reddis data. The processing.py file retrieves the frequency estimation data from the data and sends it to the display.js with socket.io. The display initializes a new music workout and sends it the necessary data to run.
 
-New various tools such as the sub-menu system are coded on GOSAI for the project. The sub-menu allows GOSAI applications to propose options to be activated or deactivated manually by the user thanks to the estimation pose according to his desires.
+New various tools such as the sub-menu system are coded on GOSAI for the project. The sub-menu allows the applications to propose options to be activated or deactivated manually by the user thanks to the estimation pose according to his desires.
 
-\subsection{Posture Adjustment}
+\subsection{Posture Adjustment (Future Work)}
 
+The current project does not currently allow feedback on the user's position. He can consult the mirror's reflection if he stands correctly, but the program does not assist him at this level. It would be interesting to offer feedback on the user's position. This feedback will help him stand correctly and sing better. 
 
+The project should use the pose estimation model to extract features and then analyze them with a simple algorithm. The program could capture a reference pose of the user when they stand correctly and then compare it to their posture when they sing. The program will then display notifications containing notifications to help restore its correct position in real-time. The application could similarly communicate more general singing tips. 
+
+This system would provide feedback on the user's position and helps them sing better.
+
+\subsection{User Tests}
+
+The user tests in this project aim to assess a user’s facilitation of learning to sing with the
+mirror compared to other conventional tools.
+
+\paragraph{Evaluation of the user learning}
+
+We evaluate the difference between classical learning through "a capella" practice and learning with dynamic correction on the mirror. A randomly chosen user listens 10 seconds of the song "Edith Piaf - La foule" using the built-in music player from the music training application. Then he is asked to sing 10 seconds of the "singing" part again. At the same time as the user sings, the music training application on the mirror is used to calculate his score. The user has his back to the mirror and therefore cannot consult the notes tutorial on the screen. It has a rhythm played on a metronome alongside to allow him to start singing at the same time as the note tutorial starts.
+We then keep a measure of his final score.
+
+In a second part, a randomly chosen user tests the application on the mirror. He listens the same 10 seconds of the song using the built-in music player. He then follows the 10 seconds tutorial with the falling notes.
+We then keep a measure of his final score.
+
+We repeat these experiments with 5 users each. Both groups must have the same number of women and men, singing capacities being related to a person gender.
+
+\paragraph{Evaluation of the user experience}
+
+Here are the areas evaluated and the questions asked to the program testers. Their opinion is measured with a score out of 10 points.
+Evaluation of the motivation to learn with this type of interaction: -Average motivation to learn this particular way. -Average fun in interacting.
+Evaluation of the comprehensibility of the module: -Ease of understanding what needs to be done Evaluation of the estimation/display system: -Usability of the overall system, responsiveness, accuracy, smoothness of display. -Practicality of the design, position of the notes, graphics chosen for the different elements. The rendering estimated and displayed in the application should be smooth and not display any other spurious frequencies measured by the microphone. Problems of this kind can lead to the display of unsung frequencies as well as "skipping" of the cursor displaying the sung note. 
+
+Evaluation of the tutorial method with falling notes. -Relevance and effectiveness of the tutorial method with falling notes rather than another.
+Evaluation of the use of the reflection. -Does the use of the reflection in the glass seem to be a good potential for improving one’s vocal practice. Finally, the subject is asked about their remarks, suggestions and other constructive comments about the project.
 
 \section{Theremine Learning Program in AR}
 
@@ -184,39 +212,48 @@ New various tools such as the sub-menu system are coded on GOSAI for the project
 
 The Theremin is known for its continuous and challenging nature, making it difficult for beginners to learn without visual cues and feedback. Our project uses a combination of extracted features input and augmented reality technology to provide real-time computer-assisted tutoring for theremin learners.
 
+The Theremin learning aid application in augmented reality is one of the augmented mirror applications. It consists of emulating a theremin functioning with a tutorial of notes similar to the project to help learn singing. 
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=2.2\columnwidth]{AdrLfv_master_thesis/images/theremine_demo.png}
+    \caption{The interface of theremine training application.}
+    \label{fig:theremine_demo}
+\end{figure}
+
+The user can control a virtual theremin, their right hand controlling the pitch horizontally and their left hand the volume vertically \ref{fig:theremine_demo}. Raising the left hand raises the volume, and lowering it decreases it. Similarly, moving the right hand to the right increases the pitch, and moving it to the left decreases it. 
+To launch a note tutorial, people can choose different "scores" in the submenu. When choosing one of them, colored "lines" representing notes come down from the top of the screen.
+The user must then position their right hand in space so that the point representing the position of their hand corresponds to the position of the colored line. When the dot is aligned with the color line, the line turns green. The user must hold their hand in this position until the color line disappears. When the color line disappears, the user must reposition it on the following line. When the user successfully aligns the point on their right hand with a colored line, their score increases.
+
+The screen displays a piano keyboard and white lines indicating its continuity. It allows the user to place his right hand at the desired height. The user can also hide the keyboard and guide bars using a button in the submenu.
+
+
 \subsection{General Architecture}
 
+There are several ways to indicate whether the point is correctly positioned on the falling line.
+The point representing the right hand constantly emits particles. These move with acceleration and velocity to mimic an attraction to the ground. Their volume increases when correctly positioned.
 
-\subsection{Position Correction Visualisation}
+The theremine practise module functions similarly to the singing module. The structure is a JavaScript application using the P5 library. The application uses the GOSAI pose estimation driver, subscribing to events providing left and right-hand points provided by Mediapipe.
+The program calculated the hand movement values in space one meter from the mirror to match a user's real spatial hand movement values using an actual theremin. For example, moving an octave or 5 decibels with the app is the same as with a theremin. The program maps a real to virtual space regarding notes F2 to B5 (notes before and after this range are not playable). The mirror calculates and displays a projection of two points of the hands on the mirror following the position of the user's hands.
+The application calculates the exact positions of the two points from the highest point of the left hand and the rightmost point of the right hand.
 
+\subsection*{User Tests}
 
+The user tests in this project aim to assess a user’s facilitation of learning to play the theremin with the mirror compared to other conventional tools.
 
-\section{Correction in AR}
+\paragraph{Evaluation of the user learning}
 
+A user supplied with a theremin has as much time as he likes to play 10 seconds of the song "Edith Piaf - La foule" (from 0:20). The user can listen to the musical passage as many times as he likes. We measure the time he takes to practice. The time runs out when he manages to play all the notes in the musical passage with a maximum of three errors. 
+Another tester using the application is then put on the mirror and given a 10-second tutorial of the song (using the built-in music player). The user also has a theremin and can decide to practice for as long as he or she likes. Likewise, we measure the time he takes to play all the notes of the musical passage with a maximum of three errors.
+We repeat these experiments with 5 users each. Both groups must have the same number of women and men.
 
-% \section{Tests}
+\paragraph{Evaluation of the user experience}
 
-% \subsection{Quantitative Tests}
+Here are the areas evaluated and the questions asked to the program testers. Their opinion is measured with a score out of 10 points.
+Evaluation of the motivation to learn with this type of interaction: -Average motivation to learn this particular way. -Average fun in interacting.
+Evaluation of the comprehensibility of the module: -Ease of understanding what needs to be done Evaluation of the estimation/display system: -Usability of the overall system, responsiveness, accuracy, smoothness of display. -Practicality of the design, position of the notes, graphics chosen for the different elements. The rendering estimated and displayed in the application should be smooth and not display any other spurious frequencies measured by the microphone. Problems of this kind can lead to the display of unsung frequencies as well as "skipping" of the cursor displaying the sung note. 
 
-% The application must be responsive for perfect practice. The delay measured between the note being sung and its display on the mirror should be as small as possible. It can be measured by placing timers between the detection of a new note in the microphone driver in the backend, and then at the output when the note is displayed in the JS application in the frontend.
-% The measured pitch must also be accurate enough to allow a qualitative estimation of the sung note. The Hertz value measured by the frequency estimation must be accurate enough to make a difference between two notes.
-
-% \subsection{User Tests}
-
-% The user tests in this project aim to assess a user’s facilitation of learning to sing with the
-% mirror compared to other conventional tools.
-
-% \paragraph{Evaluation of the user learning}
-
-% The difference between classical learning through "a capella" practice and learning with dynamic correction on the mirror is evaluated. A randomly chosen user is given 10 seconds of the song "Edith Piaf - La foule" played on the piano [6] (from 0:20). Then he is asked to sing 10 seconds of the "singing" part again. We record the estimated notes during his singing thanks to a frequency estimation application. Then we make him use the
-% application on the mirror teaching him 10 seconds of the song "La vie en rose" from Edith Piaf (using the built-in music player). Using the same frequency estimation application on the smartphone, we record an estimate of the notes that the user sings. These data are then compared to study the best performance.
-
-% \paragraph{Evaluation of the user experience}
-% Here are the areas evaluated and the questions asked to the tested users. Their opinion is measured with a score out of 10 points.
-% Evaluation of the motivation to learn with this type of interaction: -Average motivation to learn this particular way. -Average fun in interacting.
-% Evaluation of the comprehensibility of the module: -Ease of understanding what needs to be done Evaluation of the estimation/display system: -Usability of the overall system, responsiveness, accuracy, smoothness of display. -Practicality of the design, position of the notes, graphics chosen for the different elements. The rendering estimated and displayed in the application should be smooth and not display any other spurious frequencies measured by the microphone. Problems of this kind can lead to the display of unsung frequencies as well as "skipping" of the cursor displaying the sung note. 
-
-% Evaluation of the tutorial method with falling notes. -Relevance and effectiveness of the tutorial method with falling notes rather than another.
-% Evaluation of the use of the reflection. -Does the use of the reflection in the glass seem to be a good potential for improving one’s vocal practice. Finally, the subject is asked about their remarks, suggestions and other constructive comments about the project.
+Evaluation of the tutorial method with falling notes. -Relevance and effectiveness of the tutorial method with falling notes rather than another.
+Evaluation of the use of the reflection. -Does the use of the reflection in the glass seem to be a good potential for improving one’s vocal practice. Finally, the subject is asked about their remarks, suggestions and other constructive comments about the project.
 
 \section{Conclusion}
