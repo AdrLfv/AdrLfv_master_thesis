@@ -50,8 +50,7 @@ It is possible to learn how to play music by means of video games created for th
 
 \paragraph{Music practise assisted by AR}
 
-
-Augmented reality, which involves the integration of virtual objects into the real world and enabling interactivity through sensor technology, presents a novel paradigm for practical applications. 
+Augmented reality, which involves the integration of virtual objects into the real world and enabling interactivity through sensor technology, presents a novel paradigm for practical applications.
 
 \begin{marginfigure}
     \centering
@@ -174,7 +173,7 @@ The GOSAI microphone driver takes the audio stream from the device hardware. It 
 
 New various tools such as the sub-menu system are coded on GOSAI for the project. The sub-menu allows the applications to propose options to be activated or deactivated manually by the user thanks to the estimation pose according to his desires.
 
-\subsection{Posture Adjustment (Future Work)}
+\subsection{Future Work}
 
 The current project does not currently allow feedback on the user's position. He can consult the mirror's reflection if he stands correctly, but the program does not assist him at this level. It would be interesting to offer feedback on the user's position. This feedback will help him stand correctly and sing better. 
 
@@ -206,13 +205,23 @@ Evaluation of the comprehensibility of the module: -Ease of understanding what n
 Evaluation of the tutorial method with falling notes. -Relevance and effectiveness of the tutorial method with falling notes rather than another.
 Evaluation of the use of the reflection. -Does the use of the reflection in the glass seem to be a good potential for improving one’s vocal practice. Finally, the subject is asked about their remarks, suggestions and other constructive comments about the project.
 
+\subsection{Results}
+
+\subsection{discussion}
+
 \section{Theremine Learning Program in AR}
+
+\subsection{Context}
+
+The theremin is a unique electronic musical instrument known for its ethereal sound and absence of physical touch. 
+
+The classical method of learning the theremin traditionally involves a structured and hands-on approach to understanding this instrument. Given its non-traditional interface, where pitch and volume are controlled by the proximity of the player's hands to two antennae, novice players often begin with fundamental exercises to develop precise hand control and sensitivity to the electromagnetic fields. These exercises typically include practicing scales, arpeggios, and simple melodies, with an emphasis on achieving accurate pitch and volume modulation. Additionally, students may study the intricacies of body movements and gestures required for nuanced expression in theremin performance. 
+
+Mastering the theremin poses a considerable challenge due to its lack of tangible keys or strings. In this context, the integration of augmented reality (AR) into theremin learning emerges as a promising avenue. This research explores the development and effectiveness of a tutorial program utilizing falling notes displayed on a mirror through AR technology. By leveraging the immersive capabilities of AR, this study aims to enhance the learning experience, providing a novel approach to bridge the gap between aspiring theremin players and the complexities of this unconventional instrument.
 
 \subsection{Overview}
 
-The Theremin is known for its continuous and challenging nature, making it difficult for beginners to learn without visual cues and feedback. Our project uses a combination of extracted features input and augmented reality technology to provide real-time computer-assisted tutoring for theremin learners.
-
-The Theremin learning aid application in augmented reality is one of the augmented mirror applications. It consists of emulating a theremin functioning with a tutorial of notes similar to the project to help learn singing. 
+The theremin learning application is one of the augmented mirror applications. It consists of emulating a theremin functioning with a tutorial of notes similar to the project to help learn singing. 
 
 \begin{figure}[h]
     \centering
@@ -221,21 +230,28 @@ The Theremin learning aid application in augmented reality is one of the augment
     \label{fig:theremine_demo}
 \end{figure}
 
-The user can control a virtual theremin, their right hand controlling the pitch horizontally and their left hand the volume vertically \ref{fig:theremine_demo}. Raising the left hand raises the volume, and lowering it decreases it. Similarly, moving the right hand to the right increases the pitch, and moving it to the left decreases it. 
+The user can control a virtual theremin on the mirror, their right hand controlling the pitch horizontally and their left hand the volume vertically \ref{fig:theremine_demo}. Raising the left hand raises the volume, and lowering it decreases it. Similarly, moving the right hand to the right increases the pitch, and moving it to the left decreases it. 
 To launch a note tutorial, people can choose different "scores" in the submenu. When choosing one of them, colored "lines" representing notes come down from the top of the screen.
 The user must then position their right hand in space so that the point representing the position of their hand corresponds to the position of the colored line. When the dot is aligned with the color line, the line turns green. The user must hold their hand in this position until the color line disappears. When the color line disappears, the user must reposition it on the following line. When the user successfully aligns the point on their right hand with a colored line, their score increases.
 
-The screen displays a piano keyboard and white lines indicating its continuity. It allows the user to place his right hand at the desired height. The user can also hide the keyboard and guide bars using a button in the submenu.
+The point representing the right hand constantly emits particles. These move with acceleration and velocity to mimic an attraction to the ground. Their volume increases and the lines color change when the right hand point is correctly positioned on the falling line. The line turns red when green or red if the user's hand is in the correct or incorrect position.
 
+The screen displays a piano keyboard and white lines indicating its continuity. It allows the user to place his right hand at the desired height. The user can also hide the keyboard and guide bars using a button in the submenu.
 
 \subsection{General Architecture}
 
-There are several ways to indicate whether the point is correctly positioned on the falling line.
-The point representing the right hand constantly emits particles. These move with acceleration and velocity to mimic an attraction to the ground. Their volume increases when correctly positioned.
-
 The theremine practise module functions similarly to the singing module. The structure is a JavaScript application using the P5 library. The application uses the GOSAI pose estimation driver, subscribing to events providing left and right-hand points provided by Mediapipe.
-The program calculated the hand movement values in space one meter from the mirror to match a user's real spatial hand movement values using an actual theremin. For example, moving an octave or 5 decibels with the app is the same as with a theremin. The program maps a real to virtual space regarding notes F2 to B5 (notes before and after this range are not playable). The mirror calculates and displays a projection of two points of the hands on the mirror following the position of the user's hands.
+
+The program calculated the hand movement values in space one meter from the mirror to match a user's real spatial hand movement values using an actual theremin. For example, moving an note or volume gap with the app means making the same movements as with a theremin. The program maps a real to virtual space regarding notes F2 to B5 (notes before and after this range are not playable). The mirror calculates and displays a projection of two points of the hands on the mirror following the position of the user's hands.
+
 The application calculates the exact positions of the two points from the highest point of the left hand and the rightmost point of the right hand.
+
+\subsection{Future work}
+
+An interesting capability of the Theremin practice aid app is its ability to turn off its sound to let users practice their theremin in front of the mirror. The application detects the position of the user's hands at the same time as the user plays their instrument. This feature allows him to visualize the note intervals much better, so he can move his hands and position himself more precisely. 
+
+A typical theremin (such as the Moog Music Etherwave Standard used in this project) has a dial for adjusting the accuracy of the detected pitch. This setting set to a minimum allows one to play precise notes, but the difference in physical distance between two notes remains small. Therefore, the keyboard displayed on the screen must be perfectly adapted to match the distance between the notes. Several parameters must be taken into account, such as the mirror/theremin distance, the pitch detection accuracy of the theremin, and the hand detection ability of the mirror camera being slightly tilted downwards. 
+A missing feature of the project is the possibility of configuring the size of the displayed keyboard to perfectly adapt to the actual dimensions of the range of notes playable by the theremin according to its placement.
 
 \subsection*{User Tests}
 
@@ -243,17 +259,21 @@ The user tests in this project aim to assess a user’s facilitation of learning
 
 \paragraph{Evaluation of the user learning}
 
-A user supplied with a theremin has as much time as he likes to play 10 seconds of the song "Edith Piaf - La foule" (from 0:20). The user can listen to the musical passage as many times as he likes. We measure the time he takes to practice. The time runs out when he manages to play all the notes in the musical passage with a maximum of three errors. 
-Another tester using the application is then put on the mirror and given a 10-second tutorial of the song (using the built-in music player). The user also has a theremin and can decide to practice for as long as he or she likes. Likewise, we measure the time he takes to play all the notes of the musical passage with a maximum of three errors.
+A user supplied with a theremin has as much time as he likes to play the first 10 seconds of the song "Edith Piaf - La foule". The user can listen to the musical passage as many times as he likes. We then measure the time he takes to practice with the theremine only. The time runs out when he manages to play all the notes in the musical passage. 
+
+Another tester using the application is given a 10-second tutorial of the song. The user also has a theremin and can decide to practice for as long as he likes. Likewise, we measure the time he takes to play correctly all the notes of the musical passage. To evaluate his score, the tester is playing in front of the music training application without viewing the screen.
+
 We repeat these experiments with 5 users each. Both groups must have the same number of women and men.
 
 \paragraph{Evaluation of the user experience}
 
-Here are the areas evaluated and the questions asked to the program testers. Their opinion is measured with a score out of 10 points.
-Evaluation of the motivation to learn with this type of interaction: -Average motivation to learn this particular way. -Average fun in interacting.
-Evaluation of the comprehensibility of the module: -Ease of understanding what needs to be done Evaluation of the estimation/display system: -Usability of the overall system, responsiveness, accuracy, smoothness of display. -Practicality of the design, position of the notes, graphics chosen for the different elements. The rendering estimated and displayed in the application should be smooth and not display any other spurious frequencies measured by the microphone. Problems of this kind can lead to the display of unsung frequencies as well as "skipping" of the cursor displaying the sung note. 
+This evaluation is the same as the evaluation of the user experience for the singing learning application.
 
-Evaluation of the tutorial method with falling notes. -Relevance and effectiveness of the tutorial method with falling notes rather than another.
-Evaluation of the use of the reflection. -Does the use of the reflection in the glass seem to be a good potential for improving one’s vocal practice. Finally, the subject is asked about their remarks, suggestions and other constructive comments about the project.
+\subsection{Results}
+
+\subsection{discussion}
 
 \section{Conclusion}
+
+This innovative method not only caters to visual learners by providing a dynamic and interactive representation of musical notes, but it also fosters a more intuitive understanding of pitch and timing. The falling notes simulate the real-time progression of a musical piece, allowing learners to synchronize their vocal and musical performance with the visual cues. 
+This visual feedback not only enhances the comprehension of musical nuances but also accelerates the learning curve by reinforcing the connection between auditory perception and vocal execution. Moreover, the program's adaptability to different musical genres and the ability to customize difficulty levels make it an inclusive and personalized tool for learners of various skill levels. As technology converges with the art of singing and practising music in general, the incorporation of falling notes tutorials emerges as a promising avenue for more engaging, efficient, and tailored vocal education.
