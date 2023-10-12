@@ -271,7 +271,7 @@ A tool such as Unity or Maya can make its animation from MediaPipe coordinates. 
     \label{fig:blazepose}
 \end{marginfigure}
 
-Another way is to adapt the coordinates in real-time to animate a character on Blender using Daz Studio as Nguyen et Al. \cite{nguyen2021automatic} (see \ref{fig:nguyen2021}). Most interactive avatars with pose estimation use MediaPipe and TensorFlow.js (namely FaceMesh, BlazePose, and HandPose) \cite{blazepose} (see \ref{fig:blazepose}).
+Another way is to adapt the coordinates in real-time to animate a character on Blender using Daz Studio as Nguyen et Al. \cite{nguyen2021automatic} (see figure \ref{fig:nguyen2021}). Most interactive avatars with pose estimation use MediaPipe and TensorFlow.js (namely FaceMesh, BlazePose, and HandPose) \cite{blazepose} (see figure \ref{fig:blazepose}).
 
 \begin{marginfigure}
     \centering
@@ -282,7 +282,7 @@ Another way is to adapt the coordinates in real-time to animate a character on B
 
 Posenet\_demo \cite{posenet_demo} is a project allowing moving a 3D model with Three.js and Tensorflow's Pose Estimation model (PoseNet). The model uses Tensorflow and PoseNet to detect the critical points of the joints in each frame and then send those points over to the Model file. 
 
-The project uses an Adobe Mixamo \cite{mixamo} 3D model in FBX format and Blender to import the FBX format and export a GLB format \cite{posenet}. The avatar follows the head and shoulder's inclination (see \ref{fig:posenet_demo}).
+The project uses an Adobe Mixamo \cite{mixamo} 3D model in FBX format and Blender to import the FBX format and export a GLB format \cite{posenet}. The avatar follows the head and shoulder's inclination (see figure \ref{fig:posenet_demo}).
 
 A last interesting example is that of Kalidokit \cite{kalidokit}. Kalidokit is a tool that uses Mediapipe\/Tensorflow.js models for tracking face, eyes, pose, and hand movements.
 It is compatible with various models such as Facemesh, Blazepose, Handpose, and Holistic. The tool calculates simple Euler rotations and blendshape face values based on the predicted 3D landmarks.
@@ -302,7 +302,7 @@ Three.js is a JavaScript library for creating 3D scenes in a web browser. It can
 \section{Gameplay}
 
 The sign language game is an augmented reality game, a visual novel on the augmented mirror. We follow a character during a short adventure where the user can make choices by making American Sign Language signs in front of the mirror. He can answer the characters, interact with objects, choose actions, and choose a path. 
-Sometimes the player sees the tutorial of one, two, or three signs simultaneously. The user must then make the sign of the choice he takes. For example, he can turn right or left by making the appropriate sign (see \ref{fig:sleg_left_right}). 
+Sometimes the player sees the tutorial of one, two, or three signs simultaneously. The user must then make the sign of the choice he takes. For example, he can turn right or left by making the appropriate sign (see figure \ref{fig:sleg_left_right}). 
 
 \begin{figure}[h]
     \centering
@@ -320,7 +320,7 @@ The camera captures the signs, and AI in the back end guesses them. Dialogue lin
 
 \subsection{The Sign Language Video Game in GOSAI}
 
-The application is connected to the get\_sign and SLR drivers of GOSAI to estimate the sign of a person in front of the mirror. The socket.io then transmits the data to the engine.js, which runs the game, considering the user's movements (see \ref{fig:sleg_architecture}).
+The application is connected to the get\_sign and SLR drivers of GOSAI to estimate the sign of a person in front of the mirror. The socket.io then transmits the data to the engine.js, which runs the game, considering the user's movements (see figure \ref{fig:sleg_architecture}).
 
 \begin{figure}[h]
     \centering
@@ -346,7 +346,7 @@ The engine loads video animations automatically at launch and can then play them
 
 In a visual novel, the player does not interact directly with the keyboard but must click on menu buttons to make choices. As the user interacts with the mirror only by the estimated pose, the menu system had to be adapted to enable debugging by clicking and making choices with movements.
 
-Each time a menu appears, it takes the form of two or three words aligned and distributed horizontally on the screen. An avatar of Aria (the principal character) appears behind each word to demonstrate the sign related to this word (see \ref{fig:sleg_left_right}). The location of the words and the 3D tutorials are spread over the screen's width according to the number of buttons in the displayed menu. 
+Each time a menu appears, it takes the form of two or three words aligned and distributed horizontally on the screen. An avatar of Aria (the principal character) appears behind each word to demonstrate the sign related to this word (see figure \ref{fig:sleg_left_right}). The location of the words and the 3D tutorials are spread over the screen's width according to the number of buttons in the displayed menu. 
 
 Aria's avatar animation plays in a loop until the player makes a sign detected by the SLR module and included in the menu. 
 
@@ -374,7 +374,7 @@ All the loading of sprites, animations, playback, and display are now managed au
 
 A module was implemented on the mirror to create accurate custom 3D animations for the animated sign language tutorials. The program allows one to control an avatar in 3D through pose estimation and then record the movements produced or a video of the animation.
 
-An application to control an avatar remotely has been developed on the augmented mirror thanks to the estimation pose. The avatar can track and copy the position of the user's limbs accurately (see \ref{fig:aria_v1}). The created application is now a free demonstration on the mirror. It also allowed the creation of all the 3D character animations on the sign language learning game.
+An application to control an avatar remotely has been developed on the augmented mirror thanks to the estimation pose. The avatar can track and copy the position of the user's limbs accurately (see figure \ref{fig:aria_v1}). The created application is now a free demonstration on the mirror. It also allowed the creation of all the 3D character animations on the sign language learning game.
 
 \begin{figure}[h]
     \centering
@@ -394,7 +394,7 @@ The Educative Sign Language Avatar (ESLA) is a 3-dimensional avatar controllable
     \label{fig:esla_architecture}
 \end{figure}
 
-The program uses the driver of the mirror camera, processed by an estimation module (see \ref{fig:esla_architecture}). The Redis database then transmits the data to other modules of the back end in Python. The front end, written in Javascript, manages the display, particularly the calculations related to three.js. Its movements copy live those of the user in front of the mirror \cite{esla}. This version was the first version of the interactive avatar on the augmented mirror.
+The program uses the driver of the mirror camera, processed by an estimation module (see figure \ref{fig:esla_architecture}). The Redis database then transmits the data to other modules of the back end in Python. The front end, written in Javascript, manages the display, particularly the calculations related to three.js. Its movements copy live those of the user in front of the mirror \cite{esla}. This version was the first version of the interactive avatar on the augmented mirror.
 
 
 \begin{figure}[h]
@@ -405,7 +405,7 @@ The program uses the driver of the mirror camera, processed by an estimation mod
 \end{figure}
 
 
-An animated 3D character appears on top of the scenery at the launch of the application (see \ref{fig:esla}). Its animation is made possible by playing features using MediaPipe and OpenCV. The program can retrieve the coordinates of a user's position in real-time. These coordinates are processed, and the avatar copies the movements thanks to Animation Retargeting, a video game animation technique to map movements on 3D objects.
+An animated 3D character appears on top of the scenery at the launch of the application (see figure \ref{fig:esla}). Its animation is made possible by playing features using MediaPipe and OpenCV. The program can retrieve the coordinates of a user's position in real-time. These coordinates are processed, and the avatar copies the movements thanks to Animation Retargeting, a video game animation technique to map movements on 3D objects.
 
 The program retrieves the links between each point of the pose provided by MediaPipe, and Three.js calculates and displays the 3D part. 
 
@@ -413,7 +413,7 @@ Three.js entirely manages the loading of the character, its display, its animati
 
 Three.js uses a pivot system with matrixes and quaternions. However, some functions to transfer rotations from one base to
 another still need to be included (even though they are very much in demand by the community). Therefore, the entire limb rotation system was implemented by hand.
-MediaPipe first retrieves the (real) coordinates of the user. Transformations convert these coordinates into the world base (x-axis to the right, y-axis to the top, z-axis to the camera) of the three.js scene. The program retrieves the coordinates of the top of the spine, the shoulder, and the elbow (see \ref{fig:esla_bones}). It creates two vectors spine/shoulder and shoulder/elbow. The coordinates of these two vectors are then read from the base of the parent of the bone to be rotated (here, the left shoulder). An algorithm then calculates a quaternion containing the rotation data from the first vector to the second.
+MediaPipe first retrieves the (real) coordinates of the user. Transformations convert these coordinates into the world base (x-axis to the right, y-axis to the top, z-axis to the camera) of the three.js scene. The program retrieves the coordinates of the top of the spine, the shoulder, and the elbow (see figure \ref{fig:esla_bones}). It creates two vectors spine/shoulder and shoulder/elbow. The coordinates of these two vectors are then read from the base of the parent of the bone to be rotated (here, the left shoulder). An algorithm then calculates a quaternion containing the rotation data from the first vector to the second.
 
 \begin{figure}[h]
     \centering
@@ -422,7 +422,7 @@ MediaPipe first retrieves the (real) coordinates of the user. Transformations co
     \label{fig:esla_bones}
 \end{figure}
 
-Three.js then applies this quaternion to the limb, which rotates the same as the user's arm with his shoulder in its local base (see \ref{fig:quaternion_rotations}). This rotation allows precise rotation transfers from one base to another, thus animating all parts of the avatar.
+Three.js then applies this quaternion to the limb, which rotates the same as the user's arm with his shoulder in its local base (see figure \ref{fig:quaternion_rotations}). This rotation allows precise rotation transfers from one base to another, thus animating all parts of the avatar.
 
 \begin{marginfigure}
     \centering
@@ -441,7 +441,7 @@ The models used in the game come from the site Vroid Hub cite\cite{vroid}. They 
 
 The model is easily changeable locally in the application, allowing the user to manipulate different characters. This application makes creating sign language tutorial animations for the learning game possible.
 
-The implementation of Kalidokit on the mirror has been reworked to suit the operation of GOSAI. The joints are set to greater freedom to allow more flexible animations (see \ref{fig:aria_v1}).
+The implementation of Kalidokit on the mirror has been reworked to suit the operation of GOSAI. The joints are set to greater freedom to allow more flexible animations (see figure \ref{fig:aria_v1}).
 Such an application allows recording qualitative signs and poses for the characters and tutorials of the game.
 
 The models used for the characters of Aria, the grandmother, and the salesman were recovered on Vroid Hub and are free to use. The VRM models are mainly adapted for Vtubers, explaining why the characters look childish and look like Japanese anime characters.
@@ -453,7 +453,7 @@ The models used for the characters of Aria, the grandmother, and the salesman we
     \label{fig:iloveyou}
 \end{figure}
 
-All the avatars' sprites and 3D video animations were recorded from the "Aria" application on the mirror. These animations include 22 video animations and 14 sprites for the character of Aria in the sign language game (see \ref{fig:iloveyou}).
+All the avatars' sprites and 3D video animations were recorded from the "Aria" application on the mirror. These animations include 22 video animations and 14 sprites for the character of Aria in the sign language game (see figure \ref{fig:iloveyou}).
 
 \section{Sign Language AI}
 
@@ -482,7 +482,7 @@ The project contains six local modules and a main file that initializes the para
     \label{fig:SLR_structure}
 \end{figure}
 
-The developed AI is a full-fledged project that does not require a goal. It takes five optional steps (see \ref{fig:SLR_structure}). These steps are: the creation of a dataset, the training, test, and validation (with data augmentation or not), the conversion of the created files, the visualization of the recorded signs, and the visualization of the training and test results.
+The developed AI is a full-fledged project that does not require a goal. It takes five optional steps (see figure \ref{fig:SLR_structure}). These steps are: the creation of a dataset, the training, test, and validation (with data augmentation or not), the conversion of the created files, the visualization of the recorded signs, and the visualization of the training and test results.
 
 \paragraph{Dataset}
 
@@ -493,7 +493,7 @@ A user creates the database on-live during a dataset recording phase. The data i
 
 
 
-Each recorded sign sequence lasts one second, or 30 frames by default. The frames include 58 point coordinates, (or 116 data per frame) after removing 431 points of the face and just Keeping 4. The four kept points are one for the chin, forehead, right, and left cheek. It enables signs using the head to be better detected without recording a large number of points that would not be useful for detection. There are 1600 sequences in all, for a total of 16 different signs, i.e. 100 sequences for each sign (see \ref{fig:slr_dataset}).
+Each recorded sign sequence lasts one second, or 30 frames by default. The frames include 58 point coordinates, (or 116 data per frame) after removing 431 points of the face and just Keeping 4. The four kept points are one for the chin, forehead, right, and left cheek. It enables signs using the head to be better detected without recording a large number of points that would not be useful for detection. There are 1600 sequences in all, for a total of 16 different signs, i.e. 100 sequences for each sign (see figure \ref{fig:slr_dataset}).
 
 %TODO dimension à modifier
 \begin{figure}[h]
@@ -528,7 +528,7 @@ The preprocessing phase optionally calls the data augmentation just after retrie
 
 \paragraph{Model}
 
-The model comprises a bidirectional LTSM, a linear, a dropout, a batchnorm1d, a relu, and another Linear. The model reaches an accuracy of 87\% on the test set and 96\% on the training (see \ref{fig:slr_results}).
+The model comprises a bidirectional LTSM, a linear, a dropout, a batchnorm1d, a relu, and another Linear. The model reaches an accuracy of 87\% on the test set and 96\% on the training (see figure \ref{fig:slr_results}).
 
 \begin{figure}[h]
     \centering
@@ -617,7 +617,7 @@ Addressing the issue of AI detection speed can be achieved by increasing the det
 
 In conclusion, users were asked to provide their opinions on various aspects of the system using a rating scale of 10. The average motivation to learn sign language through the augmented mirror and video game approach was 7.91/10. Users rated the level of fun in interacting as 8.25/10, ease of understanding the tasks at 7.58/10, practicality of the augmented mirror as a learning method at 8.25/10, and the overall effectiveness of the learning method at 6.41/10. Additionally, users rated the AI's ability to correctly guess signs at 6.11/10.
 
-Overall feedback indicated that the avatars' excessive finger movements compromised precision. The use of a 2D display on the mirror screen, instead of 3D (see \ref{fig:slr_game_test}), posed challenges in understanding the signs. Some users were deterred by the anime-like appearance of the characters, which dampened their enthusiasm for practicing.
+Overall feedback indicated that the avatars' excessive finger movements compromised precision. The use of a 2D display on the mirror screen, instead of 3D (see figure \ref{fig:slr_game_test}), posed challenges in understanding the signs. Some users were deterred by the anime-like appearance of the characters, which dampened their enthusiasm for practicing.
 
 A few users forgot the "ok" sign to skip dialogues during the game, despite it being shown twice at the beginning. This forgetfulness hindered their progress and required external intervention for sign reminders. One user faced learning difficulties due to perceived ambiguity in the avatar's movements. However, interacting with a real person facilitated more effective learning. Users strongly criticized the AI's lack of accuracy, rating it at 6.11/10.
 
