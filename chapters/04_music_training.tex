@@ -141,10 +141,10 @@ The objective of the project is to be an example of a module allowing people to 
     \centering
     \includegraphics[width=2.2\columnwidth]{AdrLfv_master_thesis/images/cyprien_user_test.png}
     \caption{A user testing the musing training application.}
-    \label{fig:cyprien_user_test.png}
+    \label{fig:cyprien_user_test}
 \end{figure}
 
-The project is based on frequency estimation for practice. A user plays an instrument or sings in front of the mirror (see figure \ref{fig:xiao_singing}). The mirror collects the frequency emitted and displays it on the screen.
+The project is based on frequency estimation for practice. A user plays an instrument or sings in front of the mirror (see figure \ref{fig:cyprien_user_test}). The mirror collects the frequency emitted and displays it on the screen.
 
 The user sees the frequency he or she is emitting represented by a dot on the screen with a particle effect. The lower the frequency, the further to the left the dot is, and vice versa. Some options can be launched from the sub-menu of the "music\_training" application already
 implemented on the mirror. The user can launch different music tutorials.
@@ -180,7 +180,7 @@ mirror compared to other conventional tools.
 
 We evaluate the difference between classical learning through "a capella" practice and learning with dynamic correction on the mirror. 
 
-A randomly chosen user listens to the first few seconds of "La vie en rose - Carolina Eyck - theremin"  \cite{carolina_eyck_theremine} one time. He must then sing it in playback while listening to it in his headphones .
+A randomly chosen user listens to the first few seconds of "La vie en rose - Carolina Eyck - theremin"  \cite{carolina_eyck_theremine} one time. This cover played on the theremin was chosen in particular because its sound is very precise and the accompaniment is very discreet, which promotes the user's understanding. The user must then sing it in playback while listening to it in his headphones .
 We record his singing performance to evaluate it later.
 
 In a second part, he tests the application on the mirror. He then follows the 10 seconds tutorial with the falling notes. We record his singing performance to evaluate it later.
@@ -209,7 +209,7 @@ Users of the program gave an average rating of 6/10 for fun with the device, a r
 
 Two of the four people interviewed had a beginner level in singing, and two had a more advanced level. During the first tests without the program, the novice users interviewed could not repeat the piece they listened to orally. They could not redo the correct frequency intervals, and a third person could not sing another specific one after listening. His results were not included in this analysis, but it is essential to consider this example. 
 
-After tests by two other users with a more advanced level of music on singing the same music in playback, we observed a total number of errors of 6 imprecise semitones on the 20 notes sung. We also observe a somewhat inconsistent rhythm with successive accelerations and slowdowns. From the middle of the piece (containing the most complicated patterns to reproduce), the number of errors increases considerably.
+After tests by two other users with a more advanced level of music, on singing the same music in playback, we observed a total number of errors of 6 imprecise semitones on the 20 notes sung on average. We also observe a somewhat inconsistent rhythm with successive accelerations and slowdowns. From the middle of the piece (containing the most complicated patterns to reproduce), the number of errors increases considerably.
 
 On the other hand, the two beginners could use the program on the mirror, which allowed them to sing approximately but with more success than without support. Their results were around twenty missed semitones (an approximate figure due to significant gaps and missing notes). Users with an advanced level of singing with the program achieved a score of 5 inaccurate semitones on the 20 notes of the song. We observe a much better consistency of rhythm with little shift for each note. 
 Small rhythm shifts are generally corrected instantly. We observed most errors during both tests during the large grade intervals (E3 to C3, then C3 to B3).
@@ -222,7 +222,7 @@ The project should use the pose estimation model to extract features and then an
 
 This system would provide feedback on the user's position and helps them sing better.
 
-\section{Theremine Learning Program in AR}
+\section{Theremin Learning Program in AR}
 
 \subsection{Context}
 
@@ -239,7 +239,7 @@ The theremin learning application is one of the augmented mirror applications. I
 \begin{figure}[h]
     \centering
     \includegraphics[width=2.2\columnwidth]{AdrLfv_master_thesis/images/polpi_theremine.png}
-    \caption{A user testing the theremine learning application.}
+    \caption{A user testing the theremin learning application.}
     \label{fig:polpi_theremine}
 \end{figure}
 
@@ -250,7 +250,7 @@ The user must then position their right hand in space so that the point represen
 \begin{figure}[h]
     \centering
     \includegraphics[width=2.2\columnwidth]{AdrLfv_master_thesis/images/theremine_demo.png}
-    \caption{The interface of theremine training application.}
+    \caption{The interface of theremin training application.}
     \label{fig:theremine_demo}
 \end{figure}
 
@@ -260,7 +260,7 @@ The screen displays a piano keyboard and white lines indicating its continuity. 
 
 \subsection{General Architecture}
 
-The theremine practise module functions similarly to the singing module. The structure is a JavaScript application using the P5 library. The application uses the GOSAI pose estimation driver, subscribing to events providing left and right-hand points provided by Mediapipe.
+The theremin practise module functions similarly to the singing module. The structure is a JavaScript application using the P5 library. The application uses the GOSAI pose estimation driver, subscribing to events providing left and right-hand points provided by Mediapipe.
 
 The program calculated the hand movement values in space one meter from the mirror to match a user's real spatial hand movement values using an actual theremin. For example, moving an note or volume gap with the app means making the same movements as with a theremin. The program maps a real to virtual space regarding notes F2 to B5 (notes before and after this range are not playable). The mirror calculates and displays a projection of two points of the hands on the mirror following the position of the user's hands.
 
@@ -275,7 +275,7 @@ The user tests in this project aim to assess a user’s facilitation of learning
 \begin{marginfigure}
     \centering
     \includegraphics{AdrLfv_master_thesis/images/carolina_eyck_lver.png}
-    \caption{Carolina Eyck playing "La vie en rose" with a theremine.}
+    \caption{Carolina Eyck playing "La vie en rose" with a theremin.}
     \label{fig:carolina_eyck_thermeine}
 \end{marginfigure}
 

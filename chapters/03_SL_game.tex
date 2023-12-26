@@ -14,7 +14,7 @@ The present work introduces a short video game designed for teaching sign langua
 
 The DVIC Augmented Mirror is a project developed with the goal of enabling the display of graphical elements overlaid onto the real environment as observed through the mirror glass. This device empowers users to monitor their own movements and compare them with a model, while also employing computer vision techniques to analyze the position of their limbs and verify the accuracy of performed gestures.
 
-Consequently, the architecture of the learning game incorporates an artificial intelligence (AI) system for sign language recognition (SLR), utilizing the Mediapipe framework to extract the user's coordinates and analyzing them through a Pytorch-based model.
+Consequently, the architecture of the learning game incorporates an artificial intelligence (AI) system for Sign Language Recognition (SLR), utilizing the Mediapipe framework to extract the user's coordinates and analyzing them through a Pytorch-based model.
 
 \subsection{GOSAI for Augmented Mirroir}
 
@@ -78,7 +78,7 @@ This interface is ideal for the development of applications requiring movement. 
 
 A wide range of domains uses SLR for different purposes. It can be found in robotics, human services, games, virtual reality applications, direct or remote communication, or HCI projects \cite{adeyanju2021machine} (see figure \ref{fig:Polhemus}).
 
-Many early SLR systems used data gloves and accelerometers to acquire specifics of the hands. The devices measure x,y,z, orientation, and velocity directly using a sensor such as the Polhemus tracker \cite{413199} \cite{5738842} or DataGlove \cite{Kadous1970} \cite{Metaxas1970} including accelerometers, gyroscopes, and electromyography sensors  (see figure \ref{fig:data_gloves}). Those techniques did not allow entire natural movement and constricted the mobility of the signer, altering the signs performed and being restrictive because of the need for supplementary material.
+Many early SLR systems used data gloves and accelerometers to acquire specifics of the hands. The devices measure the x/y/z positions, the orientation, and the velocity directly using a sensor such as the Polhemus tracker \cite{413199} \cite{5738842} or DataGlove \cite{Kadous1970} \cite{Metaxas1970} including accelerometers, gyroscopes, and electromyography sensors  (see figure \ref{fig:data_gloves}). Those techniques did not allow entire natural movement and constricted the mobility of the signer, altering the signs performed and being restrictive because of the need for supplementary material.
 
 \begin{marginfigure}
     \centering
@@ -103,9 +103,9 @@ The identification of signs must take into account many different parameters. Fa
     \label{fig:custom_gloves}
 \end{marginfigure}
 
-The speed of the sign realization can change the speed induced by the performed sign. A sign can also depend on its position on the body. All limbs must therefore be taken into account during the analysis. These challenges include sensor placement, data collection and preprocessing, and model training and evaluation \cite{9178440} (see figure \ref{fig:}).
+The speed of the sign realization can change the speed induced by the performed sign. A sign can also depend on its position on the body. All limbs must therefore be taken into account during the analysis. These challenges include sensor placement, data collection and preprocessing, and model training and evaluation \cite{9178440} (see figure \ref{fig:custom_gloves}).
 
-Sign language recognition systems based on computer vision and wearable sensors have been proposed by several researchers \cite{ionescu2005dynamic} \cite{yu2010vision} \cite{li2015feature} \cite{sonkusare2015review} \cite{bobic2016hand} \cite{islam2017real} \cite{islam2017real} \cite{saha2018machine}, \cite{rastgoo2021hand} \cite{xu2021application}. 
+Sign language recognition systems based on computer vision and wearable sensors have been proposed by several researchers \cite{ionescu2005dynamic} \cite{yu2010vision} \cite{li2015feature} \cite{sonkusare2015review} \cite{bobic2016hand} \cite{islam2017real} \cite{islam2017real} \cite{saha2018machine}, \cite{rastgoo2021hand} \cite{xu2021application} \cite{DextrEMS}. 
 
 \begin{marginfigure}
     \centering
@@ -114,9 +114,9 @@ Sign language recognition systems based on computer vision and wearable sensors 
     \label{fig:nimisha}
 \end{marginfigure}
 
-Most recent SLR techniques use various image or vision-based SLR systems comprising feature extraction and classification \cite{nimisha2020brief} (see figure \ref{fig:nimisha}). 
+Most recent SLR techniques use various image or vision-based SLR systems comprising feature extraction and classification following a classical architecture \cite{nimisha2020brief} (see figure \ref{fig:nimisha}). 
 
-Many projects using computer vision assisted SLR exist \cite{admasu2010ethiopian} \cite{deriche2019intelligent} \cite{ahram2021advances} \cite{song2021intelligent} \cite{lee2021american} \cite{lee2021comparative} \cite{gao2021rnn}. 
+Many other projects using only computer vision assisted SLR also exist  \cite{nimisha2020brief} \cite{admasu2010ethiopian} \cite{deriche2019intelligent} \cite{ahram2021advances} \cite{song2021intelligent} \cite{lee2021american} \cite{lee2021comparative} \cite{gao2021rnn}. 
 
 Many of these projects use a Convolutional Neural Network (CNN) model for predicting the American Sign Language (ASL) alphabet \cite{bin2019study}. Previously, classifiers like support vector machine \cite{savur2015real}, random forest, multilayer perceptron, transfer learning, and fine-tuning \cite{saleh2020arabic} were introduced for sign language recognition on simple images. Recently, shallow CNN and Capsule Networks have obtained better results \cite{hasan2020classification}. 
 
@@ -156,7 +156,7 @@ They enhance the function of the attentional system, stimulate visual attention,
 
 They are an efficient didactic way to promote interest and motivation by linking playfulness and pedagogical functions \cite{tejeiro2009efectos}.
 
-The augmentation of interfaces thanks to technology, causes a better attractiveness of the learning method and thus an increase of the time voluntarily dedicated to self-learning and the motivation to concentrate on the method \cite{baker1994}.
+The augmentation of interfaces thanks to technology, causes a better attractiveness of the learning method and thus an increase of the time voluntarily dedicated to self-learning and the motivation to concentrate on the method \cite{baker1994technology}.
 
 Very few games use sign language as a primary element in the gameplay. We can cite Moss \cite{moss2018} (see figure \ref{fig:moss}), a video game on PlayStation VR in which the hero communicates with the player with ASL. 
 
@@ -221,7 +221,7 @@ The application uses the phone's camera to film the user and verify that he or s
     \label{fig:nyuchan}
 \end{marginfigure}
 
-P5VN is an open-source Interactive Design and Media Major at NYU Tandon School of Engineering student project, allowing the creation of a visual novel using P5.js. It allows the display of dialogues, sprites, and backgrounds and using menus by clicking (see figure \ref{fig:nyuchan}). The game scenario is easily editable through a script that the engine parses. The project initially aimed to implement a prototype engine based on p5.js with a custom scripting language.  
+P5VN is an open-source engine created by Mitchell G. in the Interactive Design and Media Major at NYU Tandon School of Engineering student project. The engine allows the creation of a visual novel in the web using P5.js. It enables the display of dialogues, sprites, and backgrounds and using menus by clicking (see figure \ref{fig:nyuchan}). The game scenario is easily editable through a script that the engine parses. The project initially aimed to implement a prototype engine based on p5.js with a custom scripting language.  
 
 Another visual novel engines, Tuesday JS \cite{TuesdayJS} or Monogatari \cite{monogatari} are simple web-based visual novel editors that can be used in a web browser. They are written in JavaScript, allowing the use of vector graphics svg, gif animations, and CSS styles.
 
@@ -455,7 +455,7 @@ The models used for the characters of Aria, the grandmother, and the salesman we
 
 All the avatars' sprites and 3D video animations were recorded from the "Aria" application on the mirror. These animations include 22 video animations and 14 sprites for the character of Aria in the sign language game (see figure \ref{fig:iloveyou}).
 
-\section{Sign Language AI}
+\section{Sign Language Recognition AI}
 
 \subsection{Overview}
 
@@ -587,20 +587,34 @@ The augmented mirror eliminates the need for additional equipment, although it r
 
 \subsection{Set Up}
 
-As the sign language learning game primarily targets young users, this study focuses on a sample of 12 individuals aged between 18 and 25 years old.
+As the sign language learning game primarily targets young users, this study focuses on a sample of 6 individuals aged between 18 and 25 years old.
 
-Six participants engage with a selection of video sign language tutorials available on the "pocket sign" application. The tutorials encompass signs that align with the paths taken in the game, such as navigating through the house ("ok," "yes," "left," "right," "house," "store," "hello," "goodbye," "television," "leave," "eat") or the store ("ok," "yes," "no," "left," "right," "house," "store," "goodbye," "apple," "peach"). These individuals are instructed to advance to the next sign once they believe they have comprehended the currently displayed sign.
+Six participants train with a sign language practice program available on the "Pocket sign" application. The application offers effective training by watching sign language tutorials and then taking quizzes asking a user to choose the right sign for a word. Learning takes place through simple viewing and repetition. Participants practice 10 signs with the application ("same", "different", "forget", "remember", "orange", "key", "mouse", "box", "spray", "glasses"). They are then asked to perform 4 of these signs and are evaluated on them.
 
-On the other hand, six participants interact with the sign language learning game using the mirror interface. Before using the game, they receive an explanation of its principles. Two of these participants navigate through the house scenario, while the remaining four navigate through the store scenario.
+Then, the same participants interact with the sign language learning game using the mirror interface. Before using the game, they receive an explanation of its principles. Two of these participants navigated through the house scenario, while the remaining four navigated through the store scenario during the game. Navigating through the house displays the signs: "ok", "yes", "left", "right", "house", "store", "hello", "goodbye", "television", "leave", "eat" and the store path displays the signs: "ok", "yes", "no", "left", "right", "house", "store", "goodbye", "apple", "peach". The participants are then asked to perform 4 of these signs and are evaluated on them.
 
 Both groups are informed from the outset that they will be assessed on specific signs at the conclusion of the study. The duration of each session, from the beginning to the end, is recorded for both groups.
 
+In conclusion, users were asked to provide their opinions on various aspects of the game using a rating scale of 10. 
+
+The survey measures: 
+\begin{itemize}
+    \item The average motivation to learn sign language through the augmented mirror and video game approach rather than with "Pocket sign".
+    \item The level of fun in interacting rather than with "Pocket sign".
+    \item Ease of understanding the tasks.
+    \item The convenience of the augmented mirror as a learning method.
+    \item The overall effectiveness in learning with the game.
+  \end{itemize}
 
 \subsection{Results}
 
+\paragraph{Pocket Sign Application}
+
+The average time required to complete the Pocket Sign application was 6 minutes and 28 seconds. The average score achieved by participants was 3.54 out of 4 signs learned. The application is interesting for learning to recognize sign language gestures, as this is what the application trains the user to do. Most of the errors made by the participants are linked to a problem of gesture in certain complex movements (e.g. "box" or "remember"). Users appreciated the fact that the tutorial was given by a human, which enabled them to see things clearly. On the other hand, they criticized the speed at which the signs were executed, which made them more difficult to reproduce.
+
 \paragraph{Sign Language Video Game}
 
-Certain users encountered difficulties associated with inadequate AI recognition. For instance, one user required 8 minutes and 25 seconds to complete the game, significantly longer than the average completion time of 4 minutes and 44 seconds. This discrepancy can be attributed to the substantial height difference between the dataset creator (1.84m) and the user (1.60m), thereby introducing bias into the system.
+Certain users encountered difficulties associated with inadequate AI recognition. For instance, one user required 8 minutes and 25 seconds to complete the game, significantly longer than the average completion time of 4 minutes and 44 seconds. This discrepancy can be attributed to the substantial height difference between the dataset creator (1.84m) and the user (1.60m), thereby introducing biases into the system.
 
 To assess the users' performance, they were evaluated on a random selection of signs following their gaming session. On average, participants achieved a score of 2.33 out of 4 signs learned. The errors observed can be attributed to various factors. In some instances, the AI prematurely identified a sign before the user had accurately positioned their hands, leading to discrepancies between the expected and detected gestures.
 
@@ -613,22 +627,29 @@ To assess the users' performance, they were evaluated on a random selection of s
 
 Subsequently, users required additional time to observe the signs and make their choices. Another error stemmed from the presence of three simultaneous tutorials (menus with three choices), which hindered users' ability to concentrate on each tutorial, resulting in less efficient sign memorization.
 
-Addressing the issue of AI detection speed can be achieved by increasing the detection threshold value, offering an effective solution.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=2.2\columnwidth]{AdrLfv_master_thesis/images/SLR_game_box_plot.png}
+    \caption{Results of the survey.}
+    \label{fig:SLR_game_box_plot}
+\end{figure}
 
-In conclusion, users were asked to provide their opinions on various aspects of the system using a rating scale of 10. The average motivation to learn sign language through the augmented mirror and video game approach was 7.91/10. Users rated the level of fun in interacting as 8.25/10, ease of understanding the tasks at 7.58/10, practicality of the augmented mirror as a learning method at 8.25/10, and the overall effectiveness of the learning method at 6.41/10. Additionally, users rated the AI's ability to correctly guess signs at 6.11/10.
+The results from the survey are available on the figure \ref{fig:SLR_game_box_plot}.
+
+% The average motivation to learn sign language through the augmented mirror and video game approach was 7.91/10. Users rated the level of fun in interacting as 8.25/10, ease of understanding the tasks at 7.58/10, practicality of the augmented mirror as a learning method at 8.25/10, and the overall effectiveness of the learning method at 6.41/10. Additionally, users rated the AI's ability to correctly guess signs at 6.11/10.
 
 Overall feedback indicated that the avatars' excessive finger movements compromised precision. The use of a 2D display on the mirror screen, instead of 3D (see figure \ref{fig:slr_game_test}), posed challenges in understanding the signs. Some users were deterred by the anime-like appearance of the characters, which dampened their enthusiasm for practicing.
 
-A few users forgot the "ok" sign to skip dialogues during the game, despite it being shown twice at the beginning. This forgetfulness hindered their progress and required external intervention for sign reminders. One user faced learning difficulties due to perceived ambiguity in the avatar's movements. However, interacting with a real person facilitated more effective learning. Users strongly criticized the AI's lack of accuracy, rating it at 6.11/10.
+A few users forgot the "ok" sign to skip dialogues during the game, despite it being shown twice at the beginning. This forgetfulness hindered their progress and required external intervention for sign reminders. One user faced learning difficulties due to perceived ambiguity in the avatar's movements. However, interacting with a real person facilitated more effective learning. Users strongly criticized the AI's lack of accuracy, rating it at 6.11/10. Addressing the issue of AI detection speed can also be achieved by increasing the detection threshold value, offering an more effective solution.
 
 The 3D animated tutorials garnered positive feedback and were considered more engaging than simple video tutorials. Users expressed satisfaction with using the game on an augmented mirror, deeming the mirror's interface mainstream and easily integrable into a living room setting.
 
-% \paragraph{Videos}
-
-% \textit{POTENTIAL USER STUDY ABOUT LEARNING WITH VIDEO TUTORIALS}
 
 \section{Discussions}
 
+Participants reported slight demotivation after using the app and practicing 10 signs. The application is effective, but the learning curve is intense. Some signs reappear many times in the app's questionnaire. It becomes laborious to validate them several times, and the learning curve can become long. Even so, this method guarantees effective information retention.
+
+The advantage of the sign language learning game is the marked improvement in a player's motivation to learn and practice SL.
 The Sign Language Game effectively stimulates visual, verbal, and kinesthetic intelligence among its users. Visual intelligence encompasses the ability to mentally construct images and accurately perceive the three-dimensional visual world. By engaging with 3D sign language tutorials and deciphering the diverse movements and limb positions of the avatars, users' visual intelligence is stimulated. They must perceive and mentally project the identified signs before reproducing them.
 
 Verbal intelligence pertains to rapid reading, speaking, and the capacity to articulate mental concepts into words. Connecting visual images to corresponding words within the project enhances users' fluency in expressing themselves and linking mental ideas to gestures.
@@ -636,6 +657,19 @@ Verbal intelligence pertains to rapid reading, speaking, and the capacity to art
 Kinesthetic intelligence involves the refined utilization of one's body, expressing oneself through movement, and precise control over bodily motions. The project's gamified approach stimulates this form of intelligence as users must translate mental images of body positions and movements into real-world actions.
 
 The simultaneous stimulation of these three intelligences, coupled with the motivational aspects of gamification, enhances information retention. Users retain sign language gestures more effectively through the combination of visual observation, mental projection, and physical execution in space. Studies have demonstrated the influential impact of non-verbal behaviors, such as gestures, on comprehension and memory in communication \cite{kelly1999offering}.
+
+
+\paragraph[]{Limitations}
+
+The findings from the user studies highlight several limitations within the project.
+
+One limitation pertains to the size discrepancy between the individual who created the dataset and potential users with varying heights. While the accuracy is high for the dataset creator, it diminishes for users with different morphologies. To address this issue, one potential solution is to introduce random compression of coordinates along the horizontal and vertical axes during data augmentation or to include individuals of diverse sizes during dataset registration.
+
+The dataset utilized in the project is relatively small, exhibiting limited noise, slight variations, and minimal mixing. Although the model demonstrates moderate efficiency, even when trained on multiple distinct signs, its accuracy would further decline with dataset expansion. Therefore, the model should be reworked in the future. The implementation of transformers could prove beneficial, enhancing performance. Transformers have proven successful in various domains such as image processing, biological sequence analysis, and video understanding.
+
+Another area for improvement concerns the clarity of avatars in sign language tutorials, which can sometimes be challenging. The pivot angles of the avatar's bones are constrained to prevent glitches and ragdoll-like movements. Consequently, capturing clear signs, particularly at the finger level, can be difficult. As a result, users must imitate and learn from an inaccurate model. To address this issue, slight modifications can be made to widen the allowable angles of the avatar's bones, thereby enhancing precision.
+
+Learning is also not as efficient as desired despite the increase in motivation to learn with this method. Learning with the application resulted in a score of 3.54 signs learnt out of 4, for a score of 2.33 with the video game. Memory stimulation exercises would have to be added in a future work. Certain limitations therefore slow down the experience such as the lack of diversity of the dataset, the lack of precision of the 3D tutorials, and the lack of memory stimulation.
 
 \section{Conclusion}
 
@@ -646,15 +680,7 @@ Playful learning and gamification are pedagogical approaches that leverage eleme
 
 This approach facilitates learning through immediate feedback, allowing learners to engage in repeated practice sessions at their own pace. Furthermore, the incorporation of cutting-edge technologies in the game design tends to generate curiosity and captivate learners, thereby fostering increased motivation and perseverance in the acquisition of sign language skills.
 
-\subsection{Limitations}
 
-The findings from the user studies highlight several limitations within the project.
-
-One limitation pertains to the size discrepancy between the individual who created the dataset and potential users with varying heights. While the accuracy is high for the dataset creator, it diminishes for users with different morphologies. To address this issue, one potential solution is to introduce random compression of coordinates along the horizontal and vertical axes during data augmentation or to include individuals of diverse sizes during dataset registration.
-
-The dataset utilized in the project is relatively small, exhibiting limited noise, slight variations, and minimal mixing. Although the model demonstrates moderate efficiency, even when trained on multiple distinct signs, its accuracy would further decline with dataset expansion. Therefore, the model should be reworked in the future. The implementation of transformers could prove beneficial, enhancing performance. Transformers have proven successful in various domains such as image processing, biological sequence analysis, and video understanding.
-
-Another area for improvement concerns the clarity of avatars in sign language tutorials, which can sometimes be challenging. The pivot angles of the avatar's bones are constrained to prevent glitches and ragdoll-like movements. Consequently, capturing clear signs, particularly at the finger level, can be difficult. As a result, users must imitate and learn from an inaccurate model. To address this issue, slight modifications can be made to widen the allowable angles of the avatar's bones, thereby enhancing precision.
 
 \subsection{Future Works}
 
